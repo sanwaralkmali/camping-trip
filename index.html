@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Camping Chronicle · Tulip International Schools</title>
+<title>Camping Chronicle · High School Team</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -36,16 +36,16 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
     background: var(--paper);
     color: var(--ink);
     line-height: 1.6;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     position: relative;
     overflow-x: hidden;
   }
 
-  /* Subtle paper grain */
   body::before {
     content: '';
     position: fixed;
@@ -65,7 +65,6 @@
     overflow: hidden;
     background: linear-gradient(180deg, #0f1a1e 0%, #142922 45%, #1f3525 75%, #2d4127 100%);
     color: var(--cream);
-    padding: 0;
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
@@ -97,7 +96,7 @@
   }
 
   .monogram {
-    font-family: 'Fraunces', serif;
+    font-family: 'Cairo', sans-serif;
     font-weight: 300;
     font-size: 13px;
     letter-spacing: 0.35em;
@@ -128,47 +127,35 @@
   }
 
   .hero-kicker {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--sage);
     margin-bottom: 18px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
   }
 
   .hero-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(56px, 9vw, 128px);
-    line-height: 0.92;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 200;
+    font-size: clamp(52px, 8.5vw, 120px);
+    line-height: 0.95;
     letter-spacing: -0.03em;
     color: var(--cream);
-    font-variation-settings: "opsz" 144;
   }
   .hero-title em {
-    font-style: italic;
-    font-weight: 400;
+    font-style: normal;
+    font-weight: 600;
     color: var(--gold-soft);
-  }
-  .hero-title .amp {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--ember-soft);
-    display: inline-block;
-    padding: 0 0.1em;
   }
 
   .hero-arabic {
-    font-family: 'Amiri', serif;
-    font-size: clamp(28px, 3.2vw, 44px);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 300;
+    font-size: clamp(22px, 2.6vw, 34px);
     color: var(--sage);
-    margin-top: 24px;
+    margin-top: 22px;
     direction: rtl;
     text-align: right;
-    letter-spacing: 0;
-    font-weight: 400;
   }
 
   .hero-meta {
@@ -182,6 +169,7 @@
   .hero-meta-cell {
     background: rgba(15, 26, 30, 0.6);
     padding: 22px 24px;
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
   }
   .hero-meta-label {
@@ -193,17 +181,18 @@
     margin-bottom: 8px;
   }
   .hero-meta-value {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 400;
+    font-family: 'Cairo', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
     color: var(--cream);
     letter-spacing: -0.01em;
+    line-height: 1.2;
   }
   .hero-meta-sub {
     font-size: 11px;
-    color: rgba(253, 250, 243, 0.5);
+    color: rgba(253, 250, 243, 0.55);
     margin-top: 4px;
-    font-family: 'Inter', sans-serif;
+    font-weight: 300;
   }
 
   /* ==================== NAV ==================== */
@@ -231,9 +220,9 @@
     background: transparent;
     border: none;
     padding: 22px 20px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--ink-soft);
     cursor: pointer;
     position: relative;
@@ -247,6 +236,7 @@
     letter-spacing: 0.15em;
     margin-right: 8px;
     opacity: 0.6;
+    font-weight: 500;
   }
   .tab::after {
     content: '';
@@ -261,7 +251,7 @@
     transition: transform 0.35s cubic-bezier(.22,.8,.3,1);
   }
   .tab:hover { color: var(--forest); }
-  .tab.on { color: var(--forest-deep); font-weight: 500; }
+  .tab.on { color: var(--forest-deep); font-weight: 700; }
   .tab.on::after { transform: scaleX(1); }
   .tab.on .tab-num { color: var(--ember); opacity: 1; }
 
@@ -282,7 +272,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Section header with ornament */
   .section-head {
     margin-bottom: 56px;
     padding-bottom: 24px;
@@ -306,20 +295,21 @@
     text-transform: uppercase;
   }
   .section-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 200;
     font-size: 48px;
     letter-spacing: -0.02em;
     color: var(--ink);
-    line-height: 1;
+    line-height: 1.05;
   }
-  .section-title em { font-style: italic; font-weight: 400; color: var(--forest); }
+  .section-title em { font-style: normal; font-weight: 700; color: var(--forest); }
   .section-title-ar {
-    font-family: 'Amiri', serif;
-    font-size: 32px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
     color: var(--moss);
     direction: rtl;
-    line-height: 1;
+    line-height: 1.2;
   }
 
   /* ==================== OVERVIEW ==================== */
@@ -334,7 +324,6 @@
   .stat {
     padding: 32px 28px;
     border-right: 1px solid var(--line);
-    position: relative;
   }
   .stat:last-child { border-right: none; }
   .stat-label {
@@ -346,18 +335,19 @@
     margin-bottom: 10px;
   }
   .stat-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Cairo', sans-serif;
     font-weight: 300;
-    font-size: 36px;
+    font-size: 30px;
     letter-spacing: -0.02em;
     color: var(--ink);
-    line-height: 1.1;
+    line-height: 1.15;
   }
-  .stat-value em { font-style: italic; color: var(--forest); }
+  .stat-value em { font-style: normal; font-weight: 700; color: var(--forest); }
   .stat-sub {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--ink-soft);
-    margin-top: 4px;
+    margin-top: 6px;
+    font-weight: 400;
   }
 
   /* Principles dual column */
@@ -386,29 +376,26 @@
     font-size: 14px;
   }
   .principle-head {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 22px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
     color: var(--forest);
     margin-bottom: 20px;
     padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
   }
   .principle-head.ar {
-    font-family: 'Amiri', serif;
-    font-style: normal;
-    font-size: 28px;
+    font-size: 24px;
     text-align: right;
     direction: rtl;
   }
-  .principle-list { list-style: none; }
+  .principle-list { list-style: none; counter-reset: p; }
   .principle-list li {
-    padding: 12px 0 12px 28px;
-    font-size: 14px;
+    padding: 12px 0 12px 36px;
+    font-size: 15px;
     color: var(--ink-soft);
     position: relative;
-    line-height: 1.55;
+    line-height: 1.65;
     border-bottom: 1px solid var(--line-soft);
   }
   .principle-list li:last-child { border-bottom: none; }
@@ -423,16 +410,14 @@
     color: var(--ember);
     letter-spacing: 0.1em;
   }
-  .principle-list { counter-reset: p; }
   .principle-list.ar {
     direction: rtl;
     text-align: right;
-    font-family: 'Amiri', serif;
   }
-  .principle-list.ar li { padding: 14px 28px 14px 0; font-size: 18px; line-height: 1.7; }
+  .principle-list.ar li { padding: 14px 36px 14px 0; font-size: 17px; line-height: 1.75; }
   .principle-list.ar li::before { left: auto; right: 0; }
 
-  /* Leader's note — dual quote cards */
+  /* Wish cards */
   .notes {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -449,13 +434,13 @@
     background: linear-gradient(135deg, #f5e6d0, #f1dbbb);
   }
   .note-mark {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 90px;
-    line-height: 0.5;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 0.4;
     color: var(--ember);
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
   }
   .note-label {
     font-family: 'JetBrains Mono', monospace;
@@ -464,22 +449,18 @@
     text-transform: uppercase;
     color: var(--terracotta);
     margin-bottom: 14px;
+    font-weight: 500;
   }
   .note-body {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 19px;
-    line-height: 1.55;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.7;
     color: var(--ink);
-    letter-spacing: -0.005em;
   }
   .note.ar { direction: rtl; text-align: right; }
   .note.ar .note-body {
-    font-family: 'Amiri', serif;
-    font-style: normal;
-    font-size: 22px;
-    line-height: 1.9;
+    font-size: 19px;
+    line-height: 1.85;
   }
 
   /* legend */
@@ -490,6 +471,7 @@
     padding: 24px;
     background: var(--paper-deep);
     border: 1px solid var(--line-soft);
+    flex-wrap: wrap;
   }
   .legend-item {
     display: flex;
@@ -506,9 +488,7 @@
   .legend-dot.mixed { background: var(--moss); }
   .legend-dot.sep { background: var(--ember); }
   .legend strong {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: italic;
+    font-weight: 700;
     color: var(--ink);
   }
 
@@ -542,16 +522,16 @@
     margin-bottom: 10px;
   }
   .day-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Cairo', sans-serif;
     font-weight: 300;
-    font-size: 36px;
+    font-size: 34px;
     letter-spacing: -0.01em;
     line-height: 1.1;
   }
-  .day-title em { font-style: italic; color: var(--sage); }
+  .day-title em { font-style: normal; font-weight: 700; color: var(--sage); }
   .day-title-ar {
-    font-family: 'Amiri', serif;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 18px;
     color: var(--sage);
     margin-top: 8px;
     direction: rtl;
@@ -596,7 +576,7 @@
   .t-time {
     position: absolute;
     left: -120px;
-    top: 20px;
+    top: 22px;
     width: 76px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -606,16 +586,15 @@
     text-align: right;
   }
   .t-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 18px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
     color: var(--ink);
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-    line-height: 1.3;
-    letter-spacing: -0.005em;
+    line-height: 1.4;
   }
   .t-icon {
     display: inline-flex;
@@ -627,13 +606,13 @@
     flex-shrink: 0;
   }
   .t-note {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--ink-soft);
     margin-top: 6px;
-    line-height: 1.55;
-    max-width: 700px;
+    line-height: 1.6;
+    max-width: 720px;
+    font-weight: 400;
   }
-  .t-note em { font-family: 'Amiri', serif; font-style: normal; font-size: 15px; color: var(--forest); }
 
   .pill {
     display: inline-block;
@@ -647,139 +626,13 @@
   }
   .pill.mixed { background: var(--sage); color: var(--forest-deep); }
   .pill.sep { background: #fde4cc; color: var(--ember); }
-  .pill.new { background: var(--forest-deep); color: var(--sage); }
-
-  /* ==================== FOOD ==================== */
-  .food-note {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-bottom: 56px;
-    background: var(--paper-warm);
-    border: 1px solid var(--line);
-  }
-  .food-note > div {
-    padding: 28px 32px;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .food-note > div:first-child { border-right: 1px solid var(--line); }
-  .food-note > div.ar { direction: rtl; text-align: right; font-family: 'Amiri', serif; font-size: 16px; }
-  .food-note strong {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: italic;
-    color: var(--ember);
-    margin-bottom: 8px;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .food-note > div.ar strong {
-    font-family: 'Amiri', serif;
-    font-style: normal;
-    font-size: 16px;
-    text-transform: none;
-    letter-spacing: 0;
-  }
-
-  .food-day {
-    margin-bottom: 48px;
-  }
-  .food-day-head {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 28px;
-    color: var(--forest);
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-  }
-  .food-day-head .ar {
-    font-family: 'Amiri', serif;
-    font-size: 22px;
-    color: var(--moss);
-    font-style: normal;
-  }
-  .food-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 2px;
-    background: var(--line-soft);
-    border: 1px solid var(--line);
-  }
-  .meal {
-    background: var(--cream);
-    padding: 24px 24px 28px;
-    transition: background 0.3s ease;
-  }
-  .meal:hover { background: var(--paper-warm); }
-  .meal-time {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--ember);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .meal-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 19px;
-    color: var(--ink);
-    margin-bottom: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px dashed var(--line);
-    letter-spacing: -0.005em;
-  }
-  .meal-list {
-    list-style: none;
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-  .meal-list li {
-    padding: 5px 0;
-    position: relative;
-    padding-left: 16px;
-    line-height: 1.5;
-  }
-  .meal-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    color: var(--moss);
-  }
-
-  .supplies {
-    margin-top: 32px;
-    padding: 28px 32px;
-    background: var(--night-2);
-    color: var(--cream);
-    font-size: 13px;
-    line-height: 1.7;
-  }
-  .supplies strong {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    color: var(--gold-soft);
-    margin-bottom: 10px;
-    font-size: 15px;
-  }
+  .pill.last { background: var(--forest-deep); color: var(--sage); }
 
   /* ==================== ACTIVITIES ==================== */
   .act-group-head {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 26px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
     color: var(--forest);
     margin: 48px 0 24px;
     padding-bottom: 12px;
@@ -787,12 +640,12 @@
     display: flex;
     align-items: baseline;
     gap: 20px;
+    flex-wrap: wrap;
   }
   .act-group-head:first-child { margin-top: 0; }
   .act-group-head .ar {
-    font-family: 'Amiri', serif;
-    font-style: normal;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 20px;
     color: var(--moss);
   }
 
@@ -808,7 +661,7 @@
     background: var(--cream);
     padding: 32px 32px 28px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
   }
   .act:hover { background: var(--paper-warm); }
   .act.featured {
@@ -824,18 +677,17 @@
     margin-bottom: 14px;
   }
   .act-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 1.2;
-    letter-spacing: -0.005em;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.3;
     color: var(--ink);
   }
   .act.featured .act-title { color: var(--gold-soft); }
   .act-title .ar {
     display: block;
-    font-family: 'Amiri', serif;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 17px;
     color: var(--moss);
     margin-top: 4px;
     direction: rtl;
@@ -845,19 +697,38 @@
   .act-desc {
     font-size: 14px;
     color: var(--ink-soft);
-    line-height: 1.6;
+    line-height: 1.7;
   }
   .act.featured .act-desc { color: rgba(253, 250, 243, 0.85); }
   .act-ar {
-    font-family: 'Amiri', serif;
     font-size: 15px;
     color: var(--forest);
     margin-top: 12px;
-    line-height: 1.8;
+    line-height: 1.85;
     direction: rtl;
     text-align: right;
   }
   .act.featured .act-ar { color: var(--sage); }
+
+  /* sub-list inside activity */
+  .sub-list {
+    margin-top: 12px;
+    list-style: none;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .act.featured .sub-list { color: rgba(253, 250, 243, 0.85); }
+  .sub-list li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+  }
+  .sub-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--ember);
+    font-weight: 700;
+  }
 
   /* ==================== PACKING ==================== */
   .pack-intro {
@@ -865,24 +736,23 @@
     padding: 24px 32px;
     background: var(--paper-warm);
     border-left: 3px solid var(--ember);
-    font-size: 14px;
+    font-size: 15px;
     color: var(--ink);
+    line-height: 1.7;
   }
   .pack-intro strong {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: italic;
+    font-weight: 700;
     display: block;
     margin-bottom: 6px;
     color: var(--forest);
+    font-size: 16px;
   }
   .pack-intro .ar {
-    font-family: 'Amiri', serif;
-    font-size: 15px;
+    font-size: 16px;
     direction: rtl;
     text-align: right;
     display: block;
-    margin-top: 6px;
+    margin-top: 10px;
     color: var(--ink-soft);
   }
 
@@ -892,13 +762,12 @@
     gap: 48px;
   }
   .pack-cat {
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   .pack-cat-head {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 18px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
     color: var(--forest);
     padding-bottom: 10px;
     margin-bottom: 14px;
@@ -908,8 +777,7 @@
     align-items: baseline;
   }
   .pack-cat-head .ar {
-    font-family: 'Amiri', serif;
-    font-style: normal;
+    font-weight: 400;
     font-size: 15px;
     color: var(--moss);
   }
@@ -922,19 +790,20 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--ink);
-    padding: 5px 0;
-    line-height: 1.4;
+    padding: 6px 0;
+    line-height: 1.5;
   }
   .box {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     border: 1.5px solid var(--moss);
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 3px;
     transition: all 0.2s ease;
     cursor: pointer;
+    border-radius: 2px;
   }
   .box:hover { background: var(--ember-soft); border-color: var(--ember); }
 
@@ -944,7 +813,7 @@
     background: var(--cream);
     border-left: 3px solid var(--ember);
     margin-bottom: 4px;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--ink);
     display: flex;
     gap: 20px;
@@ -957,13 +826,12 @@
     background: var(--paper-warm);
   }
   .rule-icon {
-    font-size: 20px;
+    font-size: 22px;
     flex-shrink: 0;
   }
-  .rule-text { flex: 1; line-height: 1.55; }
+  .rule-text { flex: 1; line-height: 1.6; }
   .rule-text .ar {
     display: block;
-    font-family: 'Amiri', serif;
     font-size: 15px;
     color: var(--ink-soft);
     margin-top: 4px;
@@ -971,18 +839,7 @@
     text-align: right;
   }
 
-  .checklist-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 32px;
-    margin-top: 20px;
-    padding: 28px 32px;
-    background: var(--paper-warm);
-    border: 1px solid var(--line);
-  }
-  .checklist-grid .pack-item { font-size: 14px; }
-
-  /* Final word — large closing spread */
+  /* Final wish */
   .closing {
     margin-top: 72px;
     position: relative;
@@ -1002,12 +859,13 @@
     z-index: 2;
   }
   .closing-block .mark {
-    font-family: 'Fraunces', serif;
-    font-size: 72px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 60px;
     line-height: 0.3;
     color: var(--ember);
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .closing-label {
     font-family: 'JetBrains Mono', monospace;
@@ -1016,24 +874,19 @@
     text-transform: uppercase;
     color: var(--gold-soft);
     margin-bottom: 18px;
+    font-weight: 500;
   }
   .closing-body {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 21px;
-    line-height: 1.55;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.75;
     color: var(--cream);
-    letter-spacing: -0.005em;
   }
   .closing-block.ar { direction: rtl; text-align: right; }
   .closing-block.ar .closing-body {
-    font-family: 'Amiri', serif;
-    font-style: normal;
-    font-size: 24px;
+    font-size: 21px;
     line-height: 1.9;
   }
-  .closing-block.ar .closing-label { text-align: right; }
 
   /* ==================== FOOTER ==================== */
   .footer {
@@ -1043,9 +896,9 @@
     background: var(--paper-deep);
   }
   .footer-mark {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 24px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
     color: var(--forest);
     margin-bottom: 8px;
   }
@@ -1071,20 +924,16 @@
     .stat:nth-child(2) { border-right: none; }
     .principles { grid-template-columns: 1fr; gap: 40px; }
     .principles-divider { display: none; }
-    .notes, .closing-grid, .pack-grid, .food-note { grid-template-columns: 1fr; }
-    .food-note > div:first-child { border-right: none; border-bottom: 1px solid var(--line); }
+    .notes, .closing-grid, .pack-grid { grid-template-columns: 1fr; }
     .pack-items { grid-template-columns: 1fr; }
     .closing { padding: 40px 28px; }
     .timeline { padding-left: 80px; }
     .timeline::before { left: 60px; }
     .t-time { left: -80px; width: 50px; font-size: 11px; }
     .t-row::before { left: -24px; }
-    .checklist-grid { grid-template-columns: 1fr; }
     .day-banner { padding: 24px 28px; }
-    .day-title { font-size: 28px; }
+    .day-title { font-size: 26px; }
   }
-
-  .sr-only { position: absolute; left: -9999px; }
 </style>
 </head>
 
@@ -1113,10 +962,8 @@
       </radialGradient>
     </defs>
 
-    <!-- Sky -->
     <rect width="1440" height="680" fill="url(#sky)"/>
 
-    <!-- Stars -->
     <g fill="#fdf3d2" opacity="0.9">
       <circle cx="120" cy="80" r="0.8"/>
       <circle cx="240" cy="140" r="1.2"/>
@@ -1136,20 +983,14 @@
       <circle cx="1320" cy="220" r="0.7"/>
     </g>
 
-    <!-- Moon with glow -->
     <circle cx="1180" cy="130" r="90" fill="url(#moonGlow)"/>
     <circle cx="1180" cy="130" r="36" fill="#fdf3d2" opacity="0.95"/>
     <circle cx="1195" cy="120" r="36" fill="#1a2d28"/>
 
-    <!-- Distant mountains back -->
-    <path d="M 0 480 L 120 380 L 230 420 L 340 340 L 460 390 L 560 310 L 680 360 L 800 290 L 920 340 L 1060 280 L 1180 330 L 1300 300 L 1440 360 L 1440 680 L 0 680 Z"
-          fill="#1a2d28" opacity="0.9"/>
+    <path d="M 0 480 L 120 380 L 230 420 L 340 340 L 460 390 L 560 310 L 680 360 L 800 290 L 920 340 L 1060 280 L 1180 330 L 1300 300 L 1440 360 L 1440 680 L 0 680 Z" fill="#1a2d28" opacity="0.9"/>
 
-    <!-- Middle mountains -->
-    <path d="M 0 540 L 90 450 L 200 490 L 320 410 L 440 470 L 560 400 L 700 460 L 820 390 L 950 440 L 1080 380 L 1200 430 L 1320 400 L 1440 440 L 1440 680 L 0 680 Z"
-          fill="#223527"/>
+    <path d="M 0 540 L 90 450 L 200 490 L 320 410 L 440 470 L 560 400 L 700 460 L 820 390 L 950 440 L 1080 380 L 1200 430 L 1320 400 L 1440 440 L 1440 680 L 0 680 Z" fill="#223527"/>
 
-    <!-- Pine tree silhouettes line -->
     <g fill="#152a1e">
       <path d="M 60 540 L 48 510 L 52 510 L 42 485 L 48 485 L 40 465 L 58 465 L 50 485 L 56 485 L 46 510 L 50 510 L 40 540 Z" transform="translate(0,0)"/>
       <path d="M 60 540 L 48 510 L 52 510 L 42 485 L 48 485 L 40 465 L 58 465 L 50 485 L 56 485 L 46 510 L 50 510 L 40 540 Z" transform="translate(80,10)"/>
@@ -1166,40 +1007,27 @@
       <path d="M 60 540 L 48 510 L 52 510 L 42 485 L 48 485 L 40 465 L 58 465 L 50 485 L 56 485 L 46 510 L 50 510 L 40 540 Z" transform="translate(1320,22)"/>
     </g>
 
-    <!-- Front ground -->
     <path d="M 0 610 L 1440 600 L 1440 680 L 0 680 Z" fill="#2d3c26"/>
 
-    <!-- Fire glow circle -->
     <circle cx="720" cy="600" r="140" fill="url(#fireGlow)"/>
 
-    <!-- Tent -->
     <g transform="translate(600,500)">
       <path d="M 0 100 L 60 0 L 120 100 Z" fill="#3a2418" stroke="#c85a24" stroke-width="1.5"/>
       <path d="M 60 0 L 60 100" stroke="#1a0f08" stroke-width="1"/>
       <path d="M 45 100 L 60 60 L 75 100 Z" fill="#1a0f08"/>
-      <!-- Tent pole top -->
       <line x1="60" y1="0" x2="60" y2="-14" stroke="#c85a24" stroke-width="1"/>
       <circle cx="60" cy="-18" r="3" fill="#c85a24"/>
     </g>
 
-    <!-- Campfire -->
     <g transform="translate(720,590)">
-      <!-- Logs -->
       <ellipse cx="0" cy="18" rx="32" ry="4" fill="#1a0f08"/>
       <line x1="-28" y1="18" x2="20" y2="10" stroke="#3a2418" stroke-width="3" stroke-linecap="round"/>
       <line x1="-20" y1="12" x2="28" y2="18" stroke="#3a2418" stroke-width="3" stroke-linecap="round"/>
-      <!-- Flames -->
       <path d="M -14 10 Q -10 -10 0 -22 Q 8 -14 4 -4 Q 12 -14 10 6 Q 14 -4 18 8 L -14 12 Z" fill="#ff8a3a" opacity="0.9"/>
       <path d="M -8 8 Q -4 -4 2 -14 Q 6 -8 4 0 Q 10 -6 8 6 L -8 10 Z" fill="#fdc46a" opacity="0.95"/>
       <path d="M -2 4 Q 0 -4 4 -8 Q 6 -2 4 2 Z" fill="#fff2c8"/>
     </g>
 
-    <!-- Smoke -->
-    <g opacity="0.15" fill="#fdf3d2">
-      <path d="M 720 560 Q 710 540 720 520 Q 730 500 720 480 Q 710 460 720 440" stroke="#fdf3d2" stroke-width="10" fill="none" stroke-linecap="round"/>
-    </g>
-
-    <!-- Extra foreground trees -->
     <g fill="#0f1f14">
       <path d="M 140 620 L 115 560 L 125 560 L 105 510 L 120 510 L 100 460 L 135 460 L 115 510 L 130 510 L 110 560 L 120 560 L 95 620 Z"/>
       <path d="M 1290 620 L 1265 560 L 1275 560 L 1255 510 L 1270 510 L 1250 460 L 1285 460 L 1265 510 L 1280 510 L 1260 560 L 1270 560 L 1245 620 Z"/>
@@ -1208,7 +1036,7 @@
 
   <div class="hero-inner">
     <div class="hero-top">
-      <div class="monogram">Tulip International Schools</div>
+      <div class="monogram">High School Team</div>
       <div class="edition">Vol. 01 · Spring 2026</div>
     </div>
 
@@ -1221,8 +1049,8 @@
     <div class="hero-meta">
       <div class="hero-meta-cell">
         <div class="hero-meta-label">Departure</div>
-        <div class="hero-meta-value">Fri · 2:00 PM</div>
-        <div class="hero-meta-sub">from school</div>
+        <div class="hero-meta-value">Fri · 3:00 PM</div>
+        <div class="hero-meta-sub">from BABACAN</div>
       </div>
       <div class="hero-meta-cell">
         <div class="hero-meta-label">Return</div>
@@ -1236,7 +1064,7 @@
       </div>
       <div class="hero-meta-cell">
         <div class="hero-meta-label">Teachers</div>
-        <div class="hero-meta-value">Five</div>
+        <div class="hero-meta-value">Six</div>
         <div class="hero-meta-sub">guides & guardians</div>
       </div>
     </div>
@@ -1248,10 +1076,9 @@
   <nav class="nav" id="nav">
     <button class="tab on" onclick="show('ov',this)"><span class="tab-num">01</span>Overview</button>
     <button class="tab" onclick="show('sc',this)"><span class="tab-num">02</span>Schedule</button>
-    <button class="tab" onclick="show('fd',this)"><span class="tab-num">03</span>Food Plan</button>
-    <button class="tab" onclick="show('ac',this)"><span class="tab-num">04</span>Activities</button>
-    <button class="tab" onclick="show('pk',this)"><span class="tab-num">05</span>Packing List</button>
-    <button class="tab" onclick="show('ru',this)"><span class="tab-num">06</span>Rules &amp; Tips</button>
+    <button class="tab" onclick="show('ac',this)"><span class="tab-num">03</span>Activities</button>
+    <button class="tab" onclick="show('pk',this)"><span class="tab-num">04</span>Packing List</button>
+    <button class="tab" onclick="show('ru',this)"><span class="tab-num">05</span>Rules &amp; Tips</button>
   </nav>
 </div>
 
@@ -1270,8 +1097,8 @@
   <div class="stats-row">
     <div class="stat">
       <div class="stat-label">Departure</div>
-      <div class="stat-value">Friday <em>2</em>PM</div>
-      <div class="stat-sub">الانطلاق من المدرسة</div>
+      <div class="stat-value">Friday <em>3</em>PM</div>
+      <div class="stat-sub">from BABACAN</div>
     </div>
     <div class="stat">
       <div class="stat-label">Return</div>
@@ -1285,7 +1112,7 @@
     </div>
     <div class="stat">
       <div class="stat-label">Teachers</div>
-      <div class="stat-value"><em>5</em></div>
+      <div class="stat-value"><em>6</em></div>
       <div class="stat-sub">معلمون ومرشدون</div>
     </div>
   </div>
@@ -1316,20 +1143,20 @@
 
   <div class="notes">
     <div class="note">
-      <span class="note-mark">“</span>
-      <div class="note-label">Leader's Note</div>
-      <div class="note-body">This trip is not just camping. These students had a hard year. Our job is to make them feel seen, proud, and excited about the future. Every tiny detail — the food, the games, how we speak to them — matters.</div>
+      <span class="note-mark">★</span>
+      <div class="note-label">A wish from us</div>
+      <div class="note-body">Two days, one fire, and a lot of laughs waiting for you. Bring your energy, your stories, and your best self — and leave with memories that'll stay long after the tents come down. <strong style="color:var(--ember);">Enjoy every moment.</strong></div>
     </div>
     <div class="note ember ar">
-      <span class="note-mark">”</span>
-      <div class="note-label">ملاحظة القائد</div>
-      <div class="note-body">هذه الرحلة ليست مجرد تخييم. طلابنا مروا بسنة صعبة. هدفنا أن يشعروا بأنهم مرئيون ومقدَّرون ومتحمسون للمستقبل. كل تفصيلة صغيرة — الأكل، الألعاب، طريقة كلامنا معهم — لها أثر.</div>
+      <span class="note-mark">★</span>
+      <div class="note-label">أمنية من القلب</div>
+      <div class="note-body">يومان، نار هادئة، وضحكات كثيرة بانتظاركم. أحضروا طاقتكم وحكاياتكم وأجمل ما فيكم — واتركوا أثراً جميلاً يبقى بعد طيّ الخيام. <strong style="color:var(--ember);">استمتعوا بكل لحظة.</strong></div>
     </div>
   </div>
 
   <div class="legend">
-    <div class="legend-item"><span class="legend-dot mixed"></span><strong>Mixed</strong> meals · prayers · competitions</div>
-    <div class="legend-item"><span class="legend-dot sep"></span><strong>Separated</strong> sleeping · free time · individual activities</div>
+    <div class="legend-item"><span class="legend-dot mixed"></span><strong>Mixed</strong> &nbsp;meals · prayers · competitions</div>
+    <div class="legend-item"><span class="legend-dot sep"></span><strong>Separated</strong> &nbsp;sleeping · free time · individual activities</div>
   </div>
 </section>
 
@@ -1343,6 +1170,7 @@
     <span class="section-title-ar">الجدول الزمني الكامل</span>
   </div>
 
+  <!-- DAY 1 -->
   <div class="day-banner">
     <div class="day-meta">Day One · Chapter I</div>
     <div class="day-title">Friday — <em>Arrival &amp; First Night</em></div>
@@ -1350,48 +1178,38 @@
   </div>
 
   <div class="timeline">
-    <div class="t-row"><span class="t-time">2:00 PM</span>
-      <div class="t-title"><span class="t-icon">🚌</span>Depart from school</div>
-      <div class="t-note">Snacks on bus: chips, juice, dates, chocolate — <em>جهز الوجبات الخفيفة قبل الانطلاق</em></div>
-    </div>
-    <div class="t-row"><span class="t-time">4:00 PM</span>
-      <div class="t-title"><span class="t-icon">🏕️</span>Arrive &amp; set up tents <span class="pill sep">Separated</span></div>
-      <div class="t-note">Teachers assign tent spots. Boys zone and girls zone clearly marked.</div>
+    <div class="t-row"><span class="t-time">3:00 PM</span>
+      <div class="t-title"><span class="t-icon">🚌</span>Depart from BABACAN</div>
+      <div class="t-note">Meeting point &amp; departure — الانطلاق من بابا جان.</div>
     </div>
     <div class="t-row"><span class="t-time">4:30 PM</span>
-      <div class="t-title"><span class="t-icon">🍵</span>Welcome circle — tea, biscuits, dates <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Leader gives short welcome talk. Set expectations &amp; rules. Warm, not strict.</div>
-    </div>
-    <div class="t-row"><span class="t-time">5:30 PM</span>
-      <div class="t-title"><span class="t-icon">🕌</span>Asr prayer <span class="pill mixed">Mixed</span></div>
+      <div class="t-title"><span class="t-icon">🏕️</span>Arrive &amp; set up tents <span class="pill sep">Separated</span></div>
+      <div class="t-note">Boys zone &amp; girls zone clearly marked. Teachers help you pick your spot.</div>
     </div>
     <div class="t-row"><span class="t-time">6:00 PM</span>
-      <div class="t-title"><span class="t-icon">⚽</span>Warm-up games <span class="pill sep">Separated</span></div>
-      <div class="t-note">Boys: tug of war, sprint races · Girls: relay race, balloon game.</div>
+      <div class="t-title"><span class="t-icon">🍵</span>Welcome circle — Rules &amp; Notes <span class="pill mixed">Mixed</span></div>
+      <div class="t-note">Short welcome talk, rules for the trip, and the plan. Warm, not strict.</div>
     </div>
     <div class="t-row"><span class="t-time">7:30 PM</span>
       <div class="t-title"><span class="t-icon">🕌</span>Maghrib prayer <span class="pill mixed">Mixed</span></div>
     </div>
     <div class="t-row"><span class="t-time">8:00 PM</span>
-      <div class="t-title"><span class="t-icon">🔥</span>BBQ dinner — night one <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Grilled chicken + kofta, pita, salad, drinks.</div>
+      <div class="t-title"><span class="t-icon">🍔</span>Dinner — Burger Night <span class="pill mixed">Mixed</span></div>
+      <div class="t-note">Night one dinner around the fire.</div>
     </div>
     <div class="t-row"><span class="t-time">9:30 PM</span>
       <div class="t-title"><span class="t-icon">🕌</span>Isha prayer <span class="pill mixed">Mixed</span></div>
     </div>
     <div class="t-row"><span class="t-time">10:00 PM</span>
-      <div class="t-title"><span class="t-icon">🌟</span>Cultural knowledge competition <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Teams of 4–5 (mixed boys/girls). Islamic history, science, culture. Scores tracked all trip.</div>
-    </div>
-    <div class="t-row"><span class="t-time">11:30 PM</span>
       <div class="t-title"><span class="t-icon">🔥</span>Campfire + free performances</div>
-      <div class="t-note">Students &amp; teachers share: poems, jokes, impressions, funny stories — <em>فقرات حرة</em></div>
+      <div class="t-note">Poems, jokes, impressions, funny stories — فقرات حرة. Bring something to share.</div>
     </div>
     <div class="t-row"><span class="t-time">12:00 AM</span>
       <div class="t-title"><span class="t-icon">🌙</span>Sleep <span class="pill sep">Separated</span></div>
     </div>
   </div>
 
+  <!-- DAY 2 -->
   <div class="day-banner">
     <div class="day-meta">Day Two · Chapter II</div>
     <div class="day-title">Saturday — <em>The Big Day</em></div>
@@ -1403,69 +1221,56 @@
       <div class="t-title"><span class="t-icon">🕌</span>Fajr prayer <span class="pill mixed">Mixed</span></div>
     </div>
     <div class="t-row"><span class="t-time">6:00 AM</span>
+      <div class="t-title"><span class="t-icon">📿</span>Morning Adhkar — أذكار الصباح</div>
+      <div class="t-note">Together, softly, as the sun rises.</div>
+    </div>
+    <div class="t-row"><span class="t-time">6:30 AM</span>
       <div class="t-title"><span class="t-icon">🌅</span>Morning walk / free time</div>
-      <div class="t-note">Optional: short nature walk led by a teacher. Optional, not forced.</div>
+      <div class="t-note">Optional short nature walk led by a teacher. Optional, not forced.</div>
     </div>
-    <div class="t-row"><span class="t-time">8:00 AM</span>
+    <div class="t-row"><span class="t-time">8:30 AM</span>
       <div class="t-title"><span class="t-icon">🍳</span>Breakfast <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Eggs, cheese, labneh, olives, bread, jam, tea, Nescafe, juice.</div>
     </div>
-    <div class="t-row"><span class="t-time">9:00 AM</span>
-      <div class="t-title"><span class="t-icon">🏃</span>Physical games — round 2 <span class="pill sep">Separated</span></div>
-      <div class="t-note">Water bucket race (no hands!), balloon race (no hands!), tug of war finals — <em>أكثر لعبة مضحكة في الرحلة</em></div>
-    </div>
-    <div class="t-row"><span class="t-time">11:00 AM</span>
-      <div class="t-title"><span class="t-icon">☕</span>Snack break</div>
-      <div class="t-note">Fruit, crackers, juice.</div>
+    <div class="t-row"><span class="t-time">9:30 AM</span>
+      <div class="t-title"><span class="t-icon">🏃</span>Physical games <span class="pill sep">Separated</span></div>
+      <div class="t-note">
+        <strong>Water bucket race (no hands!)</strong> · <strong>Balloon race (no hands!)</strong> · <strong>Tug of war finals</strong> — أكثر لعبة مضحكة في الرحلة.
+      </div>
     </div>
     <div class="t-row"><span class="t-time">11:30 AM</span>
-      <div class="t-title"><span class="t-icon">📜</span>Poetry battle: teachers vs students <span class="pill mixed">Mixed</span></div>
-      <div class="t-note"><em>مطارحة شعرية</em> — last letter of verse = first letter of next verse. Audience votes the winner.</div>
+      <div class="t-title"><span class="t-icon">☕</span>Break</div>
+      <div class="t-note">Catch your breath. Rehydrate.</div>
     </div>
     <div class="t-row"><span class="t-time">1:00 PM</span>
       <div class="t-title"><span class="t-icon">🕌</span>Dhuhr prayer <span class="pill mixed">Mixed</span></div>
     </div>
     <div class="t-row"><span class="t-time">1:30 PM</span>
-      <div class="t-title"><span class="t-icon">🍽️</span>Lunch <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Rice or pasta, grilled chicken / stew, salad, bread, drinks.</div>
+      <div class="t-title"><span class="t-icon">🔥</span>BBQ <span class="pill mixed">Mixed</span></div>
+      <div class="t-note">Grilling together — the best smell of the trip.</div>
     </div>
     <div class="t-row"><span class="t-time">2:30 PM</span>
+      <div class="t-title"><span class="t-icon">🍽️</span>Lunch <span class="pill mixed">Mixed</span></div>
+    </div>
+    <div class="t-row"><span class="t-time">3:30 PM</span>
       <div class="t-title"><span class="t-icon">💤</span>Rest / free time <span class="pill sep">Separated</span></div>
-    </div>
-    <div class="t-row"><span class="t-time">4:00 PM</span>
-      <div class="t-title"><span class="t-icon">🕌</span>Asr prayer <span class="pill mixed">Mixed</span></div>
-    </div>
-    <div class="t-row"><span class="t-time">4:30 PM</span>
-      <div class="t-title"><span class="t-icon">📖</span>Religious lesson — signs of the last days <span class="pill mixed">Mixed</span></div>
-      <div class="t-note"><em>درس ديني تربوي</em> — story-based, interactive, campfire setting. End with group dua.</div>
-    </div>
-    <div class="t-row"><span class="t-time">6:00 PM</span>
-      <div class="t-title"><span class="t-icon">🎭</span>Mystery teacher game + free performances <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Students guess hidden facts about teachers. Then student stage time — sign up in advance.</div>
     </div>
     <div class="t-row"><span class="t-time">7:30 PM</span>
       <div class="t-title"><span class="t-icon">🕌</span>Maghrib prayer <span class="pill mixed">Mixed</span></div>
     </div>
     <div class="t-row"><span class="t-time">8:00 PM</span>
-      <div class="t-title"><span class="t-icon">🍖</span>BBQ dinner — night two <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Hot dogs / kofta, bread, salad, hot tea, marshmallows on the fire (optional).</div>
+      <div class="t-title"><span class="t-icon">📜</span>Poetry battle: teachers vs students <span class="pill mixed">Mixed</span></div>
+      <div class="t-note">مطارحة شعرية — last letter of the verse = first letter of the next. Audience votes the winner.</div>
     </div>
     <div class="t-row"><span class="t-time">9:30 PM</span>
-      <div class="t-title"><span class="t-icon">🕌</span>Isha prayer <span class="pill mixed">Mixed</span></div>
-    </div>
-    <div class="t-row"><span class="t-time">10:00 PM</span>
-      <div class="t-title"><span class="t-icon">✉️</span>Letter to my future self <span class="pill sep">Separated</span></div>
-      <div class="t-note">Each student writes privately. Teacher collects &amp; seals. Delivered at graduation. — <em>رسالة إلى نفسي في المستقبل</em></div>
+      <div class="t-title"><span class="t-icon">📖</span>Religious lesson — signs of the last days <span class="pill mixed">Mixed</span></div>
+      <div class="t-note">درس ديني — story-based, interactive, around the fire. Ends with a group dua.</div>
     </div>
     <div class="t-row"><span class="t-time">11:00 PM</span>
-      <div class="t-title"><span class="t-icon">🔥</span>Gratitude circle — “one thing I'm grateful for” <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Everyone in a circle. One sentence each. Teachers go first. Campfire. Calm, emotional, real.</div>
-    </div>
-    <div class="t-row"><span class="t-time">12:00 AM</span>
       <div class="t-title"><span class="t-icon">🌙</span>Sleep <span class="pill sep">Separated</span></div>
     </div>
   </div>
 
+  <!-- DAY 3 -->
   <div class="day-banner">
     <div class="day-meta">Day Three · Chapter III</div>
     <div class="day-title">Sunday — <em>Closing &amp; Return</em></div>
@@ -1477,163 +1282,22 @@
       <div class="t-title"><span class="t-icon">🕌</span>Fajr prayer <span class="pill mixed">Mixed</span></div>
     </div>
     <div class="t-row"><span class="t-time">6:00 AM</span>
-      <div class="t-title"><span class="t-icon">🧹</span>Pack up tents / free time</div>
+      <div class="t-title"><span class="t-icon">📿</span>Morning Adhkar — أذكار الصباح</div>
+    </div>
+    <div class="t-row"><span class="t-time">6:30 AM</span>
+      <div class="t-title"><span class="t-icon">🌅</span>Morning walk / free time</div>
     </div>
     <div class="t-row"><span class="t-time">8:00 AM</span>
-      <div class="t-title"><span class="t-icon">🍞</span>Light breakfast</div>
-      <div class="t-note">Bread, cheese, jam, tea, fruit.</div>
+      <div class="t-title"><span class="t-icon">🍞</span>Breakfast <span class="pill mixed">Mixed</span></div>
     </div>
-    <div class="t-row"><span class="t-time">9:00 AM</span>
-      <div class="t-title"><span class="t-icon">🏆</span>Closing ceremony + awards <span class="pill mixed">Mixed</span></div>
-      <div class="t-note">Announce all competition winners. Hand out certificates. Short appreciation speech. Group photo.</div>
+    <div class="t-row"><span class="t-time">9:30 AM</span>
+      <div class="t-title"><span class="t-icon">🎭</span>Mystery teacher game + free performances <span class="pill last">Last Activity</span></div>
+      <div class="t-note">The finale — our last laugh together before we pack up.</div>
     </div>
-    <div class="t-row"><span class="t-time">10:30 AM</span>
-      <div class="t-title"><span class="t-icon">🧹</span>Full camp clean-up — <em style="font-family:inherit;font-style:italic;color:var(--ember);">leave no trace</em></div>
+    <div class="t-row"><span class="t-time">11:30 AM</span>
+      <div class="t-title"><span class="t-icon">🧹</span>Pack up tents &amp; clean up</div>
+      <div class="t-note">Leave no trace — we leave the camp better than we found it.</div>
     </div>
-    <div class="t-row"><span class="t-time">1:00 PM</span>
-      <div class="t-title"><span class="t-icon">🚌</span>Depart for school — departure songs optional 🎵</div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== FOOD ========== -->
-<section class="section" id="s-fd" style="display:none">
-  <div class="section-head">
-    <div class="section-head-main">
-      <span class="section-num">§ 03</span>
-      <h2 class="section-title">Meal <em>Plan</em></h2>
-    </div>
-    <span class="section-title-ar">خطة الوجبات</span>
-  </div>
-
-  <div class="food-note">
-    <div>
-      <strong>Shopping note</strong>
-      Plan for 23 people (18 students + 5 teachers). Always buy 20% extra. Keep a large cooler with ice for meat and dairy.
-    </div>
-    <div class="ar">
-      <strong>ملاحظة التسوق</strong>
-      خطط لـ 23 شخصاً. اشترِ دائماً 20% إضافية. احتفظ بصندوق مبرد كبير للحوم ومنتجات الألبان.
-    </div>
-  </div>
-
-  <div class="food-day">
-    <div class="food-day-head">Friday <span class="ar">الجمعة</span></div>
-    <div class="food-grid">
-      <div class="meal">
-        <div class="meal-time">2:00–4:00 PM · on the bus</div>
-        <div class="meal-title">🚌 Bus Snacks</div>
-        <ul class="meal-list">
-          <li>Chips (assorted) — رقائق متنوعة</li>
-          <li>Juice boxes — عصير كرتوني</li>
-          <li>Dates — تمر</li>
-          <li>Chocolate bars</li>
-          <li>Water bottles</li>
-        </ul>
-      </div>
-      <div class="meal">
-        <div class="meal-time">4:30 PM · arrival</div>
-        <div class="meal-title">🍵 Welcome Snacks</div>
-        <ul class="meal-list">
-          <li>Hot tea + Nescafe</li>
-          <li>Biscuits (Marie type)</li>
-          <li>Dates — تمر</li>
-          <li>Water — ماء</li>
-        </ul>
-      </div>
-      <div class="meal">
-        <div class="meal-time">8:00 PM · BBQ</div>
-        <div class="meal-title">🔥 Dinner — Night One</div>
-        <ul class="meal-list">
-          <li>Grilled chicken — دجاج مشوي</li>
-          <li>Kofta skewers — كفتة</li>
-          <li>Pita / Arabic bread</li>
-          <li>Tomato + cucumber salad</li>
-          <li>Garlic sauce + ketchup</li>
-          <li>Drinks + water</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="food-day">
-    <div class="food-day-head">Saturday <span class="ar">السبت</span></div>
-    <div class="food-grid">
-      <div class="meal">
-        <div class="meal-time">8:00 AM</div>
-        <div class="meal-title">🍳 Breakfast</div>
-        <ul class="meal-list">
-          <li>Scrambled eggs — بيض مقلي</li>
-          <li>Cheese triangles (La Vache)</li>
-          <li>Labneh + olive oil — لبنة</li>
-          <li>Olives — زيتون</li>
-          <li>Bread + jam + butter</li>
-          <li>Tea, Nescafe, juice</li>
-        </ul>
-      </div>
-      <div class="meal">
-        <div class="meal-time">11:00 AM</div>
-        <div class="meal-title">☕ Morning Snack</div>
-        <ul class="meal-list">
-          <li>Seasonal fruit (banana, apple)</li>
-          <li>Crackers</li>
-          <li>Juice cartons</li>
-        </ul>
-      </div>
-      <div class="meal">
-        <div class="meal-time">1:30 PM</div>
-        <div class="meal-title">🍽️ Lunch</div>
-        <ul class="meal-list">
-          <li>Rice with vermicelli OR pasta</li>
-          <li>Grilled chicken / stew — دجاج مشوي</li>
-          <li>Green salad</li>
-          <li>Bread</li>
-          <li>Water + drinks</li>
-        </ul>
-      </div>
-      <div class="meal">
-        <div class="meal-time">8:00 PM · BBQ</div>
-        <div class="meal-title">🍖 Dinner — Night Two</div>
-        <ul class="meal-list">
-          <li>Hot dogs / sausages — نقانق</li>
-          <li>Kofta round 2</li>
-          <li>Bread + salad</li>
-          <li>Hot tea + Nescafe</li>
-          <li>Marshmallows on fire (optional)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="food-day">
-    <div class="food-day-head">Sunday <span class="ar">الأحد</span></div>
-    <div class="food-grid">
-      <div class="meal">
-        <div class="meal-time">8:00 AM</div>
-        <div class="meal-title">🍞 Light Breakfast</div>
-        <ul class="meal-list">
-          <li>Bread + cheese + jam</li>
-          <li>Tea</li>
-          <li>Remaining fruit</li>
-        </ul>
-      </div>
-      <div class="meal">
-        <div class="meal-time">all days</div>
-        <div class="meal-title">🧃 Always Available</div>
-        <ul class="meal-list">
-          <li>Large water cans + bottles</li>
-          <li>Student personal snacks</li>
-          <li>Extra tea bags + sugar</li>
-          <li>Instant coffee sachets</li>
-          <li>Extra bread (always useful)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="supplies">
-    <strong>Teacher Cooking Supplies · معدات الطهي</strong>
-    Large pots, frying pan, cutting boards, knives, tongs, serving spoons, charcoal + lighter fluid + matches, grill grates, skewers, foil wrap, paper towels, napkins, zip-lock bags, cooler box + ice, large water jug, disposable plates/cups (backup).
   </div>
 </section>
 
@@ -1641,109 +1305,107 @@
 <section class="section" id="s-ac" style="display:none">
   <div class="section-head">
     <div class="section-head-main">
-      <span class="section-num">§ 04</span>
+      <span class="section-num">§ 03</span>
       <h2 class="section-title">The <em>Activities</em></h2>
     </div>
     <span class="section-title-ar">الأنشطة</span>
   </div>
 
-  <div class="act-group-head">Mixed Activities <span class="ar">· أنشطة مختلطة</span></div>
-
+  <div class="act-group-head">Night One <span class="ar">· الليلة الأولى</span></div>
   <div class="act-grid">
     <div class="act">
       <div class="act-top">
-        <div class="act-title">Cultural Knowledge Competition<span class="ar">مسابقة ثقافية</span></div>
-        <span class="pill mixed">Night 1</span>
+        <div class="act-title">Welcome Circle — Rules &amp; Notes<span class="ar">حلقة الترحيب — القواعد والملاحظات</span></div>
+        <span class="pill mixed">Day 1</span>
       </div>
-      <p class="act-desc">Teams of 4–5 (mixed boys &amp; girls). Rounds cover Islamic history, science, geography, general knowledge. Keep scores on a board — winners get certificates at closing ceremony.</p>
-      <p class="act-ar">فرق من 4–5 (مختلطة). أسئلة في التاريخ الإسلامي والعلوم والجغرافيا. احتفظ بلوحة النتائج طوال الرحلة.</p>
+      <p class="act-desc">A short, warm gathering when we arrive. We'll go through the plan, the rules, and what to expect. Ask any question you have.</p>
+      <p class="act-ar">جلسة ترحيب قصيرة وهادئة عند الوصول. نتفق على الخطة والقواعد. اسأل كل ما يخطر ببالك.</p>
     </div>
 
     <div class="act">
       <div class="act-top">
-        <div class="act-title">Poetry Battle<span class="ar">مطارحة شعرية</span></div>
-        <span class="pill mixed">Day 2 AM</span>
+        <div class="act-title">Campfire + Free Performances<span class="ar">حول النار — فقرات حرة</span></div>
+        <span class="pill mixed">Day 1 · Night</span>
       </div>
-      <p class="act-desc">Teachers vs students. Last letter of each verse = first letter of the next team's verse. Audience votes live. Funniest moment of the trip.</p>
-      <p class="act-ar">معلمون ضد طلاب. آخر حرف في البيت = أول حرف البيت الجديد. التصويت للجمهور.</p>
+      <p class="act-desc">Around the fire. Share a poem, a joke, an impression, a song, a story — anything. Teachers will join too. The louder the laughs, the better.</p>
+      <p class="act-ar">حول النار — شعر، نكات، حكايات، أغاني. المعلمون يشاركون أيضاً. كلما زاد الضحك، كان أفضل.</p>
+    </div>
+  </div>
+
+  <div class="act-group-head">Saturday Morning <span class="ar">· صباح السبت</span></div>
+  <div class="act-grid">
+    <div class="act">
+      <div class="act-top">
+        <div class="act-title">Morning Adhkar<span class="ar">أذكار الصباح</span></div>
+        <span class="pill mixed">Day 2 · AM</span>
+      </div>
+      <p class="act-desc">A soft, collective reading of the morning adhkar together after Fajr. A peaceful way to start the day.</p>
+      <p class="act-ar">قراءة جماعية هادئة لأذكار الصباح بعد الفجر. بداية يوم مباركة.</p>
     </div>
 
     <div class="act">
       <div class="act-top">
-        <div class="act-title">Religious Lesson<span class="ar">درس ديني</span></div>
-        <span class="pill mixed">Day 2 PM</span>
+        <div class="act-title">Morning Walk &amp; Free Time<span class="ar">مشي الصباح والوقت الحر</span></div>
+        <span class="pill mixed">Day 2 · AM</span>
       </div>
-      <p class="act-desc">Signs of the Last Days — أشراط الساعة. Story-based, interactive, campfire style. Ask students questions. Make it feel like a real conversation, not a classroom. End with a short dua together.</p>
+      <p class="act-desc">An optional short nature walk led by a teacher. Bring a water bottle and enjoy the sunrise, or take some quiet time to yourself.</p>
+      <p class="act-ar">مشي قصير اختياري في الطبيعة. أحضر قنينة ماء واستمتع بالشروق، أو خذ وقتك الخاص.</p>
     </div>
 
     <div class="act">
       <div class="act-top">
-        <div class="act-title">Mystery Teacher Game<span class="ar">لعبة المعلم الغامض</span></div>
-        <span class="pill mixed">Day 2 PM</span>
+        <div class="act-title">Physical Games<span class="ar">الألعاب الرياضية</span></div>
+        <span class="pill sep">Day 2 · AM</span>
       </div>
-      <p class="act-desc">Each teacher writes 3 secret facts about themselves on a card. A student reads them aloud — the group guesses which teacher. Funny &amp; surprising facts work best. Builds real connection.</p>
-      <p class="act-ar">كل معلم يكتب 3 حقائق سرية عن نفسه. الطلاب يخمنون من هو. كلما كانت الحقيقة مفاجئة، كان الضحك أعلى.</p>
+      <p class="act-desc">The funniest part of the trip. Three rounds, one champion.</p>
+      <ul class="sub-list">
+        <li><strong>Water Bucket Race</strong> — transfer water without using your hands. Wettest challenge of the trip.</li>
+        <li><strong>Balloon Race</strong> — carry a balloon from A to B, no hands, relay format.</li>
+        <li><strong>Tug of War Finals</strong> — two teams, best of three. Thick rope. Loudest game of all.</li>
+      </ul>
+      <p class="act-ar">ثلاث جولات — الدلو، البالون، شد الحبل. بدون أيدي، بكل حماس.</p>
+    </div>
+  </div>
+
+  <div class="act-group-head">Saturday Evening <span class="ar">· مساء السبت</span></div>
+  <div class="act-grid">
+    <div class="act">
+      <div class="act-top">
+        <div class="act-title">Poetry Battle: Teachers vs Students<span class="ar">مطارحة شعرية — معلمون ضد طلاب</span></div>
+        <span class="pill mixed">Day 2 · PM</span>
+      </div>
+      <p class="act-desc">Last letter of each verse becomes the first letter of the next. Audience votes live. Prepare a few verses in advance — or freestyle it.</p>
+      <p class="act-ar">آخر حرف في البيت = أول حرف البيت التالي. التصويت للجمهور. جهّز أبياتك سلفاً أو ارتجل.</p>
     </div>
 
     <div class="act featured">
       <div class="act-top">
-        <div class="act-title">✉️ Letter to My Future Self<span class="ar">رسالة إلى نفسي</span></div>
-        <span class="pill new">Night 2 · New</span>
+        <div class="act-title">Religious Lesson — Signs of the Last Days<span class="ar">درس ديني — أشراط الساعة</span></div>
+        <span class="pill last">Day 2 · Night</span>
       </div>
-      <p class="act-desc">Each student writes a private letter: dreams, goals, feelings about this year. Teacher collects, seals in named envelopes, and delivers at graduation. Often becomes the most emotional memory of the trip.</p>
-      <p class="act-ar">كل طالب يكتب رسالة سرية لنفسه. المعلم يجمعها ويختمها ويسلّمها في يوم التخرج. من أكثر اللحظات عمقاً في الرحلة.</p>
+      <p class="act-desc">Story-based, interactive, around the fire. Not a classroom — a real conversation. Ends with a short group dua together.</p>
+      <p class="act-ar">قصصي، تفاعلي، حول النار. ليس فصلاً دراسياً — محادثة حقيقية. نختم بدعاء جماعي.</p>
+    </div>
+  </div>
+
+  <div class="act-group-head">Sunday — The Finale <span class="ar">· الختام</span></div>
+  <div class="act-grid">
+    <div class="act featured">
+      <div class="act-top">
+        <div class="act-title">Mystery Teacher Game + Free Performances<span class="ar">لعبة المعلم الغامض + فقرات حرة</span></div>
+        <span class="pill last">Last Activity</span>
+      </div>
+      <p class="act-desc">Each teacher writes 3 secret facts about themselves. You guess which teacher. Funnier and more surprising than you think. Followed by our last round of student performances before we pack up.</p>
+      <p class="act-ar">كل معلم يكتب 3 حقائق سرية عن نفسه — خمّنوا من هو. ثم آخر جولة من فقرات الطلاب قبل أن نطوي الخيام.</p>
     </div>
 
     <div class="act">
       <div class="act-top">
-        <div class="act-title">Gratitude Circle<span class="ar">جلسة الشكر الجماعية</span></div>
+        <div class="act-title">Pack Up &amp; Clean Up<span class="ar">ترتيب وتنظيف المخيم</span></div>
+        <span class="pill sep">End</span>
       </div>
-      <p class="act-desc">Everyone sits in a circle around the campfire. Each person — students and teachers — shares one thing they are grateful for. One sentence is enough. Teachers go first to break the ice. Quiet, calm, real.</p>
-      <p class="act-ar">الجلوس في حلقة حول النار. كل شخص يقول جملة واحدة شاكراً. المعلمون يبدؤون. لحظة هادئة وحقيقية.</p>
-    </div>
-
-    <div class="act">
-      <div class="act-top">
-        <div class="act-title">Free Performances<span class="ar">فقرات حرة</span></div>
-      </div>
-      <p class="act-desc">Students sign up in advance: poems, jokes, impressions, skits, songs. Max 2 minutes each. Teachers hold funny score cards (1–10). Finish with a "best performance" award.</p>
-    </div>
-  </div>
-
-  <div class="act-group-head">Boys Only <span class="ar">· أنشطة الأولاد</span></div>
-  <div class="act-grid">
-    <div class="act">
-      <div class="act-title">Tug of War<span class="ar">شد الحبل</span></div>
-      <p class="act-desc" style="margin-top:12px;">2 teams, best of 3. Thick rope. Gloves optional. Loudest game of the trip.</p>
-    </div>
-    <div class="act">
-      <div class="act-title">Water Bucket Race · No Hands!<span class="ar">سباق نقل الدلو</span></div>
-      <p class="act-desc" style="margin-top:12px;">Transfer water from one bucket to another without using hands. Any body part allowed. Wettest &amp; funniest activity.</p>
-    </div>
-    <div class="act">
-      <div class="act-title">Balloon Race · No Hands<span class="ar">سباق البالون</span></div>
-      <p class="act-desc" style="margin-top:12px;">Carry a balloon from A to B without touching with hands. Relay format. Simple, hilarious.</p>
-    </div>
-    <div class="act">
-      <div class="act-title">Sprint Races + Arm Wrestling<span class="ar">سباقات عدو وعراضة ذراع</span></div>
-      <p class="act-desc" style="margin-top:12px;">Quick sprint bracket, then arm wrestling tournament. Students love this — prepare a bracket chart in advance.</p>
-    </div>
-  </div>
-
-  <div class="act-group-head">Girls Only <span class="ar">· أنشطة البنات</span></div>
-  <div class="act-grid">
-    <div class="act">
-      <div class="act-title">Tug of War<span class="ar">شد الحبل</span></div>
-      <p class="act-desc" style="margin-top:12px;">Same format as boys. Option: girls team vs. teachers team.</p>
-    </div>
-    <div class="act">
-      <div class="act-title">Relay Races + Balloon Games<span class="ar">سباقات جماعية</span></div>
-      <p class="act-desc" style="margin-top:12px;">Running relays, spoon-and-egg race, balloon pop challenges. Teacher picks based on available space.</p>
-    </div>
-    <div class="act">
-      <div class="act-title">Drawing / Creative Hour<span class="ar">ساعة إبداع</span></div>
-      <p class="act-desc" style="margin-top:12px;">Each student draws something that represents this year for them. Display the drawings at the closing ceremony. Simple but meaningful.</p>
-      <p class="act-ar">كل طالبة ترسم شيئاً يعبر عن هذه السنة. تُعرض الرسومات في حفل الختام.</p>
+      <p class="act-desc">Everyone helps. Tents down, trash in bags, fire out. We leave the place better than we found it — that's our signature.</p>
+      <p class="act-ar">الجميع يشارك. الخيام تُطوى، القمامة تُجمع، النار تُطفأ. نترك المكان أجمل مما وجدناه.</p>
     </div>
   </div>
 </section>
@@ -1752,16 +1414,16 @@
 <section class="section" id="s-pk" style="display:none">
   <div class="section-head">
     <div class="section-head-main">
-      <span class="section-num">§ 05</span>
+      <span class="section-num">§ 04</span>
       <h2 class="section-title">Packing <em>List</em></h2>
     </div>
     <span class="section-title-ar">قائمة الأغراض</span>
   </div>
 
   <div class="pack-intro">
-    <strong>Send this list to students &amp; parents before the trip</strong>
-    The <span class="pill new" style="vertical-align:middle;">new</span> tag marks items added to the original draft.
-    <span class="ar">للطلاب والمعلمين — أرسل هذه القائمة قبل الرحلة!</span>
+    <strong>Tick items off as you pack</strong>
+    Click a checkbox to mark it done. Bring only what you need — you'll be carrying it.
+    <span class="ar">ضع علامة على كل غرض عند تجهيزه. أحضر ما تحتاجه فقط — أنت من سيحمله.</span>
   </div>
 
   <div class="pack-grid">
@@ -1773,22 +1435,16 @@
           <div class="pack-item"><span class="box"></span>Sleeping bag / cover — كيس نوم</div>
           <div class="pack-item"><span class="box"></span>Small pillow — وسادة صغيرة</div>
           <div class="pack-item"><span class="box"></span>Slippers — شبشب</div>
-          <div class="pack-item"><span class="box"></span>Earplugs <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Eye mask <span class="pill new">new</span></div>
         </div>
       </div>
 
       <div class="pack-cat">
         <div class="pack-cat-head">👕 Clothing <span class="ar">الملابس</span></div>
         <div class="pack-items">
-          <div class="pack-item"><span class="box"></span>2–3 extra t-shirts</div>
-          <div class="pack-item"><span class="box"></span>Extra pants — بنطلون إضافي</div>
-          <div class="pack-item"><span class="box"></span>Extra socks (3 pairs)</div>
-          <div class="pack-item"><span class="box"></span>Hoodie / warm jacket — هودي</div>
-          <div class="pack-item"><span class="box"></span>Beanie hat + cap — بيني وكاب</div>
-          <div class="pack-item"><span class="box"></span>Comfortable walking shoes <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Warm socks for night <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Modest evening wear (girls) <span class="pill new">new</span></div>
+          <div class="pack-item"><span class="box"></span>Comfortable clothes — ملابس مريحة</div>
+          <div class="pack-item"><span class="box"></span>Jacket — جاكيت</div>
+          <div class="pack-item"><span class="box"></span>Shoes — أحذية</div>
+          <div class="pack-item"><span class="box"></span>Socks — جوارب</div>
         </div>
       </div>
 
@@ -1796,63 +1452,21 @@
         <div class="pack-cat-head">🧴 Hygiene <span class="ar">النظافة</span></div>
         <div class="pack-items">
           <div class="pack-item"><span class="box"></span>Toothbrush + toothpaste</div>
-          <div class="pack-item"><span class="box"></span>Soap / body wash</div>
-          <div class="pack-item"><span class="box"></span>Shampoo (travel size) <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Small towel</div>
+          <div class="pack-item"><span class="box"></span>Small towel — منشفة صغيرة</div>
           <div class="pack-item"><span class="box"></span>Wet wipes (large pack)</div>
           <div class="pack-item"><span class="box"></span>Tissues — مناديل</div>
-          <div class="pack-item"><span class="box"></span>Deodorant <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Hand sanitizer <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Hair ties / pins (girls) <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Small mirror <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Lip balm <span class="pill new">new</span></div>
+          <div class="pack-item"><span class="box"></span>Deodorant — مزيل عرق</div>
         </div>
       </div>
     </div>
 
     <div>
       <div class="pack-cat">
-        <div class="pack-cat-head">🕌 Prayer <span class="ar">الصلاة</span></div>
-        <div class="pack-items">
-          <div class="pack-item"><span class="box"></span>Prayer mat — سجادة صلاة</div>
-          <div class="pack-item"><span class="box"></span>Prayer clothes (girls) <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Qibla app / compass <span class="pill new">new</span></div>
-        </div>
-      </div>
-
-      <div class="pack-cat">
-        <div class="pack-cat-head">💊 Health <span class="ar">الصحة</span></div>
-        <div class="pack-items">
-          <div class="pack-item"><span class="box"></span>Panadol — مسكن للألم</div>
-          <div class="pack-item"><span class="box"></span>Heating pad — كيس ماء ساخن</div>
-          <div class="pack-item"><span class="box"></span>Antihistamine <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Personal medication <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Insect repellent <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Sunscreen (SPF 30+)</div>
-          <div class="pack-item"><span class="box"></span>Sunglasses — نظارة شمس</div>
-          <div class="pack-item"><span class="box"></span>ID + emergency contact <span class="pill new">new</span></div>
-        </div>
-      </div>
-
-      <div class="pack-cat">
         <div class="pack-cat-head">🔋 Tech &amp; Gear <span class="ar">معدات</span></div>
         <div class="pack-items">
-          <div class="pack-item"><span class="box"></span>Flashlight / headlamp</div>
           <div class="pack-item"><span class="box"></span>Charged power bank</div>
           <div class="pack-item"><span class="box"></span>Phone charger</div>
-          <div class="pack-item"><span class="box"></span>Extra batteries <span class="pill new">new</span></div>
           <div class="pack-item"><span class="box"></span>Refillable water bottle</div>
-        </div>
-      </div>
-
-      <div class="pack-cat">
-        <div class="pack-cat-head">🎒 Storage <span class="ar">التخزين</span></div>
-        <div class="pack-items">
-          <div class="pack-item"><span class="box"></span>Main bag / backpack</div>
-          <div class="pack-item"><span class="box"></span>Small daypack <span class="pill new">new</span></div>
-          <div class="pack-item"><span class="box"></span>Trash bags — أكياس قمامة</div>
-          <div class="pack-item"><span class="box"></span>Bag for dirty clothes</div>
-          <div class="pack-item"><span class="box"></span>Zip-lock bags <span class="pill new">new</span></div>
         </div>
       </div>
 
@@ -1862,25 +1476,20 @@
           <div class="pack-item"><span class="box"></span>Plastic plate — طبق</div>
           <div class="pack-item"><span class="box"></span>Spoon + fork</div>
           <div class="pack-item"><span class="box"></span>Cup for tea — كوب</div>
-          <div class="pack-item"><span class="box"></span>Personal snacks</div>
+          <div class="pack-item"><span class="box"></span>Personal snacks — وجبات خفيفة</div>
         </div>
       </div>
 
       <div class="pack-cat">
         <div class="pack-cat-head">✏️ Other <span class="ar">أخرى</span></div>
         <div class="pack-items">
-          <div class="pack-item"><span class="box"></span>Notebook + pen <span class="pill new">new</span></div>
+          <div class="pack-item"><span class="box"></span>Notebook + pen — دفتر وقلم</div>
           <div class="pack-item"><span class="box"></span>Games (UNO, cards)</div>
           <div class="pack-item"><span class="box"></span>Extra money — مصروف</div>
-          <div class="pack-item"><span class="box"></span>Good attitude</div>
+          <div class="pack-item"><span class="box"></span>Good attitude 😊</div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="supplies" style="margin-top:40px;">
-    <strong>Teacher Supplies · قائمة المعلمين</strong>
-    First aid kit (bandages, antiseptic, gauze, scissors, thermometer), student emergency contacts list, permission slips, whistle, rope (tug of war), balloons x30, buckets x4, prizes / medals / certificates, Bluetooth speaker, tripod for photos, firewood, charcoal + lighter fluid + matches, competition question cards, scoreboard + markers, 23 envelopes + paper (Letter to Future Self), activity sign-up sheet, Qibla compass.
   </div>
 </section>
 
@@ -1888,51 +1497,34 @@
 <section class="section" id="s-ru" style="display:none">
   <div class="section-head">
     <div class="section-head-main">
-      <span class="section-num">§ 06</span>
-      <h2 class="section-title">Rules &amp; <em>Leader Notes</em></h2>
+      <span class="section-num">§ 05</span>
+      <h2 class="section-title">Rules &amp; <em>Tips</em></h2>
     </div>
-    <span class="section-title-ar">قواعد وملاحظات</span>
+    <span class="section-title-ar">قواعد ونصائح</span>
   </div>
 
-  <div class="act-group-head">Trip Rules for Students <span class="ar">· قواعد الرحلة</span></div>
+  <div class="act-group-head">Trip Rules <span class="ar">· قواعد الرحلة</span></div>
 
   <div class="rule"><span class="rule-icon">🕌</span><div class="rule-text">Respect prayer times — stop all activities and prepare for salah.<span class="ar">احترام أوقات الصلاة</span></div></div>
   <div class="rule"><span class="rule-icon">👥</span><div class="rule-text">Boys and girls stay in separate areas at all times except official mixed activities.<span class="ar">الفصل بين الطلاب والطالبات في كل الأوقات إلا في الأنشطة المختلطة الرسمية</span></div></div>
-  <div class="rule"><span class="rule-icon">🚶</span><div class="rule-text">No student leaves the camp area without telling a teacher first.<span class="ar">لا أحد يغادر منطقة المخيم دون إخبار معلم</span></div></div>
+  <div class="rule"><span class="rule-icon">🚶</span><div class="rule-text">No one leaves the camp area without telling a teacher first.<span class="ar">لا أحد يغادر منطقة المخيم دون إخبار معلم</span></div></div>
   <div class="rule"><span class="rule-icon">🧹</span><div class="rule-text">Keep your area clean. Trash goes in bags. We leave the camp better than we found it.<span class="ar">حافظ على نظافة مكانك — نترك المخيم أفضل مما وجدناه</span></div></div>
-  <div class="rule"><span class="rule-icon">🌙</span><div class="rule-text">Lights out at 12:00 AM. Quiet after that. Respect sleeping students.<span class="ar">الصمت بعد منتصف الليل — احترام من ينام</span></div></div>
+  <div class="rule"><span class="rule-icon">🌙</span><div class="rule-text">Lights out at 12:00 AM. Quiet after that. Respect sleeping friends.<span class="ar">الصمت بعد منتصف الليل — احترام من ينام</span></div></div>
   <div class="rule"><span class="rule-icon">📱</span><div class="rule-text">Phones allowed, but not during group activities and not after midnight.<span class="ar">الهاتف مسموح به لكن ليس في أثناء الأنشطة ولا بعد منتصف الليل</span></div></div>
   <div class="rule"><span class="rule-icon">🤝</span><div class="rule-text">Respect everyone — no bullying, no leaving anyone out.<span class="ar">احترام الجميع — لا تنمر ولا إقصاء</span></div></div>
   <div class="rule"><span class="rule-icon">💧</span><div class="rule-text">Drink water. Wear sunscreen. Tell a teacher if you feel sick.<span class="ar">اشرب ماءً. ضع كريم الشمس. أخبر معلماً إذا أحسست بأي شيء</span></div></div>
 
-  <div class="act-group-head" style="margin-top:56px;">Leader Checklist Before the Trip <span class="ar">· قائمة التحقق</span></div>
-
-  <div class="checklist-grid">
-    <div class="pack-item"><span class="box"></span>Confirm bus booking + driver's number</div>
-    <div class="pack-item"><span class="box"></span>Collect all signed permission slips</div>
-    <div class="pack-item"><span class="box"></span>Emergency contact list for every student</div>
-    <div class="pack-item"><span class="box"></span>Assign one teacher per group (boys / girls)</div>
-    <div class="pack-item"><span class="box"></span>Prepare competition questions in advance</div>
-    <div class="pack-item"><span class="box"></span>Buy all food (2 days before)</div>
-    <div class="pack-item"><span class="box"></span>Test equipment: grills, flashlights, stoves</div>
-    <div class="pack-item"><span class="box"></span>Prepare prizes and certificates</div>
-    <div class="pack-item"><span class="box"></span>Brief all teachers on the schedule &amp; roles</div>
-    <div class="pack-item"><span class="box"></span>Prepare 23 envelopes (Letter to Future Self)</div>
-    <div class="pack-item"><span class="box"></span>Print and share the full plan with all teachers</div>
-    <div class="pack-item"><span class="box"></span>Send packing list to students &amp; parents</div>
-  </div>
-
   <div class="closing">
     <div class="closing-grid">
       <div class="closing-block">
-        <span class="mark">“</span>
-        <div class="closing-label">Final Word</div>
-        <div class="closing-body">This trip is not a reward — it is a statement. You are saying to these students: <em style="color:var(--ember-soft);">"I see you. I believe in you. You matter."</em> Plan every detail as if it is the last thing you will do for them — because for some of them, it might be the thing they remember for years.</div>
+        <span class="mark">★</span>
+        <div class="closing-label">See you at the fire</div>
+        <div class="closing-body">This is your trip. Bring your energy, your stories, and your best self. Play loud, pray together, laugh until your sides hurt, and make the kind of memories that stay with you for years. <strong style="color:var(--ember-soft);">We can't wait.</strong></div>
       </div>
       <div class="closing-block ar">
-        <span class="mark">”</span>
-        <div class="closing-label">كلمة أخيرة</div>
-        <div class="closing-body">هذه الرحلة ليست مكافأة — هي رسالة. أنت تقول لهؤلاء الطلاب: <em style="color:var(--ember-soft);font-style:normal;">«أنا أراكم. أؤمن بكم. أنتم مهمون».</em> خطط لكل تفصيلة كأنها آخر شيء ستفعله لهم — لأن بعضهم سيتذكرها لسنوات.</div>
+        <span class="mark">★</span>
+        <div class="closing-label">نراكم حول النار</div>
+        <div class="closing-body">هذه رحلتكم. أحضروا طاقتكم وحكاياتكم وأجمل ما فيكم. العبوا بصوت عالٍ، صلّوا معاً، اضحكوا حتى تؤلمكم بطونكم، واصنعوا ذكريات تبقى معكم لسنوات. <strong style="color:var(--ember-soft);">لا نطيق الانتظار.</strong></div>
       </div>
     </div>
   </div>
@@ -1941,7 +1533,7 @@
 </main>
 
 <footer class="footer">
-  <div class="footer-mark">Tulip International Schools</div>
+  <div class="footer-mark">High School Team</div>
   <div class="footer-sub">Camping Chronicle · Vol. 01 · Spring 2026</div>
 </footer>
 
@@ -1949,7 +1541,7 @@
 
 <script>
   function show(id, btn) {
-    ['ov','sc','fd','ac','pk','ru'].forEach(function(t) {
+    ['ov','sc','ac','pk','ru'].forEach(function(t) {
       var el = document.getElementById('s-' + t);
       if (el) el.style.display = 'none';
     });
@@ -1960,25 +1552,47 @@
     window.scrollTo({ top: document.querySelector('.nav-wrap').offsetTop - 1, behavior: 'smooth' });
   }
 
-  // Box checklist toggle
+  // Checklist toggle — persists in localStorage
+  function storageKey(el) {
+    var parent = el.closest('.pack-item');
+    return parent ? 'pack:' + (parent.textContent.trim()) : null;
+  }
+
+  function applyChecked(box) {
+    box.style.background = 'var(--forest)';
+    box.style.borderColor = 'var(--forest)';
+    box.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><path d="M3 7.5 L6 10.5 L11 4" stroke="#f6efe2" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    box.dataset.checked = '1';
+  }
+  function applyUnchecked(box) {
+    box.style.background = '';
+    box.style.borderColor = '';
+    box.innerHTML = '';
+    box.dataset.checked = '';
+  }
+
   document.addEventListener('click', function(e) {
     if (e.target.classList && e.target.classList.contains('box')) {
-      if (e.target.style.background === 'var(--forest)' || e.target.style.background === 'rgb(42, 74, 31)') {
-        e.target.style.background = '';
-        e.target.innerHTML = '';
+      var key = storageKey(e.target);
+      if (e.target.dataset.checked === '1') {
+        applyUnchecked(e.target);
+        if (key) localStorage.removeItem(key);
       } else {
-        e.target.style.background = 'var(--forest)';
-        e.target.style.borderColor = 'var(--forest)';
-        e.target.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><path d="M3 7.5 L6 10.5 L11 4" stroke="#f6efe2" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        applyChecked(e.target);
+        if (key) localStorage.setItem(key, '1');
       }
     }
   });
 
-  // Initial state
   document.addEventListener('DOMContentLoaded', function() {
-    ['sc','fd','ac','pk','ru'].forEach(function(t) {
+    ['sc','ac','pk','ru'].forEach(function(t) {
       var el = document.getElementById('s-' + t);
       if (el) el.style.display = 'none';
+    });
+    // Restore checked boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+      var key = storageKey(box);
+      if (key && localStorage.getItem(key) === '1') applyChecked(box);
     });
   });
 </script>
