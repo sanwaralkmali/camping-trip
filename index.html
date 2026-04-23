@@ -464,6 +464,156 @@
     line-height: 1.85;
   }
 
+  /* destination */
+  .destination {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    margin-bottom: 48px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .dest-info {
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .dest-info::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    width: 32px;
+    height: 32px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c85a24' stroke-width='1.5'><circle cx='12' cy='12' r='10'/><path d='M12 2 L14 12 L12 22 L10 12 Z' fill='%23c85a24'/><path d='M2 12 L22 12'/></svg>") no-repeat center / contain;
+    opacity: 0.35;
+  }
+  .dest-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .dest-name {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .dest-name em { font-style: normal; font-weight: 700; color: var(--forest); }
+  .dest-coords {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--moss);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+  .dest-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    max-width: 440px;
+  }
+  .dest-desc .ar {
+    display: block;
+    margin-top: 10px;
+    direction: rtl;
+    text-align: right;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .dest-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .dest-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    background: var(--forest-deep);
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .dest-btn:hover {
+    background: var(--ember);
+    transform: translateY(-1px);
+  }
+  .dest-btn.alt {
+    background: transparent;
+    color: var(--forest-deep);
+    border: 1px solid var(--forest-deep);
+  }
+  .dest-btn.alt:hover {
+    background: var(--forest-deep);
+    color: var(--cream);
+    transform: translateY(-1px);
+  }
+  .dest-map {
+    position: relative;
+    min-height: 360px;
+    background: var(--forest-deep);
+  }
+  .dest-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    position: absolute;
+    inset: 0;
+    filter: saturate(0.9) contrast(1.02);
+  }
+  .destination.start .dest-info::before {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c85a24' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21 L12 9'/><path d='M12 3 L20 7 L12 11 Z' fill='%23c85a24'/><circle cx='12' cy='22' r='1' fill='%23c85a24' stroke='none'/></svg>") no-repeat center / contain;
+  }
+  .destination.start .dest-label { color: var(--terracotta); }
+
+  /* journey connector between two locations */
+  .journey {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: -24px 0 24px;
+    padding: 0 20px;
+  }
+  .journey-line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--moss) 0 5px, transparent 5px 11px);
+    opacity: 0.55;
+  }
+  .journey-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--forest);
+    padding: 9px 16px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .journey-badge svg { flex-shrink: 0; }
+
   /* legend */
   .legend {
     display: flex;
@@ -925,7 +1075,10 @@
     .stat:nth-child(2) { border-right: none; }
     .principles { grid-template-columns: 1fr; gap: 40px; }
     .principles-divider { display: none; }
-    .notes, .closing-grid, .pack-grid { grid-template-columns: 1fr; }
+    .notes, .closing-grid, .pack-grid, .destination { grid-template-columns: 1fr; }
+    .dest-info { padding: 32px 28px; }
+    .dest-name { font-size: 32px; }
+    .dest-map { min-height: 280px; }
     .pack-items { grid-template-columns: 1fr; }
     .closing { padding: 40px 28px; }
     .timeline { padding-left: 80px; }
@@ -1051,7 +1204,7 @@
       <div class="hero-meta-cell">
         <div class="hero-meta-label">Departure</div>
         <div class="hero-meta-value">Fri · 3:00 PM</div>
-        <div class="hero-meta-sub">from BABACAN</div>
+        <div class="hero-meta-sub">from Babacan Premium</div>
       </div>
       <div class="hero-meta-cell">
         <div class="hero-meta-label">Return</div>
@@ -1099,7 +1252,7 @@
     <div class="stat">
       <div class="stat-label">Departure</div>
       <div class="stat-value">Friday <em>3</em>PM</div>
-      <div class="stat-sub">from BABACAN</div>
+      <div class="stat-sub">from Babacan Premium</div>
     </div>
     <div class="stat">
       <div class="stat-label">Return</div>
@@ -1148,6 +1301,76 @@
       <span class="note-mark">★</span>
       <div class="note-label">أمنية من القلب</div>
       <div class="note-body">يومان، نار هادئة، وضحكات كثيرة بانتظاركم. أحضروا طاقتكم وحكاياتكم وأجمل ما فيكم — واتركوا أثراً جميلاً يبقى بعد طيّ الخيام. <strong style="color:var(--ember);">استمتعوا بكل لحظة.</strong></div>
+    </div>
+  </div>
+
+  <!-- Meeting Point -->
+  <div class="destination start">
+    <div class="dest-info">
+      <div class="dest-label">Meeting Point · نقطة التجمع</div>
+      <h3 class="dest-name">Babacan <em>Premium</em></h3>
+      <div class="dest-coords">41.0078° N · 28.6815° E · Friday · 3:00 PM</div>
+      <p class="dest-desc">This is where we all gather before the bus leaves. Please arrive a few minutes early — we depart at <strong style="color:var(--ember);">3:00 PM sharp</strong>.
+        <span class="ar">هذه نقطة تجمعنا قبل انطلاق الباص. يرجى الحضور قبل الموعد بقليل — الانطلاق <strong style="color:var(--ember);">3:00 عصراً بالضبط</strong>.</span>
+      </p>
+      <div class="dest-actions">
+        <a class="dest-btn" href="https://www.google.com/maps/place/Babacan+Premium/@41.0076071,28.6817172,17.65z/data=!4m6!3m5!1s0x14caa0844a0b0c6d:0x3c09aa1320cb2047!8m2!3d41.0078197!4d28.681547!16s%2Fg%2F11cn9r7ygf" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          OPEN IN GOOGLE MAPS
+        </a>
+        <a class="dest-btn alt" href="https://www.google.com/maps/dir/?api=1&destination=41.0078197,28.681547" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          GET DIRECTIONS
+        </a>
+      </div>
+    </div>
+    <div class="dest-map">
+      <iframe
+        src="https://maps.google.com/maps?q=41.0078197,28.681547&z=15&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Babacan Premium — meeting point map">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Journey connector -->
+  <div class="journey" aria-hidden="true">
+    <span class="journey-line"></span>
+    <span class="journey-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg>
+      By Bus · بالباص
+    </span>
+    <span class="journey-line"></span>
+  </div>
+
+  <!-- Destination -->
+  <div class="destination">
+    <div class="dest-info">
+      <div class="dest-label">Our Destination · الوجهة</div>
+      <h3 class="dest-name">İncekum <em>Macerapark</em></h3>
+      <div class="dest-coords">41.2116° N · 29.3459° E · Black Sea Coast</div>
+      <p class="dest-desc">A forest adventure park on Turkey's Black Sea coast, just north of Istanbul. Pine trees, open air, and plenty of space for everything we have planned.
+        <span class="ar">منتزه غابات ومغامرات على ساحل البحر الأسود شمال إسطنبول. أشجار صنوبر وهواء نقي ومساحات واسعة لكل ما خططنا له.</span>
+      </p>
+      <div class="dest-actions">
+        <a class="dest-btn" href="https://www.google.com/maps/place/%C4%B0ncekum+Macerapark/@41.2116416,29.3458506,17z/data=!3m1!4b1!4m6!3m5!1s0x409fdaa0e93324fd:0x9c2396fd7c1bd58!8m2!3d41.2116416!4d29.3458506!16s%2Fg%2F11ckkx_mmv" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          OPEN IN GOOGLE MAPS
+        </a>
+        <a class="dest-btn alt" href="https://www.google.com/maps/dir/?api=1&destination=41.2116416,29.3458506" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          GET DIRECTIONS
+        </a>
+      </div>
+    </div>
+    <div class="dest-map">
+      <iframe
+        src="https://maps.google.com/maps?q=41.2116416,29.3458506&z=14&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="İncekum Macerapark — camp location map">
+      </iframe>
     </div>
   </div>
 
