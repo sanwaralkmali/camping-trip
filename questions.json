@@ -1,0 +1,950 @@
+{
+  "meta": {
+    "title": "Bus Quiz Challenge",
+    "title_ar": "تحدي الأسئلة على الباص",
+    "school": "Tulip International Schools",
+    "level": "Grade 10-12 · ESL A2-B1",
+    "language": "bilingual (English + Arabic)",
+    "version": "2.0 - curated",
+    "instructions_en": "Teacher picks a category and reads the question aloud. First student to answer correctly wins a candy. For Flags: show the flag image and ask for the country OR capital. For Reverse Words: read out the letters (e.g., 'Lam, Sin, Ra, Mim' — students must say 'Maris... no, Masr'). Students figure out the word by rearranging letters.",
+    "instructions_ar": "المعلم يختار فئة ويقرأ السؤال بصوت عالٍ. أول طالب يجيب إجابة صحيحة يفوز بحلوى. للأعلام: أظهر صورة العلم واسأل عن اسم الدولة أو عاصمتها. للكلمات المعكوسة: اقرأ الحروف بالترتيب المعكوس على الطلاب، ويحاولون إعادة ترتيبها لتكوين الكلمة.",
+    "total_questions": 96,
+    "total_categories": 6
+  },
+  "categories": [
+    {
+      "id": "islamic",
+      "name_en": "Islamic Studies",
+      "name_ar": "الدراسات الإسلامية",
+      "emoji": "🕌",
+      "color": "#2d6a4f",
+      "questions": [
+        {
+          "id": "isl_001",
+          "q_en": "Which Surah mentions Bismillah twice?",
+          "q_ar": "ما هي السورة التي ذُكرت فيها البسملة مرتين؟",
+          "a_en": "Surah An-Naml — once at the start and once inside verse 30 (Prophet Sulayman's letter to Bilqis).",
+          "a_ar": "سورة النمل — مرة في بدايتها ومرة في الآية ٣٠ (خطاب سليمان لبلقيس)."
+        },
+        {
+          "id": "isl_002",
+          "q_en": "Which Surah is called 'the Heart of the Quran'?",
+          "q_ar": "ما هي السورة التي تُسمى 'قلب القرآن'؟",
+          "a_en": "Surah Ya-Sin.",
+          "a_ar": "سورة يس."
+        },
+        {
+          "id": "isl_003",
+          "q_en": "Which Surah is called 'the Bride of the Quran'?",
+          "q_ar": "ما هي السورة التي تُسمى 'عروس القرآن'؟",
+          "a_en": "Surah Ar-Rahman.",
+          "a_ar": "سورة الرحمن."
+        },
+        {
+          "id": "isl_004",
+          "q_en": "Who is the only Companion (Sahabi) mentioned by name in the Quran?",
+          "q_ar": "من هو الصحابي الوحيد الذي ذُكر اسمه صراحةً في القرآن الكريم؟",
+          "a_en": "Zayd ibn Harithah (رضي الله عنه), mentioned in Surah Al-Ahzab, verse 37.",
+          "a_ar": "زيد بن حارثة رضي الله عنه، في سورة الأحزاب الآية ٣٧."
+        },
+        {
+          "id": "isl_005",
+          "q_en": "Which Surah is called 'the Saviour' from the punishment of the grave?",
+          "q_ar": "ما هي السورة التي يُطلق عليها 'المنجية' من عذاب القبر؟",
+          "a_en": "Surah Al-Mulk.",
+          "a_ar": "سورة الملك."
+        },
+        {
+          "id": "isl_006",
+          "q_en": "Which Surah contains two prostrations of recitation (sujood at-tilawah)?",
+          "q_ar": "ما السورة التي بها سجدتان في تلاوتها؟",
+          "a_en": "Surah Al-Hajj.",
+          "a_ar": "سورة الحج."
+        },
+        {
+          "id": "isl_007",
+          "q_en": "How many Madani Surahs are there in the Quran?",
+          "q_ar": "كم عدد السور المدنية في القرآن الكريم؟",
+          "a_en": "28 Madani Surahs (and 86 Makki).",
+          "a_ar": "٢٨ سورة مدنية (و٨٦ مكية)."
+        },
+        {
+          "id": "isl_008",
+          "q_en": "How old was the Prophet ﷺ when he received his first revelation?",
+          "q_ar": "كم كان عمر النبي ﷺ عندما نزل عليه الوحي لأول مرة؟",
+          "a_en": "40 years old.",
+          "a_ar": "٤٠ سنة."
+        },
+        {
+          "id": "isl_009",
+          "q_en": "Which wife of the Prophet ﷺ was called 'Mother of the Poor' (Umm al-Masakeen)?",
+          "q_ar": "من هي زوجة النبي ﷺ التي لُقبت بـ 'أم المساكين'؟",
+          "a_en": "Zainab bint Khuzaymah (رضي الله عنها).",
+          "a_ar": "زينب بنت خزيمة رضي الله عنها."
+        },
+        {
+          "id": "isl_010",
+          "q_en": "In which Hijri year was Makkah conquered?",
+          "q_ar": "في أي عام هجري تم فتح مكة المكرمة؟",
+          "a_en": "In the 8th year of Hijrah (8 AH).",
+          "a_ar": "السنة الثامنة للهجرة (٨ هـ)."
+        },
+        {
+          "id": "isl_011",
+          "q_en": "Which Companion was called 'the Trustworthy of this Ummah' (Ameen al-Ummah)?",
+          "q_ar": "من هو الصحابي الذي لُقب بـ 'أمين هذه الأمة'؟",
+          "a_en": "Abu Ubaydah ibn al-Jarrah (رضي الله عنه).",
+          "a_ar": "أبو عبيدة بن الجراح رضي الله عنه."
+        },
+        {
+          "id": "isl_012",
+          "q_en": "Which Companion was so modest that even the angels felt shy before him?",
+          "q_ar": "من هو الصحابي الذي كانت تستحي منه ملائكة السماء لشدة حيائه؟",
+          "a_en": "Uthman ibn Affan (رضي الله عنه).",
+          "a_ar": "عثمان بن عفان رضي الله عنه."
+        },
+        {
+          "id": "isl_013",
+          "q_en": "Which Companion was washed by angels after being martyred at Uhud?",
+          "q_ar": "من هو الصحابي الذي غسلته الملائكة بعد استشهاده في معركة أحد؟",
+          "a_en": "Hanzalah ibn Abi Amir (رضي الله عنه) — known as 'the one washed by angels' (Ghaseel al-Malaikah).",
+          "a_ar": "حنظلة بن أبي عامر رضي الله عنه — غسيل الملائكة."
+        }
+      ],
+      "count": 13
+    },
+    {
+      "id": "sports",
+      "name_en": "Football & Sports",
+      "name_ar": "كرة القدم والرياضة",
+      "emoji": "⚽",
+      "color": "#1E7E34",
+      "questions": [
+        {
+          "id": "sp_001",
+          "q_en": "Who is the only coach in history to win the UEFA Champions League 5 times?",
+          "q_ar": "من هو المدرب الوحيد في التاريخ الذي حقق لقب دوري أبطال أوروبا ٥ مرات؟",
+          "a_en": "Carlo Ancelotti — with AC Milan (2003, 2007) and Real Madrid (2014, 2022, 2024).",
+          "a_ar": "كارلو أنشيلوتي — مع ميلان (٢٠٠٣، ٢٠٠٧) وريال مدريد (٢٠١٤، ٢٠٢٢، ٢٠٢٤)."
+        },
+        {
+          "id": "sp_002",
+          "q_en": "Which national team has won the most FIFA World Cups?",
+          "q_ar": "ما هو المنتخب الذي فاز بأكبر عدد من بطولات كأس العالم؟",
+          "a_en": "Brazil — 5 titles (1958, 1962, 1970, 1994, 2002).",
+          "a_ar": "البرازيل — ٥ ألقاب (١٩٥٨، ١٩٦٢، ١٩٧٠، ١٩٩٤، ٢٠٠٢)."
+        },
+        {
+          "id": "sp_003",
+          "q_en": "Who is the all-time top scorer in FIFA World Cup history?",
+          "q_ar": "من هو الهداف التاريخي لبطولات كأس العالم؟",
+          "a_en": "Miroslav Klose (Germany) — 16 goals.",
+          "a_ar": "ميروسلاف كلوزه (ألمانيا) — ١٦ هدفاً."
+        },
+        {
+          "id": "sp_004",
+          "q_en": "Which country hosted and won the first-ever FIFA World Cup in 1930?",
+          "q_ar": "ما هي الدولة التي استضافت أول بطولة كأس عالم عام ١٩٣٠ وفازت بها؟",
+          "a_en": "Uruguay.",
+          "a_ar": "أوروغواي."
+        },
+        {
+          "id": "sp_005",
+          "q_en": "Which is the first African and Arab team to ever reach the World Cup semi-finals?",
+          "q_ar": "ما هو أول منتخب أفريقي وعربي يصل إلى الدور نصف النهائي في تاريخ كأس العالم؟",
+          "a_en": "Morocco — at the 2022 Qatar World Cup.",
+          "a_ar": "المغرب — في كأس العالم قطر ٢٠٢٢."
+        },
+        {
+          "id": "sp_006",
+          "q_en": "Which World Cup match saw the most goals ever — 12 goals in total?",
+          "q_ar": "ما هي المباراة التي شهدت أكبر عدد من الأهداف في تاريخ كأس العالم (١٢ هدفاً)؟",
+          "a_en": "Austria vs Switzerland in 1954 — Austria won 7-5.",
+          "a_ar": "النمسا ضد سويسرا عام ١٩٥٤ — فازت النمسا ٧-٥."
+        },
+        {
+          "id": "sp_007",
+          "q_en": "Which national team has lost 3 World Cup finals and never won the trophy?",
+          "q_ar": "ما هو المنتخب الذي خسر نهائي كأس العالم ٣ مرات ولم يسبق له الفوز باللقب أبداً؟",
+          "a_en": "The Netherlands (Holland) — lost 1974, 1978, and 2010 finals.",
+          "a_ar": "هولندا — خسرت نهائيات ١٩٧٤، ١٩٧٨، و٢٠١٠."
+        },
+        {
+          "id": "sp_008",
+          "q_en": "Who were the surprise Premier League champions in the 2015-2016 season?",
+          "q_ar": "من كان بطل الدوري الإنجليزي الممتاز في موسم ٢٠١٥-٢٠١٦؟",
+          "a_en": "Leicester City — one of the biggest sports shocks in history.",
+          "a_ar": "ليستر سيتي — من أعظم المفاجآت الرياضية في التاريخ."
+        }
+      ],
+      "count": 8
+    },
+    {
+      "id": "history",
+      "name_en": "History",
+      "name_ar": "التاريخ",
+      "emoji": "🏛️",
+      "color": "#8B4513",
+      "questions": [
+        {
+          "id": "hist_001",
+          "q_en": "In which year did World War I begin?",
+          "q_ar": "في أي عام بدأت الحرب العالمية الأولى؟",
+          "a_en": "1914.",
+          "a_ar": "١٩١٤."
+        },
+        {
+          "id": "hist_002",
+          "q_en": "In which year did World War I end?",
+          "q_ar": "متى انتهت الحرب العالمية الأولى؟",
+          "a_en": "1918.",
+          "a_ar": "١٩١٨."
+        },
+        {
+          "id": "hist_003",
+          "q_en": "In which year did World War II end?",
+          "q_ar": "في أي عام انتهت الحرب العالمية الثانية؟",
+          "a_en": "1945.",
+          "a_ar": "١٩٤٥."
+        },
+        {
+          "id": "hist_004",
+          "q_en": "What was the capital of the Byzantine Empire?",
+          "q_ar": "ما عاصمة الإمبراطورية البيزنطية؟",
+          "a_en": "Constantinople — today's Istanbul.",
+          "a_ar": "القسطنطينية — إسطنبول اليوم."
+        },
+        {
+          "id": "hist_005",
+          "q_en": "When did the Berlin Wall fall?",
+          "q_ar": "متى سقط جدار برلين؟",
+          "a_en": "In 1989.",
+          "a_ar": "عام ١٩٨٩."
+        },
+        {
+          "id": "hist_006",
+          "q_en": "Who invented the telephone?",
+          "q_ar": "من اخترع الهاتف؟",
+          "a_en": "Alexander Graham Bell in 1876.",
+          "a_ar": "ألكسندر غراهام بيل عام ١٨٧٦."
+        },
+        {
+          "id": "hist_007",
+          "q_en": "When did the Ottoman Empire officially end?",
+          "q_ar": "متى انتهت الدولة العثمانية؟",
+          "a_en": "In 1922, with the abolition of the Sultanate (Caliphate ended in 1924).",
+          "a_ar": "عام ١٩٢٢ بإلغاء السلطنة (وألغيت الخلافة عام ١٩٢٤)."
+        },
+        {
+          "id": "hist_008",
+          "q_en": "Which country used paper money first?",
+          "q_ar": "أي دولة استخدمت النقود الورقية أولاً؟",
+          "a_en": "China — during the Tang Dynasty (~7th century) and widely in the Song Dynasty.",
+          "a_ar": "الصين — في عهد أسرة تانغ (حوالي القرن السابع) ثم انتشرت في عهد سونغ."
+        },
+        {
+          "id": "hist_009",
+          "q_en": "How long did the Hundred Years' War actually last?",
+          "q_ar": "كم استمرت حرب المئة عام؟",
+          "a_en": "116 years (1337-1453) — despite the name.",
+          "a_ar": "١١٦ عاماً (١٣٣٧-١٤٥٣) — رغم اسمها."
+        }
+      ],
+      "count": 9
+    },
+    {
+      "id": "general_knowledge",
+      "name_en": "General Knowledge",
+      "name_ar": "معلومات عامة",
+      "emoji": "🌍",
+      "color": "#0077B6",
+      "questions": [
+        {
+          "id": "gk_001",
+          "q_en": "What percentage of Earth's surface is covered by water?",
+          "q_ar": "ما نسبة الماء على سطح الأرض؟",
+          "a_en": "About 71%.",
+          "a_ar": "حوالي ٧١٪."
+        },
+        {
+          "id": "gk_002",
+          "q_en": "How many bones are in an adult human body?",
+          "q_ar": "كم عدد عظام جسم الإنسان البالغ؟",
+          "a_en": "206 bones.",
+          "a_ar": "٢٠٦ عظمة."
+        },
+        {
+          "id": "gk_003",
+          "q_en": "What is the hardest natural substance on Earth?",
+          "q_ar": "ما أصلب مادة طبيعية على الأرض؟",
+          "a_en": "Diamond.",
+          "a_ar": "الماس."
+        },
+        {
+          "id": "gk_004",
+          "q_en": "What is the tallest mountain in the world?",
+          "q_ar": "ما أعلى جبل في العالم؟",
+          "a_en": "Mount Everest — 8,849 meters.",
+          "a_ar": "جبل إيفرست — ٨٨٤٩ متراً."
+        },
+        {
+          "id": "gk_005",
+          "q_en": "Which country has the most pyramids in the world?",
+          "q_ar": "أي دولة تمتلك أكبر عدد من الأهرامات في العالم؟",
+          "a_en": "Sudan — around 200+ pyramids, more than Egypt.",
+          "a_ar": "السودان — أكثر من ٢٠٠ هرم، أكثر من مصر."
+        },
+        {
+          "id": "gk_006",
+          "q_en": "What is the chemical symbol for gold?",
+          "q_ar": "ما الرمز الكيميائي للذهب؟",
+          "a_en": "Au — from the Latin 'Aurum'.",
+          "a_ar": "Au — من اللاتينية 'أوروم'."
+        },
+        {
+          "id": "gk_007",
+          "q_en": "What is the chemical symbol for silver?",
+          "q_ar": "ما الرمز الكيميائي للفضة؟",
+          "a_en": "Ag — from the Latin 'Argentum'.",
+          "a_ar": "Ag — من اللاتينية 'أرجنتوم'."
+        },
+        {
+          "id": "gk_008",
+          "q_en": "What is the largest country in the world by area?",
+          "q_ar": "ما أكبر دولة في العالم من حيث المساحة؟",
+          "a_en": "Russia — about 17.1 million km².",
+          "a_ar": "روسيا — حوالي ١٧.١ مليون كم²."
+        },
+        {
+          "id": "gk_009",
+          "q_en": "What is the official currency of Japan?",
+          "q_ar": "ما العملة الرسمية لليابان؟",
+          "a_en": "The Japanese Yen (¥).",
+          "a_ar": "الين الياباني (¥)."
+        },
+        {
+          "id": "gk_010",
+          "q_en": "What is the heaviest naturally occurring element on Earth?",
+          "q_ar": "ما أثقل عنصر طبيعي على الأرض؟",
+          "a_en": "Uranium — the heaviest that is found in large amounts naturally.",
+          "a_ar": "اليورانيوم — أثقل عنصر يوجد بكميات كبيرة طبيعياً."
+        },
+        {
+          "id": "gk_011",
+          "q_en": "Which planet in our solar system has the most moons?",
+          "q_ar": "ما الكوكب الذي يمتلك أكبر عدد من الأقمار في مجموعتنا الشمسية؟",
+          "a_en": "Saturn — with 146+ confirmed moons (as of 2024).",
+          "a_ar": "زحل — أكثر من ١٤٦ قمراً مؤكداً (حتى ٢٠٢٤)."
+        }
+      ],
+      "count": 11
+    },
+    {
+      "id": "reverse_words",
+      "name_en": "Reverse Words",
+      "name_ar": "كلمات معكوسة",
+      "emoji": "🔄",
+      "color": "#06A77D",
+      "format": "letters_reversed",
+      "questions": [
+        {
+          "id": "rev_001",
+          "letters_reversed": "ب، ا، ل، و، د",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: ب، ا، ل، و، د",
+          "q_ar": "رتّب هذه الحروف المعكوسة: ب، ا، ل، و، د",
+          "a_en": "Dolab (cupboard / wheel)",
+          "a_ar": "دولاب"
+        },
+        {
+          "id": "rev_002",
+          "letters_reversed": "ة، ل، ح، ر",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: ة، ل، ح، ر",
+          "q_ar": "رتّب هذه الحروف المعكوسة: ة، ل، ح، ر",
+          "a_en": "Rihla (trip / journey)",
+          "a_ar": "رحلة"
+        },
+        {
+          "id": "rev_003",
+          "letters_reversed": "م، ل، ع، م",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: م، ل، ع، م",
+          "q_ar": "رتّب هذه الحروف المعكوسة: م، ل، ع، م",
+          "a_en": "Mu'allim (teacher)",
+          "a_ar": "معلم"
+        },
+        {
+          "id": "rev_004",
+          "letters_reversed": "س، و، و، ا، ط",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: س، و، و، ا، ط",
+          "q_ar": "رتّب هذه الحروف المعكوسة: س، و، و، ا، ط",
+          "a_en": "Tawoos (peacock)",
+          "a_ar": "طاووس"
+        },
+        {
+          "id": "rev_005",
+          "letters_reversed": "ة، ي، ح، ر، س، م",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: ة، ي، ح، ر، س، م",
+          "q_ar": "رتّب هذه الحروف المعكوسة: ة، ي، ح، ر، س، م",
+          "a_en": "Masrahiya (play / theatre piece)",
+          "a_ar": "مسرحية"
+        },
+        {
+          "id": "rev_006",
+          "letters_reversed": "L, O, O, H, C, S",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: L, O, O, H, C, S",
+          "q_ar": "رتّب هذه الحروف المعكوسة: L, O, O, H, C, S",
+          "a_en": "SCHOOL",
+          "a_ar": "مدرسة"
+        },
+        {
+          "id": "rev_007",
+          "letters_reversed": "R, E, H, C, A, E, T",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: R, E, H, C, A, E, T",
+          "q_ar": "رتّب هذه الحروف المعكوسة: R, E, H, C, A, E, T",
+          "a_en": "TEACHER",
+          "a_ar": "معلم"
+        },
+        {
+          "id": "rev_008",
+          "letters_reversed": "G, N, I, P, M, A, C",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: G, N, I, P, M, A, C",
+          "q_ar": "رتّب هذه الحروف المعكوسة: G, N, I, P, M, A, C",
+          "a_en": "CAMPING",
+          "a_ar": "تخييم"
+        },
+        {
+          "id": "rev_009",
+          "letters_reversed": "P, I, H, S, D, N, E, I, R, F",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: P, I, H, S, D, N, E, I, R, F",
+          "q_ar": "رتّب هذه الحروف المعكوسة: P, I, H, S, D, N, E, I, R, F",
+          "a_en": "FRIENDSHIP",
+          "a_ar": "صداقة"
+        },
+        {
+          "id": "rev_010",
+          "letters_reversed": "E, R, U, T, N, E, V, D, A",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: E, R, U, T, N, E, V, D, A",
+          "q_ar": "رتّب هذه الحروف المعكوسة: E, R, U, T, N, E, V, D, A",
+          "a_en": "ADVENTURE",
+          "a_ar": "مغامرة"
+        }
+      ],
+      "count": 10
+    },
+    {
+      "id": "flags",
+      "name_en": "Flags & Capitals",
+      "name_ar": "أعلام وعواصم",
+      "emoji": "🚩",
+      "color": "#BC4749",
+      "format": "flag_image",
+      "questions": [
+        {
+          "id": "flg_001",
+          "type": "identify_capital",
+          "flag_code": "sa",
+          "flag_emoji": "🇸🇦",
+          "flag_image_url": "https://flagcdn.com/w320/sa.png",
+          "q_en": "What is the capital of Saudi Arabia?",
+          "q_ar": "ما هي عاصمة المملكة العربية السعودية؟",
+          "a_en": "Riyadh",
+          "a_ar": "الرياض"
+        },
+        {
+          "id": "flg_002",
+          "type": "identify_capital",
+          "flag_code": "eg",
+          "flag_emoji": "🇪🇬",
+          "flag_image_url": "https://flagcdn.com/w320/eg.png",
+          "q_en": "What is the capital of Egypt?",
+          "q_ar": "ما هي عاصمة مصر؟",
+          "a_en": "Cairo",
+          "a_ar": "القاهرة"
+        },
+        {
+          "id": "flg_003",
+          "type": "identify_capital",
+          "flag_code": "ma",
+          "flag_emoji": "🇲🇦",
+          "flag_image_url": "https://flagcdn.com/w320/ma.png",
+          "q_en": "What is the capital of Morocco?",
+          "q_ar": "ما هي عاصمة المغرب؟",
+          "a_en": "Rabat",
+          "a_ar": "الرباط"
+        },
+        {
+          "id": "flg_004",
+          "type": "identify_capital",
+          "flag_code": "tr",
+          "flag_emoji": "🇹🇷",
+          "flag_image_url": "https://flagcdn.com/w320/tr.png",
+          "q_en": "What is the capital of Turkey?",
+          "q_ar": "ما هي عاصمة تركيا؟",
+          "a_en": "Ankara",
+          "a_ar": "أنقرة"
+        },
+        {
+          "id": "flg_005",
+          "type": "identify_capital",
+          "flag_code": "ps",
+          "flag_emoji": "🇵🇸",
+          "flag_image_url": "https://flagcdn.com/w320/ps.png",
+          "q_en": "What is the capital of Palestine?",
+          "q_ar": "ما هي عاصمة فلسطين؟",
+          "a_en": "Jerusalem (Al-Quds)",
+          "a_ar": "القدس"
+        },
+        {
+          "id": "flg_006",
+          "type": "identify_capital",
+          "flag_code": "jo",
+          "flag_emoji": "🇯🇴",
+          "flag_image_url": "https://flagcdn.com/w320/jo.png",
+          "q_en": "What is the capital of Jordan?",
+          "q_ar": "ما هي عاصمة الأردن؟",
+          "a_en": "Amman",
+          "a_ar": "عمّان"
+        },
+        {
+          "id": "flg_007",
+          "type": "identify_capital",
+          "flag_code": "lb",
+          "flag_emoji": "🇱🇧",
+          "flag_image_url": "https://flagcdn.com/w320/lb.png",
+          "q_en": "What is the capital of Lebanon?",
+          "q_ar": "ما هي عاصمة لبنان؟",
+          "a_en": "Beirut",
+          "a_ar": "بيروت"
+        },
+        {
+          "id": "flg_008",
+          "type": "identify_capital",
+          "flag_code": "qa",
+          "flag_emoji": "🇶🇦",
+          "flag_image_url": "https://flagcdn.com/w320/qa.png",
+          "q_en": "What is the capital of Qatar?",
+          "q_ar": "ما هي عاصمة قطر؟",
+          "a_en": "Doha",
+          "a_ar": "الدوحة"
+        },
+        {
+          "id": "flg_009",
+          "type": "identify_capital",
+          "flag_code": "tn",
+          "flag_emoji": "🇹🇳",
+          "flag_image_url": "https://flagcdn.com/w320/tn.png",
+          "q_en": "What is the capital of Tunisia?",
+          "q_ar": "ما هي عاصمة تونس؟",
+          "a_en": "Tunis",
+          "a_ar": "تونس العاصمة"
+        },
+        {
+          "id": "flg_010",
+          "type": "identify_capital",
+          "flag_code": "dz",
+          "flag_emoji": "🇩🇿",
+          "flag_image_url": "https://flagcdn.com/w320/dz.png",
+          "q_en": "What is the capital of Algeria?",
+          "q_ar": "ما هي عاصمة الجزائر؟",
+          "a_en": "Algiers",
+          "a_ar": "الجزائر العاصمة"
+        },
+        {
+          "id": "flg_011",
+          "type": "identify_country",
+          "flag_code": "ly",
+          "flag_emoji": "🇱🇾",
+          "flag_image_url": "https://flagcdn.com/w320/ly.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Libya (capital: Tripoli)",
+          "a_ar": "ليبيا (العاصمة: طرابلس)"
+        },
+        {
+          "id": "flg_012",
+          "type": "identify_country",
+          "flag_code": "sd",
+          "flag_emoji": "🇸🇩",
+          "flag_image_url": "https://flagcdn.com/w320/sd.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Sudan (capital: Khartoum)",
+          "a_ar": "السودان (العاصمة: الخرطوم)"
+        },
+        {
+          "id": "flg_013",
+          "type": "identify_country",
+          "flag_code": "mr",
+          "flag_emoji": "🇲🇷",
+          "flag_image_url": "https://flagcdn.com/w320/mr.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Mauritania (capital: Nouakchott)",
+          "a_ar": "موريتانيا (العاصمة: نواكشوط)"
+        },
+        {
+          "id": "flg_014",
+          "type": "identify_capital",
+          "flag_code": "kw",
+          "flag_emoji": "🇰🇼",
+          "flag_image_url": "https://flagcdn.com/w320/kw.png",
+          "q_en": "What is the capital of Kuwait?",
+          "q_ar": "ما هي عاصمة الكويت؟",
+          "a_en": "Kuwait City",
+          "a_ar": "مدينة الكويت"
+        },
+        {
+          "id": "flg_015",
+          "type": "identify_capital",
+          "flag_code": "om",
+          "flag_emoji": "🇴🇲",
+          "flag_image_url": "https://flagcdn.com/w320/om.png",
+          "q_en": "What is the capital of Oman?",
+          "q_ar": "ما هي عاصمة سلطنة عُمان؟",
+          "a_en": "Muscat",
+          "a_ar": "مسقط"
+        },
+        {
+          "id": "flg_016",
+          "type": "identify_capital",
+          "flag_code": "gr",
+          "flag_emoji": "🇬🇷",
+          "flag_image_url": "https://flagcdn.com/w320/gr.png",
+          "q_en": "What is the capital of Greece?",
+          "q_ar": "ما هي عاصمة اليونان؟",
+          "a_en": "Athens",
+          "a_ar": "أثينا"
+        },
+        {
+          "id": "flg_017",
+          "type": "identify_capital",
+          "flag_code": "pt",
+          "flag_emoji": "🇵🇹",
+          "flag_image_url": "https://flagcdn.com/w320/pt.png",
+          "q_en": "What is the capital of Portugal?",
+          "q_ar": "ما هي عاصمة البرتغال؟",
+          "a_en": "Lisbon",
+          "a_ar": "لشبونة"
+        },
+        {
+          "id": "flg_018",
+          "type": "identify_capital",
+          "flag_code": "nl",
+          "flag_emoji": "🇳🇱",
+          "flag_image_url": "https://flagcdn.com/w320/nl.png",
+          "q_en": "What is the capital of Netherlands?",
+          "q_ar": "ما هي عاصمة هولندا؟",
+          "a_en": "Amsterdam",
+          "a_ar": "أمستردام"
+        },
+        {
+          "id": "flg_019",
+          "type": "identify_capital",
+          "flag_code": "se",
+          "flag_emoji": "🇸🇪",
+          "flag_image_url": "https://flagcdn.com/w320/se.png",
+          "q_en": "What is the capital of Sweden?",
+          "q_ar": "ما هي عاصمة السويد؟",
+          "a_en": "Stockholm",
+          "a_ar": "ستوكهولم"
+        },
+        {
+          "id": "flg_020",
+          "type": "identify_country",
+          "flag_code": "no",
+          "flag_emoji": "🇳🇴",
+          "flag_image_url": "https://flagcdn.com/w320/no.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Norway (capital: Oslo)",
+          "a_ar": "النرويج (العاصمة: أوسلو)"
+        },
+        {
+          "id": "flg_021",
+          "type": "identify_capital",
+          "flag_code": "fi",
+          "flag_emoji": "🇫🇮",
+          "flag_image_url": "https://flagcdn.com/w320/fi.png",
+          "q_en": "What is the capital of Finland?",
+          "q_ar": "ما هي عاصمة فنلندا؟",
+          "a_en": "Helsinki",
+          "a_ar": "هلسنكي"
+        },
+        {
+          "id": "flg_022",
+          "type": "identify_country",
+          "flag_code": "pl",
+          "flag_emoji": "🇵🇱",
+          "flag_image_url": "https://flagcdn.com/w320/pl.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Poland (capital: Warsaw)",
+          "a_ar": "بولندا (العاصمة: وارسو)"
+        },
+        {
+          "id": "flg_023",
+          "type": "identify_country",
+          "flag_code": "ie",
+          "flag_emoji": "🇮🇪",
+          "flag_image_url": "https://flagcdn.com/w320/ie.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Ireland (capital: Dublin)",
+          "a_ar": "أيرلندا (العاصمة: دبلن)"
+        },
+        {
+          "id": "flg_024",
+          "type": "identify_capital",
+          "flag_code": "za",
+          "flag_emoji": "🇿🇦",
+          "flag_image_url": "https://flagcdn.com/w320/za.png",
+          "q_en": "What is the capital of South Africa?",
+          "q_ar": "ما هي عاصمة جنوب أفريقيا؟",
+          "a_en": "Pretoria",
+          "a_ar": "بريتوريا"
+        },
+        {
+          "id": "flg_025",
+          "type": "identify_capital",
+          "flag_code": "ke",
+          "flag_emoji": "🇰🇪",
+          "flag_image_url": "https://flagcdn.com/w320/ke.png",
+          "q_en": "What is the capital of Kenya?",
+          "q_ar": "ما هي عاصمة كينيا؟",
+          "a_en": "Nairobi",
+          "a_ar": "نيروبي"
+        },
+        {
+          "id": "flg_026",
+          "type": "identify_capital",
+          "flag_code": "ng",
+          "flag_emoji": "🇳🇬",
+          "flag_image_url": "https://flagcdn.com/w320/ng.png",
+          "q_en": "What is the capital of Nigeria?",
+          "q_ar": "ما هي عاصمة نيجيريا؟",
+          "a_en": "Abuja",
+          "a_ar": "أبوجا"
+        },
+        {
+          "id": "flg_027",
+          "type": "identify_capital",
+          "flag_code": "ar",
+          "flag_emoji": "🇦🇷",
+          "flag_image_url": "https://flagcdn.com/w320/ar.png",
+          "q_en": "What is the capital of Argentina?",
+          "q_ar": "ما هي عاصمة الأرجنتين؟",
+          "a_en": "Buenos Aires",
+          "a_ar": "بوينس آيرس"
+        },
+        {
+          "id": "flg_028",
+          "type": "identify_country",
+          "flag_code": "co",
+          "flag_emoji": "🇨🇴",
+          "flag_image_url": "https://flagcdn.com/w320/co.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Colombia (capital: Bogotá)",
+          "a_ar": "كولومبيا (العاصمة: بوغوتا)"
+        },
+        {
+          "id": "flg_029",
+          "type": "identify_country",
+          "flag_code": "th",
+          "flag_emoji": "🇹🇭",
+          "flag_image_url": "https://flagcdn.com/w320/th.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Thailand (capital: Bangkok)",
+          "a_ar": "تايلاند (العاصمة: بانكوك)"
+        },
+        {
+          "id": "flg_030",
+          "type": "identify_country",
+          "flag_code": "vn",
+          "flag_emoji": "🇻🇳",
+          "flag_image_url": "https://flagcdn.com/w320/vn.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Vietnam (capital: Hanoi)",
+          "a_ar": "فيتنام (العاصمة: هانوي)"
+        },
+        {
+          "id": "flg_031",
+          "type": "identify_country",
+          "flag_code": "kz",
+          "flag_emoji": "🇰🇿",
+          "flag_image_url": "https://flagcdn.com/w320/kz.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Kazakhstan (capital: Astana)",
+          "a_ar": "كازاخستان (العاصمة: أستانا)"
+        },
+        {
+          "id": "flg_032",
+          "type": "identify_country",
+          "flag_code": "uz",
+          "flag_emoji": "🇺🇿",
+          "flag_image_url": "https://flagcdn.com/w320/uz.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Uzbekistan (capital: Tashkent)",
+          "a_ar": "أوزبكستان (العاصمة: طشقند)"
+        },
+        {
+          "id": "flg_033",
+          "type": "identify_country",
+          "flag_code": "az",
+          "flag_emoji": "🇦🇿",
+          "flag_image_url": "https://flagcdn.com/w320/az.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Azerbaijan (capital: Baku)",
+          "a_ar": "أذربيجان (العاصمة: باكو)"
+        },
+        {
+          "id": "flg_034",
+          "type": "identify_country",
+          "flag_code": "ge",
+          "flag_emoji": "🇬🇪",
+          "flag_image_url": "https://flagcdn.com/w320/ge.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Georgia (capital: Tbilisi)",
+          "a_ar": "جورجيا (العاصمة: تبليسي)"
+        },
+        {
+          "id": "flg_035",
+          "type": "identify_country",
+          "flag_code": "am",
+          "flag_emoji": "🇦🇲",
+          "flag_image_url": "https://flagcdn.com/w320/am.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Armenia (capital: Yerevan)",
+          "a_ar": "أرمينيا (العاصمة: يريفان)"
+        },
+        {
+          "id": "flg_036",
+          "type": "identify_country",
+          "flag_code": "bd",
+          "flag_emoji": "🇧🇩",
+          "flag_image_url": "https://flagcdn.com/w320/bd.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Bangladesh (capital: Dhaka)",
+          "a_ar": "بنغلاديش (العاصمة: دكا)"
+        },
+        {
+          "id": "flg_037",
+          "type": "identify_country",
+          "flag_code": "lk",
+          "flag_emoji": "🇱🇰",
+          "flag_image_url": "https://flagcdn.com/w320/lk.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Sri Lanka (capital: Colombo)",
+          "a_ar": "سريلانكا (العاصمة: كولومبو)"
+        },
+        {
+          "id": "flg_038",
+          "type": "identify_country",
+          "flag_code": "np",
+          "flag_emoji": "🇳🇵",
+          "flag_image_url": "https://flagcdn.com/w320/np.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Nepal (capital: Kathmandu)",
+          "a_ar": "نيبال (العاصمة: كاتماندو)"
+        },
+        {
+          "id": "flg_039",
+          "type": "identify_country",
+          "flag_code": "bt",
+          "flag_emoji": "🇧🇹",
+          "flag_image_url": "https://flagcdn.com/w320/bt.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Bhutan (capital: Thimphu)",
+          "a_ar": "بوتان (العاصمة: تيمفو)"
+        },
+        {
+          "id": "flg_040",
+          "type": "identify_country",
+          "flag_code": "mm",
+          "flag_emoji": "🇲🇲",
+          "flag_image_url": "https://flagcdn.com/w320/mm.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Myanmar (capital: Naypyidaw)",
+          "a_ar": "ميانمار (العاصمة: نايبيداو)"
+        },
+        {
+          "id": "flg_041",
+          "type": "identify_country",
+          "flag_code": "et",
+          "flag_emoji": "🇪🇹",
+          "flag_image_url": "https://flagcdn.com/w320/et.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Ethiopia (capital: Addis Ababa)",
+          "a_ar": "إثيوبيا (العاصمة: أديس أبابا)"
+        },
+        {
+          "id": "flg_042",
+          "type": "identify_country",
+          "flag_code": "rs",
+          "flag_emoji": "🇷🇸",
+          "flag_image_url": "https://flagcdn.com/w320/rs.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Serbia (capital: Belgrade)",
+          "a_ar": "صربيا (العاصمة: بلغراد)"
+        },
+        {
+          "id": "flg_043",
+          "type": "identify_country",
+          "flag_code": "hr",
+          "flag_emoji": "🇭🇷",
+          "flag_image_url": "https://flagcdn.com/w320/hr.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Croatia (capital: Zagreb)",
+          "a_ar": "كرواتيا (العاصمة: زغرب)"
+        },
+        {
+          "id": "flg_044",
+          "type": "identify_country",
+          "flag_code": "ro",
+          "flag_emoji": "🇷🇴",
+          "flag_image_url": "https://flagcdn.com/w320/ro.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Romania (capital: Bucharest)",
+          "a_ar": "رومانيا (العاصمة: بوخارست)"
+        },
+        {
+          "id": "flg_045",
+          "type": "identify_country",
+          "flag_code": "is",
+          "flag_emoji": "🇮🇸",
+          "flag_image_url": "https://flagcdn.com/w320/is.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Iceland (capital: Reykjavik)",
+          "a_ar": "آيسلندا (العاصمة: ريكيافيك)"
+        }
+      ],
+      "count": 45
+    }
+  ]
+}

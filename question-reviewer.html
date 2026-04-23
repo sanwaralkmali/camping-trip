@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2d6a4f">
+<title>Question Reviewer · مراجع الأسئلة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --forest:       #2d6a4f;
+  --forest-dark:  #1b4332;
+  --forest-light: #52b788;
+  --forest-soft:  #d8f3dc;
+  --amber:        #f4a261;
+  --amber-dark:   #e76f51;
+  --gold:         #ffd166;
+  --cream:        #fefae0;
+  --cream-dark:   #faedcd;
+  --paper:        #fbf8ef;
+  --paper-deep:   #f1ead5;
+  --brown:        #5a3e2b;
+  --brown-dark:   #3c2817;
+  --ink:          #1a1a1a;
+  --ink-soft:     #4a4a4a;
+  --ink-muted:    #8a8270;
+  --line:         rgba(26, 26, 26, 0.08);
+  --line-strong:  rgba(26, 26, 26, 0.15);
+  --white:        #ffffff;
+  --rose:         #e63946;
+  --shadow-sm:    0 2px 6px rgba(26, 26, 26, 0.05);
+  --shadow:       0 4px 16px rgba(26, 26, 26, 0.08);
+  --shadow-lg:    0 12px 40px rgba(26, 26, 26, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', 'Tajawal', system-ui, -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ==================== HEADER ==================== */
+.app-header {
+  background: linear-gradient(135deg, var(--forest-dark), var(--forest));
+  color: var(--cream);
+  padding: 22px 24px 18px;
+  position: relative;
+  overflow: hidden;
+}
+.app-header::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,209,102,0.12), transparent 70%);
+  pointer-events: none;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.brand-emoji {
+  font-size: 36px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+.brand-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.brand-sub {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  direction: rtl;
+  margin-top: 2px;
+}
+.brand-stats {
+  margin-left: auto;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.brand-stats .stat strong {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  display: block;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.1;
+}
+
+/* ==================== STICKY TOOLBAR ==================== */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 24px;
+  box-shadow: var(--shadow-sm);
+}
+.toolbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+.search-wrap { position: relative; display: flex; align-items: center; }
+.search-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--ink-muted);
+  pointer-events: none;
+  font-size: 16px;
+}
+.search-input {
+  width: 100%;
+  padding: 12px 44px 12px 44px;
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  font-family: 'Nunito', 'Tajawal', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  outline: none;
+  transition: all 0.2s ease;
+  min-height: 46px;
+}
+.search-input:focus {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 4px rgba(45,106,79,0.1);
+}
+.search-input::placeholder { color: var(--ink-muted); font-weight: 500; }
+.search-clear {
+  position: absolute;
+  right: 10px;
+  background: var(--cream-dark);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown);
+  font-weight: 800;
+}
+.search-clear.on { display: inline-flex; }
+
+.tools {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.seg {
+  display: inline-flex;
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+.seg-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 8px;
+  align-self: center;
+}
+.seg button {
+  border: none;
+  background: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: all 0.15s ease;
+  min-height: 32px;
+  letter-spacing: 0.02em;
+}
+.seg button.on { background: var(--forest); color: var(--cream); }
+.seg button:hover:not(.on) { background: var(--cream-dark); }
+
+.icon-btn {
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+}
+.icon-btn:hover { background: var(--cream-dark); border-color: var(--amber); color: var(--brown); }
+.icon-btn.on {
+  background: var(--amber);
+  border-color: var(--amber-dark);
+  color: var(--brown-dark);
+}
+.icon-btn.danger:hover { background: #fce3e0; border-color: var(--rose); color: var(--rose); }
+
+/* ==================== CATEGORY RAIL ==================== */
+.cat-rail {
+  position: sticky;
+  top: 75px;
+  z-index: 29;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+.cat-rail::-webkit-scrollbar { height: 6px; }
+.cat-rail::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+.cat-rail-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: inline-flex;
+  gap: 6px;
+  padding: 2px 0;
+}
+.cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 2px solid var(--line);
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cat-chip:hover { background: var(--cream-dark); border-color: var(--cat-color, var(--amber)); }
+.cat-chip.on { background: var(--cat-color, var(--forest)); color: var(--white); border-color: var(--cat-color, var(--forest)); }
+.cat-chip .count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: rgba(0,0,0,0.08);
+  color: inherit;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.cat-chip.on .count { background: rgba(255,255,255,0.2); }
+.cat-chip.dimmed { opacity: 0.35; }
+.cat-chip .cat-ar { font-family: 'Tajawal', sans-serif; font-weight: 800; direction: rtl; font-size: 13px; }
+
+/* ==================== RESULTS ==================== */
+.sub-bar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 24px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.result-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.result-count strong {
+  font-family: 'Fredoka One', sans-serif;
+  color: var(--forest-dark);
+  font-size: 18px;
+  margin-right: 4px;
+  letter-spacing: 0;
+}
+.result-count .muted { color: var(--ink-muted); }
+
+.sub-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.results {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==================== QUESTION CARD ==================== */
+.qr-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  border-left: 4px solid var(--cat-color, var(--forest));
+  position: relative;
+}
+.qr-card:hover { box-shadow: var(--shadow); border-color: var(--line-strong); }
+.qr-card.flagged {
+  background: linear-gradient(to right, #fff8e8, var(--white) 30%);
+  border-left-color: var(--amber-dark);
+}
+
+.qr-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.qr-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  padding: 3px 7px;
+  background: var(--paper-deep);
+  border-radius: 5px;
+  font-weight: 700;
+}
+.qr-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cat-color, var(--forest));
+  color: var(--white);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+.qr-cat .ar { font-family: 'Tajawal', sans-serif; font-weight: 800; direction: rtl; }
+.qr-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 3px 7px;
+  border-radius: 5px;
+  background: rgba(244, 162, 97, 0.18);
+  color: var(--amber-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.qr-actions { margin-left: auto; display: flex; gap: 4px; }
+.qr-action {
+  background: transparent;
+  border: 1px solid var(--line);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--ink-muted);
+  transition: all 0.15s ease;
+}
+.qr-action:hover { background: var(--cream-dark); border-color: var(--amber); color: var(--brown); }
+.qr-action.flag.on {
+  background: var(--amber);
+  border-color: var(--amber-dark);
+  color: var(--brown-dark);
+}
+.qr-action.copied {
+  background: var(--forest);
+  border-color: var(--forest-dark);
+  color: var(--cream);
+}
+
+/* flag thumbnail inside reviewer card */
+.qr-extra {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  background: var(--paper-deep);
+  border-radius: 10px;
+}
+.qr-flag-thumb {
+  width: 68px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #e8e1c4;
+  cursor: zoom-in;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border: 2px solid var(--white);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.qr-flag-thumb:hover { transform: scale(1.06); }
+.qr-flag-emoji {
+  font-size: 48px;
+  line-height: 1;
+  cursor: zoom-in;
+  flex-shrink: 0;
+}
+.qr-extra-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--brown);
+  line-height: 1.3;
+}
+.qr-extra-label strong { color: var(--amber-dark); display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.qr-letters {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--forest-dark);
+  direction: rtl;
+  background: var(--forest-soft);
+  padding: 8px 16px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+}
+
+.qr-en {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.qr-ar {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--forest-dark);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.75;
+  padding: 8px 12px;
+  background: var(--forest-soft);
+  border-radius: 8px;
+  border-right: 3px solid var(--forest);
+}
+
+.qr-answers {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1.5px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.qr-ans-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--amber-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.qr-a-en { font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 600; color: var(--brown); line-height: 1.5; }
+.qr-a-en::before { content: '→ '; color: #eaa93b; font-weight: 800; }
+.qr-a-ar {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brown-dark);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.65;
+}
+.qr-a-ar::before { content: '← '; color: #eaa93b; font-weight: 800; }
+
+/* density */
+body.compact .qr-card { padding: 10px 14px; border-radius: 10px; }
+body.compact .qr-head { margin-bottom: 6px; }
+body.compact .qr-en { font-size: 14px; margin-bottom: 3px; }
+body.compact .qr-ar { font-size: 14px; padding: 5px 10px; line-height: 1.5; }
+body.compact .qr-answers { margin-top: 6px; padding-top: 6px; gap: 2px; }
+body.compact .qr-a-en, body.compact .qr-a-ar { font-size: 13px; }
+body.compact .qr-flag-thumb { width: 50px; height: 32px; }
+body.compact .qr-flag-emoji { font-size: 32px; }
+body.compact .qr-letters { font-size: 20px; padding: 6px 12px; }
+body.compact .qr-extra { padding: 6px 10px; }
+
+/* lang modes */
+body.lang-en .qr-ar, body.lang-en .qr-a-ar, body.lang-en .qr-cat .ar { display: none; }
+body.lang-ar .qr-en, body.lang-ar .qr-a-en, body.lang-ar .qr-cat .en { display: none; }
+body.lang-ar .qr-ar { font-size: 18px; color: var(--ink); font-weight: 700; background: var(--cream-dark); border-right-color: var(--cat-color, var(--forest)); }
+body.lang-ar .qr-a-ar { font-size: 16px; }
+
+body.no-answers .qr-answers { display: none; }
+
+mark.hit {
+  background: linear-gradient(to bottom, transparent 60%, var(--gold) 60%);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* ==================== EMPTY + MISC ==================== */
+.empty-state { text-align: center; padding: 64px 20px; color: var(--ink-muted); }
+.empty-emoji { font-size: 56px; margin-bottom: 12px; display: block; }
+.empty-title { font-family: 'Fredoka One', sans-serif; font-size: 22px; color: var(--brown); margin-bottom: 4px; }
+.empty-sub { font-size: 14px; font-weight: 600; }
+
+kbd {
+  display: inline-block;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+.kbd-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.6);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.kbd-overlay.on { display: flex; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.kbd-modal {
+  background: var(--paper);
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+.kbd-modal h3 { font-family: 'Fredoka One', sans-serif; font-size: 20px; color: var(--forest-dark); margin-bottom: 16px; }
+.kbd-list { display: flex; flex-direction: column; gap: 10px; }
+.kbd-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+.kbd-row:last-child { border-bottom: none; }
+.kbd-row .keys { display: flex; gap: 4px; }
+.kbd-close {
+  margin-top: 16px;
+  width: 100%;
+  background: var(--forest);
+  color: var(--cream);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--forest-dark);
+  color: var(--cream);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.toast.on { transform: translateX(-50%) translateY(0); }
+
+/* ==================== IMAGE VIEWER ==================== */
+.img-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.96);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.img-viewer.on { display: flex; animation: fadeIn 0.25s ease; }
+.img-viewer img {
+  max-width: 95%;
+  max-height: calc(100vh - 180px);
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: imgIn 0.35s cubic-bezier(.34, 1.56, .64, 1);
+  background: #1a1a1a;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+}
+@keyframes imgIn {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.img-viewer-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-viewer-caption {
+  color: white;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 22px;
+  margin-top: 28px;
+  text-align: center;
+  opacity: 0.9;
+}
+.img-viewer-caption-ar {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  margin-top: 4px;
+  opacity: 0.75;
+  direction: rtl;
+}
+.img-viewer-hint {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 780px) {
+  .app-header { padding: 18px 16px 16px; }
+  .brand-stats { display: none; }
+  .toolbar { padding: 12px 16px; }
+  .toolbar-inner { grid-template-columns: 1fr; gap: 10px; }
+  .tools { justify-content: space-between; }
+  .cat-rail { padding: 10px 16px; top: 108px; }
+  .sub-bar { padding: 14px 16px 8px; }
+  .results { padding: 4px 16px 80px; }
+  .qr-en { font-size: 14px; }
+  .qr-ar { font-size: 15px; }
+  .brand-title { font-size: 22px; }
+  .brand-sub { font-size: 13px; }
+  .seg-label { display: none; }
+}
+@media (max-width: 480px) {
+  .qr-card { padding: 12px 14px; }
+  .qr-head { gap: 6px; }
+  .qr-actions { margin-left: 0; width: 100%; justify-content: flex-end; }
+  .cat-rail { top: 116px; }
+}
+
+@media print {
+  .app-header, .toolbar, .cat-rail, .sub-bar, .qr-actions, .kbd-overlay, .toast, .img-viewer { display: none !important; }
+  body { background: white; }
+  .qr-card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none; margin-bottom: 8px; }
+}
+</style>
+</head>
+<body class="lang-both comfort">
+
+<header class="app-header">
+  <div class="brand">
+    <span class="brand-emoji">📋</span>
+    <div>
+      <h1 class="brand-title">Question Reviewer</h1>
+      <p class="brand-sub">مراجع الأسئلة</p>
+    </div>
+    <div class="brand-stats">
+      <div class="stat"><strong id="stat-total">0</strong>Total Questions</div>
+      <div class="stat"><strong id="stat-cats">0</strong>Categories</div>
+      <div class="stat"><strong id="stat-flagged">0</strong>Flagged</div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="search"
+        class="search-input"
+        placeholder="Search questions, answers… ·  ابحث في الأسئلة والأجوبة…"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
+    </div>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Language">
+        <span class="seg-label">LANG</span>
+        <button data-lang="both" class="on" onclick="setLang('both')">EN + AR</button>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+        <button data-lang="ar" onclick="setLang('ar')">AR</button>
+      </div>
+      <div class="seg" role="group" aria-label="Density">
+        <span class="seg-label">VIEW</span>
+        <button data-d="comfort" class="on" onclick="setDensity('comfort')">Cozy</button>
+        <button data-d="compact" onclick="setDensity('compact')">Dense</button>
+      </div>
+      <button class="icon-btn" id="toggle-ans" onclick="toggleAnswers()" title="Show/hide answers (A)">👁️ <span id="ans-label">Answers</span></button>
+      <button class="icon-btn" id="toggle-flagged" onclick="toggleFlaggedFilter()" title="Show flagged only (F)">🚩 <span id="flag-label">Flagged</span></button>
+      <button class="icon-btn" onclick="showKeys()" title="Keyboard shortcuts">⌨</button>
+    </div>
+  </div>
+</div>
+
+<nav class="cat-rail" aria-label="Categories">
+  <div class="cat-rail-inner" id="cat-rail"></div>
+</nav>
+
+<div class="sub-bar">
+  <div class="result-count" id="result-count">Showing <strong>—</strong> of <span class="muted">—</span></div>
+  <div class="sub-actions">
+    <button class="icon-btn" onclick="exportFiltered()" title="Export filtered questions as JSON">⬇ Export</button>
+    <button class="icon-btn danger" onclick="resetFlags()" title="Clear all flags">🗑 Clear flags</button>
+  </div>
+</div>
+
+<main class="results" id="results"></main>
+
+<!-- keyboard overlay -->
+<div class="kbd-overlay" id="kbd-overlay" onclick="if(event.target.id==='kbd-overlay')closeKeys()">
+  <div class="kbd-modal">
+    <h3>⌨ Keyboard Shortcuts</h3>
+    <div class="kbd-list">
+      <div class="kbd-row"><span>Focus search</span><span class="keys"><kbd>/</kbd></span></div>
+      <div class="kbd-row"><span>Clear search / close</span><span class="keys"><kbd>Esc</kbd></span></div>
+      <div class="kbd-row"><span>Next / previous question</span><span class="keys"><kbd>J</kbd><kbd>K</kbd></span></div>
+      <div class="kbd-row"><span>Flag focused question</span><span class="keys"><kbd>Shift</kbd><kbd>F</kbd></span></div>
+      <div class="kbd-row"><span>Copy focused question</span><span class="keys"><kbd>C</kbd></span></div>
+      <div class="kbd-row"><span>Toggle answers</span><span class="keys"><kbd>A</kbd></span></div>
+      <div class="kbd-row"><span>Toggle flagged filter</span><span class="keys"><kbd>F</kbd></span></div>
+      <div class="kbd-row"><span>Toggle density</span><span class="keys"><kbd>D</kbd></span></div>
+      <div class="kbd-row"><span>Cycle language</span><span class="keys"><kbd>L</kbd></span></div>
+      <div class="kbd-row"><span>Cycle category</span><span class="keys"><kbd>[</kbd><kbd>]</kbd></span></div>
+    </div>
+    <button class="kbd-close" onclick="closeKeys()">Got it</button>
+  </div>
+</div>
+
+<!-- image viewer -->
+<div class="img-viewer" id="img-viewer" onclick="closeImgViewer(event)" role="dialog" aria-modal="true">
+  <button class="img-viewer-close" onclick="closeImgViewer(event, true)" aria-label="Close">✕</button>
+  <img id="img-viewer-img" alt="" />
+  <div class="img-viewer-caption" id="img-viewer-caption"></div>
+  <div class="img-viewer-caption-ar" id="img-viewer-caption-ar"></div>
+  <div class="img-viewer-hint">Tap anywhere to close · اضغط للإغلاق</div>
+</div>
+
+<!-- toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================
+   EMBEDDED QUESTIONS
+   ========================================= */
+const QUIZ_DATA = {
+  "meta": {
+    "title": "Bus Quiz Challenge",
+    "title_ar": "تحدي الأسئلة على الباص",
+    "school": "Tulip International Schools",
+    "level": "Grade 10-12 · ESL A2-B1",
+    "language": "bilingual (English + Arabic)",
+    "version": "2.0 - curated",
+    "instructions_en": "Teacher picks a category and reads the question aloud. First student to answer correctly wins a candy. For Flags: show the flag image and ask for the country OR capital. For Reverse Words: read out the letters (e.g., 'Lam, Sin, Ra, Mim' — students must say 'Maris... no, Masr'). Students figure out the word by rearranging letters.",
+    "instructions_ar": "المعلم يختار فئة ويقرأ السؤال بصوت عالٍ. أول طالب يجيب إجابة صحيحة يفوز بحلوى. للأعلام: أظهر صورة العلم واسأل عن اسم الدولة أو عاصمتها. للكلمات المعكوسة: اقرأ الحروف بالترتيب المعكوس على الطلاب، ويحاولون إعادة ترتيبها لتكوين الكلمة.",
+    "total_questions": 96,
+    "total_categories": 6
+  },
+  "categories": [
+    {
+      "id": "islamic",
+      "name_en": "Islamic Studies",
+      "name_ar": "الدراسات الإسلامية",
+      "emoji": "🕌",
+      "color": "#2d6a4f",
+      "questions": [
+        {
+          "id": "isl_001",
+          "q_en": "Which Surah mentions Bismillah twice?",
+          "q_ar": "ما هي السورة التي ذُكرت فيها البسملة مرتين؟",
+          "a_en": "Surah An-Naml — once at the start and once inside verse 30 (Prophet Sulayman's letter to Bilqis).",
+          "a_ar": "سورة النمل — مرة في بدايتها ومرة في الآية ٣٠ (خطاب سليمان لبلقيس)."
+        },
+        {
+          "id": "isl_002",
+          "q_en": "Which Surah is called 'the Heart of the Quran'?",
+          "q_ar": "ما هي السورة التي تُسمى 'قلب القرآن'؟",
+          "a_en": "Surah Ya-Sin.",
+          "a_ar": "سورة يس."
+        },
+        {
+          "id": "isl_003",
+          "q_en": "Which Surah is called 'the Bride of the Quran'?",
+          "q_ar": "ما هي السورة التي تُسمى 'عروس القرآن'؟",
+          "a_en": "Surah Ar-Rahman.",
+          "a_ar": "سورة الرحمن."
+        },
+        {
+          "id": "isl_004",
+          "q_en": "Who is the only Companion (Sahabi) mentioned by name in the Quran?",
+          "q_ar": "من هو الصحابي الوحيد الذي ذُكر اسمه صراحةً في القرآن الكريم؟",
+          "a_en": "Zayd ibn Harithah (رضي الله عنه), mentioned in Surah Al-Ahzab, verse 37.",
+          "a_ar": "زيد بن حارثة رضي الله عنه، في سورة الأحزاب الآية ٣٧."
+        },
+        {
+          "id": "isl_005",
+          "q_en": "Which Surah is called 'the Saviour' from the punishment of the grave?",
+          "q_ar": "ما هي السورة التي يُطلق عليها 'المنجية' من عذاب القبر؟",
+          "a_en": "Surah Al-Mulk.",
+          "a_ar": "سورة الملك."
+        },
+        {
+          "id": "isl_006",
+          "q_en": "Which Surah contains two prostrations of recitation (sujood at-tilawah)?",
+          "q_ar": "ما السورة التي بها سجدتان في تلاوتها؟",
+          "a_en": "Surah Al-Hajj.",
+          "a_ar": "سورة الحج."
+        },
+        {
+          "id": "isl_007",
+          "q_en": "How many Madani Surahs are there in the Quran?",
+          "q_ar": "كم عدد السور المدنية في القرآن الكريم؟",
+          "a_en": "28 Madani Surahs (and 86 Makki).",
+          "a_ar": "٢٨ سورة مدنية (و٨٦ مكية)."
+        },
+        {
+          "id": "isl_008",
+          "q_en": "How old was the Prophet ﷺ when he received his first revelation?",
+          "q_ar": "كم كان عمر النبي ﷺ عندما نزل عليه الوحي لأول مرة؟",
+          "a_en": "40 years old.",
+          "a_ar": "٤٠ سنة."
+        },
+        {
+          "id": "isl_009",
+          "q_en": "Which wife of the Prophet ﷺ was called 'Mother of the Poor' (Umm al-Masakeen)?",
+          "q_ar": "من هي زوجة النبي ﷺ التي لُقبت بـ 'أم المساكين'؟",
+          "a_en": "Zainab bint Khuzaymah (رضي الله عنها).",
+          "a_ar": "زينب بنت خزيمة رضي الله عنها."
+        },
+        {
+          "id": "isl_010",
+          "q_en": "In which Hijri year was Makkah conquered?",
+          "q_ar": "في أي عام هجري تم فتح مكة المكرمة؟",
+          "a_en": "In the 8th year of Hijrah (8 AH).",
+          "a_ar": "السنة الثامنة للهجرة (٨ هـ)."
+        },
+        {
+          "id": "isl_011",
+          "q_en": "Which Companion was called 'the Trustworthy of this Ummah' (Ameen al-Ummah)?",
+          "q_ar": "من هو الصحابي الذي لُقب بـ 'أمين هذه الأمة'؟",
+          "a_en": "Abu Ubaydah ibn al-Jarrah (رضي الله عنه).",
+          "a_ar": "أبو عبيدة بن الجراح رضي الله عنه."
+        },
+        {
+          "id": "isl_012",
+          "q_en": "Which Companion was so modest that even the angels felt shy before him?",
+          "q_ar": "من هو الصحابي الذي كانت تستحي منه ملائكة السماء لشدة حيائه؟",
+          "a_en": "Uthman ibn Affan (رضي الله عنه).",
+          "a_ar": "عثمان بن عفان رضي الله عنه."
+        },
+        {
+          "id": "isl_013",
+          "q_en": "Which Companion was washed by angels after being martyred at Uhud?",
+          "q_ar": "من هو الصحابي الذي غسلته الملائكة بعد استشهاده في معركة أحد؟",
+          "a_en": "Hanzalah ibn Abi Amir (رضي الله عنه) — known as 'the one washed by angels' (Ghaseel al-Malaikah).",
+          "a_ar": "حنظلة بن أبي عامر رضي الله عنه — غسيل الملائكة."
+        }
+      ],
+      "count": 13
+    },
+    {
+      "id": "sports",
+      "name_en": "Football & Sports",
+      "name_ar": "كرة القدم والرياضة",
+      "emoji": "⚽",
+      "color": "#1E7E34",
+      "questions": [
+        {
+          "id": "sp_001",
+          "q_en": "Who is the only coach in history to win the UEFA Champions League 5 times?",
+          "q_ar": "من هو المدرب الوحيد في التاريخ الذي حقق لقب دوري أبطال أوروبا ٥ مرات؟",
+          "a_en": "Carlo Ancelotti — with AC Milan (2003, 2007) and Real Madrid (2014, 2022, 2024).",
+          "a_ar": "كارلو أنشيلوتي — مع ميلان (٢٠٠٣، ٢٠٠٧) وريال مدريد (٢٠١٤، ٢٠٢٢، ٢٠٢٤)."
+        },
+        {
+          "id": "sp_002",
+          "q_en": "Which national team has won the most FIFA World Cups?",
+          "q_ar": "ما هو المنتخب الذي فاز بأكبر عدد من بطولات كأس العالم؟",
+          "a_en": "Brazil — 5 titles (1958, 1962, 1970, 1994, 2002).",
+          "a_ar": "البرازيل — ٥ ألقاب (١٩٥٨، ١٩٦٢، ١٩٧٠، ١٩٩٤، ٢٠٠٢)."
+        },
+        {
+          "id": "sp_003",
+          "q_en": "Who is the all-time top scorer in FIFA World Cup history?",
+          "q_ar": "من هو الهداف التاريخي لبطولات كأس العالم؟",
+          "a_en": "Miroslav Klose (Germany) — 16 goals.",
+          "a_ar": "ميروسلاف كلوزه (ألمانيا) — ١٦ هدفاً."
+        },
+        {
+          "id": "sp_004",
+          "q_en": "Which country hosted and won the first-ever FIFA World Cup in 1930?",
+          "q_ar": "ما هي الدولة التي استضافت أول بطولة كأس عالم عام ١٩٣٠ وفازت بها؟",
+          "a_en": "Uruguay.",
+          "a_ar": "أوروغواي."
+        },
+        {
+          "id": "sp_005",
+          "q_en": "Which is the first African and Arab team to ever reach the World Cup semi-finals?",
+          "q_ar": "ما هو أول منتخب أفريقي وعربي يصل إلى الدور نصف النهائي في تاريخ كأس العالم؟",
+          "a_en": "Morocco — at the 2022 Qatar World Cup.",
+          "a_ar": "المغرب — في كأس العالم قطر ٢٠٢٢."
+        },
+        {
+          "id": "sp_006",
+          "q_en": "Which World Cup match saw the most goals ever — 12 goals in total?",
+          "q_ar": "ما هي المباراة التي شهدت أكبر عدد من الأهداف في تاريخ كأس العالم (١٢ هدفاً)؟",
+          "a_en": "Austria vs Switzerland in 1954 — Austria won 7-5.",
+          "a_ar": "النمسا ضد سويسرا عام ١٩٥٤ — فازت النمسا ٧-٥."
+        },
+        {
+          "id": "sp_007",
+          "q_en": "Which national team has lost 3 World Cup finals and never won the trophy?",
+          "q_ar": "ما هو المنتخب الذي خسر نهائي كأس العالم ٣ مرات ولم يسبق له الفوز باللقب أبداً؟",
+          "a_en": "The Netherlands (Holland) — lost 1974, 1978, and 2010 finals.",
+          "a_ar": "هولندا — خسرت نهائيات ١٩٧٤، ١٩٧٨، و٢٠١٠."
+        },
+        {
+          "id": "sp_008",
+          "q_en": "Who were the surprise Premier League champions in the 2015-2016 season?",
+          "q_ar": "من كان بطل الدوري الإنجليزي الممتاز في موسم ٢٠١٥-٢٠١٦؟",
+          "a_en": "Leicester City — one of the biggest sports shocks in history.",
+          "a_ar": "ليستر سيتي — من أعظم المفاجآت الرياضية في التاريخ."
+        }
+      ],
+      "count": 8
+    },
+    {
+      "id": "history",
+      "name_en": "History",
+      "name_ar": "التاريخ",
+      "emoji": "🏛️",
+      "color": "#8B4513",
+      "questions": [
+        {
+          "id": "hist_001",
+          "q_en": "In which year did World War I begin?",
+          "q_ar": "في أي عام بدأت الحرب العالمية الأولى؟",
+          "a_en": "1914.",
+          "a_ar": "١٩١٤."
+        },
+        {
+          "id": "hist_002",
+          "q_en": "In which year did World War I end?",
+          "q_ar": "متى انتهت الحرب العالمية الأولى؟",
+          "a_en": "1918.",
+          "a_ar": "١٩١٨."
+        },
+        {
+          "id": "hist_003",
+          "q_en": "In which year did World War II end?",
+          "q_ar": "في أي عام انتهت الحرب العالمية الثانية؟",
+          "a_en": "1945.",
+          "a_ar": "١٩٤٥."
+        },
+        {
+          "id": "hist_004",
+          "q_en": "What was the capital of the Byzantine Empire?",
+          "q_ar": "ما عاصمة الإمبراطورية البيزنطية؟",
+          "a_en": "Constantinople — today's Istanbul.",
+          "a_ar": "القسطنطينية — إسطنبول اليوم."
+        },
+        {
+          "id": "hist_005",
+          "q_en": "When did the Berlin Wall fall?",
+          "q_ar": "متى سقط جدار برلين؟",
+          "a_en": "In 1989.",
+          "a_ar": "عام ١٩٨٩."
+        },
+        {
+          "id": "hist_006",
+          "q_en": "Who invented the telephone?",
+          "q_ar": "من اخترع الهاتف؟",
+          "a_en": "Alexander Graham Bell in 1876.",
+          "a_ar": "ألكسندر غراهام بيل عام ١٨٧٦."
+        },
+        {
+          "id": "hist_007",
+          "q_en": "When did the Ottoman Empire officially end?",
+          "q_ar": "متى انتهت الدولة العثمانية؟",
+          "a_en": "In 1922, with the abolition of the Sultanate (Caliphate ended in 1924).",
+          "a_ar": "عام ١٩٢٢ بإلغاء السلطنة (وألغيت الخلافة عام ١٩٢٤)."
+        },
+        {
+          "id": "hist_008",
+          "q_en": "Which country used paper money first?",
+          "q_ar": "أي دولة استخدمت النقود الورقية أولاً؟",
+          "a_en": "China — during the Tang Dynasty (~7th century) and widely in the Song Dynasty.",
+          "a_ar": "الصين — في عهد أسرة تانغ (حوالي القرن السابع) ثم انتشرت في عهد سونغ."
+        },
+        {
+          "id": "hist_009",
+          "q_en": "How long did the Hundred Years' War actually last?",
+          "q_ar": "كم استمرت حرب المئة عام؟",
+          "a_en": "116 years (1337-1453) — despite the name.",
+          "a_ar": "١١٦ عاماً (١٣٣٧-١٤٥٣) — رغم اسمها."
+        }
+      ],
+      "count": 9
+    },
+    {
+      "id": "general_knowledge",
+      "name_en": "General Knowledge",
+      "name_ar": "معلومات عامة",
+      "emoji": "🌍",
+      "color": "#0077B6",
+      "questions": [
+        {
+          "id": "gk_001",
+          "q_en": "What percentage of Earth's surface is covered by water?",
+          "q_ar": "ما نسبة الماء على سطح الأرض؟",
+          "a_en": "About 71%.",
+          "a_ar": "حوالي ٧١٪."
+        },
+        {
+          "id": "gk_002",
+          "q_en": "How many bones are in an adult human body?",
+          "q_ar": "كم عدد عظام جسم الإنسان البالغ؟",
+          "a_en": "206 bones.",
+          "a_ar": "٢٠٦ عظمة."
+        },
+        {
+          "id": "gk_003",
+          "q_en": "What is the hardest natural substance on Earth?",
+          "q_ar": "ما أصلب مادة طبيعية على الأرض؟",
+          "a_en": "Diamond.",
+          "a_ar": "الماس."
+        },
+        {
+          "id": "gk_004",
+          "q_en": "What is the tallest mountain in the world?",
+          "q_ar": "ما أعلى جبل في العالم؟",
+          "a_en": "Mount Everest — 8,849 meters.",
+          "a_ar": "جبل إيفرست — ٨٨٤٩ متراً."
+        },
+        {
+          "id": "gk_005",
+          "q_en": "Which country has the most pyramids in the world?",
+          "q_ar": "أي دولة تمتلك أكبر عدد من الأهرامات في العالم؟",
+          "a_en": "Sudan — around 200+ pyramids, more than Egypt.",
+          "a_ar": "السودان — أكثر من ٢٠٠ هرم، أكثر من مصر."
+        },
+        {
+          "id": "gk_006",
+          "q_en": "What is the chemical symbol for gold?",
+          "q_ar": "ما الرمز الكيميائي للذهب؟",
+          "a_en": "Au — from the Latin 'Aurum'.",
+          "a_ar": "Au — من اللاتينية 'أوروم'."
+        },
+        {
+          "id": "gk_007",
+          "q_en": "What is the chemical symbol for silver?",
+          "q_ar": "ما الرمز الكيميائي للفضة؟",
+          "a_en": "Ag — from the Latin 'Argentum'.",
+          "a_ar": "Ag — من اللاتينية 'أرجنتوم'."
+        },
+        {
+          "id": "gk_008",
+          "q_en": "What is the largest country in the world by area?",
+          "q_ar": "ما أكبر دولة في العالم من حيث المساحة؟",
+          "a_en": "Russia — about 17.1 million km².",
+          "a_ar": "روسيا — حوالي ١٧.١ مليون كم²."
+        },
+        {
+          "id": "gk_009",
+          "q_en": "What is the official currency of Japan?",
+          "q_ar": "ما العملة الرسمية لليابان؟",
+          "a_en": "The Japanese Yen (¥).",
+          "a_ar": "الين الياباني (¥)."
+        },
+        {
+          "id": "gk_010",
+          "q_en": "What is the heaviest naturally occurring element on Earth?",
+          "q_ar": "ما أثقل عنصر طبيعي على الأرض؟",
+          "a_en": "Uranium — the heaviest that is found in large amounts naturally.",
+          "a_ar": "اليورانيوم — أثقل عنصر يوجد بكميات كبيرة طبيعياً."
+        },
+        {
+          "id": "gk_011",
+          "q_en": "Which planet in our solar system has the most moons?",
+          "q_ar": "ما الكوكب الذي يمتلك أكبر عدد من الأقمار في مجموعتنا الشمسية؟",
+          "a_en": "Saturn — with 146+ confirmed moons (as of 2024).",
+          "a_ar": "زحل — أكثر من ١٤٦ قمراً مؤكداً (حتى ٢٠٢٤)."
+        }
+      ],
+      "count": 11
+    },
+    {
+      "id": "reverse_words",
+      "name_en": "Reverse Words",
+      "name_ar": "كلمات معكوسة",
+      "emoji": "🔄",
+      "color": "#06A77D",
+      "format": "letters_reversed",
+      "questions": [
+        {
+          "id": "rev_001",
+          "letters_reversed": "ب، ا، ل، و، د",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: ب، ا، ل، و، د",
+          "q_ar": "رتّب هذه الحروف المعكوسة: ب، ا، ل، و، د",
+          "a_en": "Dolab (cupboard / wheel)",
+          "a_ar": "دولاب"
+        },
+        {
+          "id": "rev_002",
+          "letters_reversed": "ة، ل، ح، ر",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: ة، ل، ح، ر",
+          "q_ar": "رتّب هذه الحروف المعكوسة: ة، ل، ح، ر",
+          "a_en": "Rihla (trip / journey)",
+          "a_ar": "رحلة"
+        },
+        {
+          "id": "rev_003",
+          "letters_reversed": "م، ل، ع، م",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: م، ل، ع، م",
+          "q_ar": "رتّب هذه الحروف المعكوسة: م، ل، ع، م",
+          "a_en": "Mu'allim (teacher)",
+          "a_ar": "معلم"
+        },
+        {
+          "id": "rev_004",
+          "letters_reversed": "س، و، و، ا، ط",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: س، و، و، ا، ط",
+          "q_ar": "رتّب هذه الحروف المعكوسة: س، و، و، ا، ط",
+          "a_en": "Tawoos (peacock)",
+          "a_ar": "طاووس"
+        },
+        {
+          "id": "rev_005",
+          "letters_reversed": "ة، ي، ح، ر، س، م",
+          "language": "ar",
+          "q_en": "Unscramble these reversed letters: ة، ي، ح، ر، س، م",
+          "q_ar": "رتّب هذه الحروف المعكوسة: ة، ي، ح، ر، س، م",
+          "a_en": "Masrahiya (play / theatre piece)",
+          "a_ar": "مسرحية"
+        },
+        {
+          "id": "rev_006",
+          "letters_reversed": "L, O, O, H, C, S",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: L, O, O, H, C, S",
+          "q_ar": "رتّب هذه الحروف المعكوسة: L, O, O, H, C, S",
+          "a_en": "SCHOOL",
+          "a_ar": "مدرسة"
+        },
+        {
+          "id": "rev_007",
+          "letters_reversed": "R, E, H, C, A, E, T",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: R, E, H, C, A, E, T",
+          "q_ar": "رتّب هذه الحروف المعكوسة: R, E, H, C, A, E, T",
+          "a_en": "TEACHER",
+          "a_ar": "معلم"
+        },
+        {
+          "id": "rev_008",
+          "letters_reversed": "G, N, I, P, M, A, C",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: G, N, I, P, M, A, C",
+          "q_ar": "رتّب هذه الحروف المعكوسة: G, N, I, P, M, A, C",
+          "a_en": "CAMPING",
+          "a_ar": "تخييم"
+        },
+        {
+          "id": "rev_009",
+          "letters_reversed": "P, I, H, S, D, N, E, I, R, F",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: P, I, H, S, D, N, E, I, R, F",
+          "q_ar": "رتّب هذه الحروف المعكوسة: P, I, H, S, D, N, E, I, R, F",
+          "a_en": "FRIENDSHIP",
+          "a_ar": "صداقة"
+        },
+        {
+          "id": "rev_010",
+          "letters_reversed": "E, R, U, T, N, E, V, D, A",
+          "language": "en",
+          "q_en": "Unscramble these reversed letters: E, R, U, T, N, E, V, D, A",
+          "q_ar": "رتّب هذه الحروف المعكوسة: E, R, U, T, N, E, V, D, A",
+          "a_en": "ADVENTURE",
+          "a_ar": "مغامرة"
+        }
+      ],
+      "count": 10
+    },
+    {
+      "id": "flags",
+      "name_en": "Flags & Capitals",
+      "name_ar": "أعلام وعواصم",
+      "emoji": "🚩",
+      "color": "#BC4749",
+      "format": "flag_image",
+      "questions": [
+        {
+          "id": "flg_001",
+          "type": "identify_capital",
+          "flag_code": "sa",
+          "flag_emoji": "🇸🇦",
+          "flag_image_url": "https://flagcdn.com/w320/sa.png",
+          "q_en": "What is the capital of Saudi Arabia?",
+          "q_ar": "ما هي عاصمة المملكة العربية السعودية؟",
+          "a_en": "Riyadh",
+          "a_ar": "الرياض"
+        },
+        {
+          "id": "flg_002",
+          "type": "identify_capital",
+          "flag_code": "eg",
+          "flag_emoji": "🇪🇬",
+          "flag_image_url": "https://flagcdn.com/w320/eg.png",
+          "q_en": "What is the capital of Egypt?",
+          "q_ar": "ما هي عاصمة مصر؟",
+          "a_en": "Cairo",
+          "a_ar": "القاهرة"
+        },
+        {
+          "id": "flg_003",
+          "type": "identify_capital",
+          "flag_code": "ma",
+          "flag_emoji": "🇲🇦",
+          "flag_image_url": "https://flagcdn.com/w320/ma.png",
+          "q_en": "What is the capital of Morocco?",
+          "q_ar": "ما هي عاصمة المغرب؟",
+          "a_en": "Rabat",
+          "a_ar": "الرباط"
+        },
+        {
+          "id": "flg_004",
+          "type": "identify_capital",
+          "flag_code": "tr",
+          "flag_emoji": "🇹🇷",
+          "flag_image_url": "https://flagcdn.com/w320/tr.png",
+          "q_en": "What is the capital of Turkey?",
+          "q_ar": "ما هي عاصمة تركيا؟",
+          "a_en": "Ankara",
+          "a_ar": "أنقرة"
+        },
+        {
+          "id": "flg_005",
+          "type": "identify_capital",
+          "flag_code": "ps",
+          "flag_emoji": "🇵🇸",
+          "flag_image_url": "https://flagcdn.com/w320/ps.png",
+          "q_en": "What is the capital of Palestine?",
+          "q_ar": "ما هي عاصمة فلسطين؟",
+          "a_en": "Jerusalem (Al-Quds)",
+          "a_ar": "القدس"
+        },
+        {
+          "id": "flg_006",
+          "type": "identify_capital",
+          "flag_code": "jo",
+          "flag_emoji": "🇯🇴",
+          "flag_image_url": "https://flagcdn.com/w320/jo.png",
+          "q_en": "What is the capital of Jordan?",
+          "q_ar": "ما هي عاصمة الأردن؟",
+          "a_en": "Amman",
+          "a_ar": "عمّان"
+        },
+        {
+          "id": "flg_007",
+          "type": "identify_capital",
+          "flag_code": "lb",
+          "flag_emoji": "🇱🇧",
+          "flag_image_url": "https://flagcdn.com/w320/lb.png",
+          "q_en": "What is the capital of Lebanon?",
+          "q_ar": "ما هي عاصمة لبنان؟",
+          "a_en": "Beirut",
+          "a_ar": "بيروت"
+        },
+        {
+          "id": "flg_008",
+          "type": "identify_capital",
+          "flag_code": "qa",
+          "flag_emoji": "🇶🇦",
+          "flag_image_url": "https://flagcdn.com/w320/qa.png",
+          "q_en": "What is the capital of Qatar?",
+          "q_ar": "ما هي عاصمة قطر؟",
+          "a_en": "Doha",
+          "a_ar": "الدوحة"
+        },
+        {
+          "id": "flg_009",
+          "type": "identify_capital",
+          "flag_code": "tn",
+          "flag_emoji": "🇹🇳",
+          "flag_image_url": "https://flagcdn.com/w320/tn.png",
+          "q_en": "What is the capital of Tunisia?",
+          "q_ar": "ما هي عاصمة تونس؟",
+          "a_en": "Tunis",
+          "a_ar": "تونس العاصمة"
+        },
+        {
+          "id": "flg_010",
+          "type": "identify_capital",
+          "flag_code": "dz",
+          "flag_emoji": "🇩🇿",
+          "flag_image_url": "https://flagcdn.com/w320/dz.png",
+          "q_en": "What is the capital of Algeria?",
+          "q_ar": "ما هي عاصمة الجزائر؟",
+          "a_en": "Algiers",
+          "a_ar": "الجزائر العاصمة"
+        },
+        {
+          "id": "flg_011",
+          "type": "identify_country",
+          "flag_code": "ly",
+          "flag_emoji": "🇱🇾",
+          "flag_image_url": "https://flagcdn.com/w320/ly.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Libya (capital: Tripoli)",
+          "a_ar": "ليبيا (العاصمة: طرابلس)"
+        },
+        {
+          "id": "flg_012",
+          "type": "identify_country",
+          "flag_code": "sd",
+          "flag_emoji": "🇸🇩",
+          "flag_image_url": "https://flagcdn.com/w320/sd.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Sudan (capital: Khartoum)",
+          "a_ar": "السودان (العاصمة: الخرطوم)"
+        },
+        {
+          "id": "flg_013",
+          "type": "identify_country",
+          "flag_code": "mr",
+          "flag_emoji": "🇲🇷",
+          "flag_image_url": "https://flagcdn.com/w320/mr.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Mauritania (capital: Nouakchott)",
+          "a_ar": "موريتانيا (العاصمة: نواكشوط)"
+        },
+        {
+          "id": "flg_014",
+          "type": "identify_capital",
+          "flag_code": "kw",
+          "flag_emoji": "🇰🇼",
+          "flag_image_url": "https://flagcdn.com/w320/kw.png",
+          "q_en": "What is the capital of Kuwait?",
+          "q_ar": "ما هي عاصمة الكويت؟",
+          "a_en": "Kuwait City",
+          "a_ar": "مدينة الكويت"
+        },
+        {
+          "id": "flg_015",
+          "type": "identify_capital",
+          "flag_code": "om",
+          "flag_emoji": "🇴🇲",
+          "flag_image_url": "https://flagcdn.com/w320/om.png",
+          "q_en": "What is the capital of Oman?",
+          "q_ar": "ما هي عاصمة سلطنة عُمان؟",
+          "a_en": "Muscat",
+          "a_ar": "مسقط"
+        },
+        {
+          "id": "flg_016",
+          "type": "identify_capital",
+          "flag_code": "gr",
+          "flag_emoji": "🇬🇷",
+          "flag_image_url": "https://flagcdn.com/w320/gr.png",
+          "q_en": "What is the capital of Greece?",
+          "q_ar": "ما هي عاصمة اليونان؟",
+          "a_en": "Athens",
+          "a_ar": "أثينا"
+        },
+        {
+          "id": "flg_017",
+          "type": "identify_capital",
+          "flag_code": "pt",
+          "flag_emoji": "🇵🇹",
+          "flag_image_url": "https://flagcdn.com/w320/pt.png",
+          "q_en": "What is the capital of Portugal?",
+          "q_ar": "ما هي عاصمة البرتغال؟",
+          "a_en": "Lisbon",
+          "a_ar": "لشبونة"
+        },
+        {
+          "id": "flg_018",
+          "type": "identify_capital",
+          "flag_code": "nl",
+          "flag_emoji": "🇳🇱",
+          "flag_image_url": "https://flagcdn.com/w320/nl.png",
+          "q_en": "What is the capital of Netherlands?",
+          "q_ar": "ما هي عاصمة هولندا؟",
+          "a_en": "Amsterdam",
+          "a_ar": "أمستردام"
+        },
+        {
+          "id": "flg_019",
+          "type": "identify_capital",
+          "flag_code": "se",
+          "flag_emoji": "🇸🇪",
+          "flag_image_url": "https://flagcdn.com/w320/se.png",
+          "q_en": "What is the capital of Sweden?",
+          "q_ar": "ما هي عاصمة السويد؟",
+          "a_en": "Stockholm",
+          "a_ar": "ستوكهولم"
+        },
+        {
+          "id": "flg_020",
+          "type": "identify_country",
+          "flag_code": "no",
+          "flag_emoji": "🇳🇴",
+          "flag_image_url": "https://flagcdn.com/w320/no.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Norway (capital: Oslo)",
+          "a_ar": "النرويج (العاصمة: أوسلو)"
+        },
+        {
+          "id": "flg_021",
+          "type": "identify_capital",
+          "flag_code": "fi",
+          "flag_emoji": "🇫🇮",
+          "flag_image_url": "https://flagcdn.com/w320/fi.png",
+          "q_en": "What is the capital of Finland?",
+          "q_ar": "ما هي عاصمة فنلندا؟",
+          "a_en": "Helsinki",
+          "a_ar": "هلسنكي"
+        },
+        {
+          "id": "flg_022",
+          "type": "identify_country",
+          "flag_code": "pl",
+          "flag_emoji": "🇵🇱",
+          "flag_image_url": "https://flagcdn.com/w320/pl.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Poland (capital: Warsaw)",
+          "a_ar": "بولندا (العاصمة: وارسو)"
+        },
+        {
+          "id": "flg_023",
+          "type": "identify_country",
+          "flag_code": "ie",
+          "flag_emoji": "🇮🇪",
+          "flag_image_url": "https://flagcdn.com/w320/ie.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Ireland (capital: Dublin)",
+          "a_ar": "أيرلندا (العاصمة: دبلن)"
+        },
+        {
+          "id": "flg_024",
+          "type": "identify_capital",
+          "flag_code": "za",
+          "flag_emoji": "🇿🇦",
+          "flag_image_url": "https://flagcdn.com/w320/za.png",
+          "q_en": "What is the capital of South Africa?",
+          "q_ar": "ما هي عاصمة جنوب أفريقيا؟",
+          "a_en": "Pretoria",
+          "a_ar": "بريتوريا"
+        },
+        {
+          "id": "flg_025",
+          "type": "identify_capital",
+          "flag_code": "ke",
+          "flag_emoji": "🇰🇪",
+          "flag_image_url": "https://flagcdn.com/w320/ke.png",
+          "q_en": "What is the capital of Kenya?",
+          "q_ar": "ما هي عاصمة كينيا؟",
+          "a_en": "Nairobi",
+          "a_ar": "نيروبي"
+        },
+        {
+          "id": "flg_026",
+          "type": "identify_capital",
+          "flag_code": "ng",
+          "flag_emoji": "🇳🇬",
+          "flag_image_url": "https://flagcdn.com/w320/ng.png",
+          "q_en": "What is the capital of Nigeria?",
+          "q_ar": "ما هي عاصمة نيجيريا؟",
+          "a_en": "Abuja",
+          "a_ar": "أبوجا"
+        },
+        {
+          "id": "flg_027",
+          "type": "identify_capital",
+          "flag_code": "ar",
+          "flag_emoji": "🇦🇷",
+          "flag_image_url": "https://flagcdn.com/w320/ar.png",
+          "q_en": "What is the capital of Argentina?",
+          "q_ar": "ما هي عاصمة الأرجنتين؟",
+          "a_en": "Buenos Aires",
+          "a_ar": "بوينس آيرس"
+        },
+        {
+          "id": "flg_028",
+          "type": "identify_country",
+          "flag_code": "co",
+          "flag_emoji": "🇨🇴",
+          "flag_image_url": "https://flagcdn.com/w320/co.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Colombia (capital: Bogotá)",
+          "a_ar": "كولومبيا (العاصمة: بوغوتا)"
+        },
+        {
+          "id": "flg_029",
+          "type": "identify_country",
+          "flag_code": "th",
+          "flag_emoji": "🇹🇭",
+          "flag_image_url": "https://flagcdn.com/w320/th.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Thailand (capital: Bangkok)",
+          "a_ar": "تايلاند (العاصمة: بانكوك)"
+        },
+        {
+          "id": "flg_030",
+          "type": "identify_country",
+          "flag_code": "vn",
+          "flag_emoji": "🇻🇳",
+          "flag_image_url": "https://flagcdn.com/w320/vn.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Vietnam (capital: Hanoi)",
+          "a_ar": "فيتنام (العاصمة: هانوي)"
+        },
+        {
+          "id": "flg_031",
+          "type": "identify_country",
+          "flag_code": "kz",
+          "flag_emoji": "🇰🇿",
+          "flag_image_url": "https://flagcdn.com/w320/kz.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Kazakhstan (capital: Astana)",
+          "a_ar": "كازاخستان (العاصمة: أستانا)"
+        },
+        {
+          "id": "flg_032",
+          "type": "identify_country",
+          "flag_code": "uz",
+          "flag_emoji": "🇺🇿",
+          "flag_image_url": "https://flagcdn.com/w320/uz.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Uzbekistan (capital: Tashkent)",
+          "a_ar": "أوزبكستان (العاصمة: طشقند)"
+        },
+        {
+          "id": "flg_033",
+          "type": "identify_country",
+          "flag_code": "az",
+          "flag_emoji": "🇦🇿",
+          "flag_image_url": "https://flagcdn.com/w320/az.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Azerbaijan (capital: Baku)",
+          "a_ar": "أذربيجان (العاصمة: باكو)"
+        },
+        {
+          "id": "flg_034",
+          "type": "identify_country",
+          "flag_code": "ge",
+          "flag_emoji": "🇬🇪",
+          "flag_image_url": "https://flagcdn.com/w320/ge.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Georgia (capital: Tbilisi)",
+          "a_ar": "جورجيا (العاصمة: تبليسي)"
+        },
+        {
+          "id": "flg_035",
+          "type": "identify_country",
+          "flag_code": "am",
+          "flag_emoji": "🇦🇲",
+          "flag_image_url": "https://flagcdn.com/w320/am.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Armenia (capital: Yerevan)",
+          "a_ar": "أرمينيا (العاصمة: يريفان)"
+        },
+        {
+          "id": "flg_036",
+          "type": "identify_country",
+          "flag_code": "bd",
+          "flag_emoji": "🇧🇩",
+          "flag_image_url": "https://flagcdn.com/w320/bd.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Bangladesh (capital: Dhaka)",
+          "a_ar": "بنغلاديش (العاصمة: دكا)"
+        },
+        {
+          "id": "flg_037",
+          "type": "identify_country",
+          "flag_code": "lk",
+          "flag_emoji": "🇱🇰",
+          "flag_image_url": "https://flagcdn.com/w320/lk.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Sri Lanka (capital: Colombo)",
+          "a_ar": "سريلانكا (العاصمة: كولومبو)"
+        },
+        {
+          "id": "flg_038",
+          "type": "identify_country",
+          "flag_code": "np",
+          "flag_emoji": "🇳🇵",
+          "flag_image_url": "https://flagcdn.com/w320/np.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Nepal (capital: Kathmandu)",
+          "a_ar": "نيبال (العاصمة: كاتماندو)"
+        },
+        {
+          "id": "flg_039",
+          "type": "identify_country",
+          "flag_code": "bt",
+          "flag_emoji": "🇧🇹",
+          "flag_image_url": "https://flagcdn.com/w320/bt.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Bhutan (capital: Thimphu)",
+          "a_ar": "بوتان (العاصمة: تيمفو)"
+        },
+        {
+          "id": "flg_040",
+          "type": "identify_country",
+          "flag_code": "mm",
+          "flag_emoji": "🇲🇲",
+          "flag_image_url": "https://flagcdn.com/w320/mm.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Myanmar (capital: Naypyidaw)",
+          "a_ar": "ميانمار (العاصمة: نايبيداو)"
+        },
+        {
+          "id": "flg_041",
+          "type": "identify_country",
+          "flag_code": "et",
+          "flag_emoji": "🇪🇹",
+          "flag_image_url": "https://flagcdn.com/w320/et.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Ethiopia (capital: Addis Ababa)",
+          "a_ar": "إثيوبيا (العاصمة: أديس أبابا)"
+        },
+        {
+          "id": "flg_042",
+          "type": "identify_country",
+          "flag_code": "rs",
+          "flag_emoji": "🇷🇸",
+          "flag_image_url": "https://flagcdn.com/w320/rs.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Serbia (capital: Belgrade)",
+          "a_ar": "صربيا (العاصمة: بلغراد)"
+        },
+        {
+          "id": "flg_043",
+          "type": "identify_country",
+          "flag_code": "hr",
+          "flag_emoji": "🇭🇷",
+          "flag_image_url": "https://flagcdn.com/w320/hr.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Croatia (capital: Zagreb)",
+          "a_ar": "كرواتيا (العاصمة: زغرب)"
+        },
+        {
+          "id": "flg_044",
+          "type": "identify_country",
+          "flag_code": "ro",
+          "flag_emoji": "🇷🇴",
+          "flag_image_url": "https://flagcdn.com/w320/ro.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Romania (capital: Bucharest)",
+          "a_ar": "رومانيا (العاصمة: بوخارست)"
+        },
+        {
+          "id": "flg_045",
+          "type": "identify_country",
+          "flag_code": "is",
+          "flag_emoji": "🇮🇸",
+          "flag_image_url": "https://flagcdn.com/w320/is.png",
+          "q_en": "Which country does this flag belong to?",
+          "q_ar": "لأي دولة ينتمي هذا العلم؟",
+          "a_en": "Iceland (capital: Reykjavik)",
+          "a_ar": "آيسلندا (العاصمة: ريكيافيك)"
+        }
+      ],
+      "count": 45
+    }
+  ]
+};
+
+/* =========================================
+   STATE
+   ========================================= */
+const LS_LANG    = 'qr2:lang';
+const LS_DENSITY = 'qr2:density';
+const LS_ANS     = 'qr2:answers';
+const LS_FLAGS   = 'qr2:flags';
+
+const state = {
+  lang: localStorage.getItem(LS_LANG) || 'both',
+  density: localStorage.getItem(LS_DENSITY) || 'comfort',
+  showAnswers: localStorage.getItem(LS_ANS) !== '0',
+  flaggedOnly: false,
+  category: 'all',
+  search: '',
+  flags: new Set(JSON.parse(localStorage.getItem(LS_FLAGS) || '[]')),
+  focusIdx: -1,
+};
+
+let FLAT = [];
+
+function buildFlat() {
+  FLAT = [];
+  QUIZ_DATA.categories.forEach(cat => {
+    cat.questions.forEach(q => {
+      const blobs = [q.q_en, q.q_ar, q.a_en, q.a_ar, q.letters_reversed, q.flag_code, q.type].filter(Boolean);
+      FLAT.push({
+        q,
+        cat,
+        searchBlob: blobs.join('\n').toLowerCase(),
+      });
+    });
+  });
+}
+
+/* =========================================
+   FILTERING
+   ========================================= */
+function filterList() {
+  const s = state.search.trim().toLowerCase();
+  return FLAT.filter(item => {
+    if (state.category !== 'all' && item.cat.id !== state.category) return false;
+    if (state.flaggedOnly && !state.flags.has(item.q.id)) return false;
+    if (s && !item.searchBlob.includes(s)) return false;
+    return true;
+  });
+}
+
+/* =========================================
+   CATEGORY RAIL
+   ========================================= */
+function renderCategoryRail() {
+  const rail = document.getElementById('cat-rail');
+  rail.innerHTML = '';
+  const s = state.search.trim().toLowerCase();
+  const perCat = {};
+  FLAT.forEach(it => {
+    if (s && !it.searchBlob.includes(s)) return;
+    if (state.flaggedOnly && !state.flags.has(it.q.id)) return;
+    perCat[it.cat.id] = (perCat[it.cat.id] || 0) + 1;
+  });
+  const totalMatching = Object.values(perCat).reduce((a, b) => a + b, 0);
+
+  const allChip = document.createElement('button');
+  allChip.className = 'cat-chip' + (state.category === 'all' ? ' on' : '');
+  allChip.style.setProperty('--cat-color', 'var(--forest)');
+  allChip.onclick = () => setCategory('all');
+  allChip.innerHTML = `<span>🌐</span><span>All</span><span class="count">${totalMatching}</span>`;
+  rail.appendChild(allChip);
+
+  QUIZ_DATA.categories.forEach(cat => {
+    const count = perCat[cat.id] || 0;
+    const dimmed = count === 0;
+    const chip = document.createElement('button');
+    chip.className = 'cat-chip' + (state.category === cat.id ? ' on' : '') + (dimmed ? ' dimmed' : '');
+    chip.style.setProperty('--cat-color', cat.color);
+    chip.onclick = () => setCategory(cat.id);
+    chip.innerHTML = `
+      <span>${cat.emoji}</span>
+      <span>${escapeHtml(cat.name_en)}</span>
+      <span class="cat-ar">${escapeHtml(cat.name_ar)}</span>
+      <span class="count">${count}</span>
+    `;
+    rail.appendChild(chip);
+  });
+}
+
+/* =========================================
+   QUESTION LIST
+   ========================================= */
+function buildExtraBlock(q) {
+  if (q.flag_image_url || q.flag_emoji) {
+    const typeLabel = q.type === 'identify_capital' ? 'Capital' : 'Country';
+    const url = q.flag_image_url ? escapeHtml(q.flag_image_url) : '';
+    const emoji = q.flag_emoji || '🏳️';
+    const code = q.flag_code ? q.flag_code.toUpperCase() : '';
+    const thumbHtml = url
+      ? `<img class="qr-flag-thumb" src="${url}" alt="Flag" onclick="event.stopPropagation(); openImgViewer('${url}', '${escapeHtml(emoji)}', '${escapeHtml(q.a_en || '')}', '${escapeHtml(q.a_ar || '')}')" onerror="this.outerHTML='<span class=\\'qr-flag-emoji\\' onclick=\\'event.stopPropagation(); openImgViewer(\\\\\\'\\\\\\', \\\\\\'${escapeHtml(emoji)}\\\\\\', \\\\\\'${escapeHtml(q.a_en || '')}\\\\\\', \\\\\\'${escapeHtml(q.a_ar || '')}\\\\\\'\\)\\'>${escapeHtml(emoji)}</span>'" />`
+      : `<span class="qr-flag-emoji" onclick="event.stopPropagation(); openImgViewer('', '${escapeHtml(emoji)}', '${escapeHtml(q.a_en || '')}', '${escapeHtml(q.a_ar || '')}')">${escapeHtml(emoji)}</span>`;
+    return `
+      <div class="qr-extra">
+        ${thumbHtml}
+        <div class="qr-extra-label">
+          <strong>Flag · ${typeLabel}${code ? ' · ' + code : ''}</strong>
+          Tap to enlarge · اضغط للتكبير
+        </div>
+      </div>
+    `;
+  }
+  if (q.letters_reversed) {
+    return `
+      <div class="qr-extra">
+        <div class="qr-letters">${escapeHtml(q.letters_reversed)}</div>
+        <div class="qr-extra-label">
+          <strong>Reversed Letters · الحروف المعكوسة</strong>
+          Students must unscramble
+        </div>
+      </div>
+    `;
+  }
+  return '';
+}
+
+function renderList() {
+  const results = document.getElementById('results');
+  const list = filterList();
+  const countEl = document.getElementById('result-count');
+  const total = FLAT.length;
+  if (list.length === 0) {
+    countEl.innerHTML = '<strong>0</strong> <span class="muted">of ' + total + '</span>';
+    results.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-emoji">🤷</span>
+        <div class="empty-title">No matches</div>
+        <div class="empty-sub">Try loosening your filters or clearing the search.</div>
+      </div>`;
+    return;
+  }
+  countEl.innerHTML = `<strong>${list.length}</strong> <span class="muted">of ${total}</span>` +
+    (state.search ? ` <span class="muted">· matching "${escapeHtml(state.search)}"</span>` : '') +
+    (state.category !== 'all' ? ` <span class="muted">· in ${escapeHtml(getCat(state.category).name_en)}</span>` : '');
+
+  const frag = document.createDocumentFragment();
+  const searchRegex = buildSearchRegex(state.search);
+
+  list.forEach((item, idx) => {
+    const { q, cat } = item;
+    const flagged = state.flags.has(q.id);
+    const div = document.createElement('div');
+    div.className = 'qr-card' + (flagged ? ' flagged' : '');
+    div.style.setProperty('--cat-color', cat.color);
+    div.dataset.idx = idx;
+    div.dataset.qid = q.id;
+    const typeTag = q.type ? `<span class="qr-type">${escapeHtml(q.type.replace('_', ' '))}</span>` : '';
+    div.innerHTML = `
+      <div class="qr-head">
+        <span class="qr-id">${q.id}</span>
+        <span class="qr-cat" style="background:${cat.color}">
+          <span>${cat.emoji}</span>
+          <span class="en">${escapeHtml(cat.name_en)}</span>
+          <span class="ar">${escapeHtml(cat.name_ar)}</span>
+        </span>
+        ${typeTag}
+        <div class="qr-actions">
+          <button class="qr-action flag${flagged ? ' on' : ''}" title="Flag for review"
+            onclick="event.stopPropagation(); toggleFlag('${q.id}', this)">🚩</button>
+          <button class="qr-action copy" title="Copy question + answer"
+            onclick="event.stopPropagation(); copyQuestion('${q.id}', this)">📋</button>
+        </div>
+      </div>
+      ${buildExtraBlock(q)}
+      <div class="qr-en">${highlight(q.q_en, searchRegex)}</div>
+      <div class="qr-ar">${highlight(q.q_ar, searchRegex)}</div>
+      <div class="qr-answers">
+        <div class="qr-ans-label">Answer · الجواب</div>
+        <div class="qr-a-en">${highlight(q.a_en, searchRegex)}</div>
+        <div class="qr-a-ar">${highlight(q.a_ar, searchRegex)}</div>
+      </div>
+    `;
+    frag.appendChild(div);
+  });
+  results.innerHTML = '';
+  results.appendChild(frag);
+  updateFocusHighlight();
+}
+
+function buildSearchRegex(s) {
+  if (!s || !s.trim()) return null;
+  const esc = s.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  try { return new RegExp('(' + esc + ')', 'gi'); } catch (e) { return null; }
+}
+function highlight(str, rx) {
+  const h = escapeHtml(str);
+  if (!rx) return h;
+  return h.replace(rx, '<mark class="hit">$1</mark>');
+}
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[m]));
+}
+
+/* =========================================
+   FLAGS
+   ========================================= */
+function persistFlags() {
+  localStorage.setItem(LS_FLAGS, JSON.stringify(Array.from(state.flags)));
+  document.getElementById('stat-flagged').textContent = state.flags.size;
+}
+function toggleFlag(qid, btnEl) {
+  if (state.flags.has(qid)) state.flags.delete(qid);
+  else state.flags.add(qid);
+  persistFlags();
+  if (btnEl) btnEl.classList.toggle('on', state.flags.has(qid));
+  const card = document.querySelector('.qr-card[data-qid="' + cssEscape(qid) + '"]');
+  if (card) card.classList.toggle('flagged', state.flags.has(qid));
+  if (state.flaggedOnly) renderList();
+  showToast(state.flags.has(qid) ? '🚩 Flagged' : 'Flag removed');
+}
+function resetFlags() {
+  if (state.flags.size === 0) { showToast('No flags to clear'); return; }
+  if (!confirm('Clear all ' + state.flags.size + ' flag(s)?')) return;
+  state.flags.clear();
+  persistFlags();
+  renderList();
+  renderCategoryRail();
+  showToast('All flags cleared');
+}
+function cssEscape(s) { return String(s).replace(/"/g, '\\"'); }
+
+/* =========================================
+   COPY
+   ========================================= */
+async function copyQuestion(qid, btnEl) {
+  const item = FLAT.find(it => it.q.id === qid);
+  if (!item) return;
+  const { q, cat } = item;
+  const extra =
+    q.letters_reversed ? `Letters (reversed): ${q.letters_reversed}\n\n` :
+    q.flag_code ? `Flag: ${q.flag_emoji || ''} (${q.flag_code.toUpperCase()}) — ${q.type || ''}\n\n` : '';
+  const text =
+    `[${cat.name_en}] ${q.id}\n\n` +
+    extra +
+    `EN: ${q.q_en}\n` +
+    `AR: ${q.q_ar}\n\n` +
+    `→ ${q.a_en}\n` +
+    `← ${q.a_ar}\n`;
+  try {
+    await navigator.clipboard.writeText(text);
+    if (btnEl) {
+      btnEl.classList.add('copied');
+      btnEl.textContent = '✓';
+      setTimeout(() => { btnEl.classList.remove('copied'); btnEl.textContent = '📋'; }, 1100);
+    }
+    showToast('📋 Copied');
+  } catch (err) {
+    showToast('⚠ Copy failed');
+  }
+}
+
+/* =========================================
+   EXPORT
+   ========================================= */
+function exportFiltered() {
+  const list = filterList();
+  if (list.length === 0) { showToast('Nothing to export'); return; }
+  const byCat = {};
+  list.forEach(it => {
+    if (!byCat[it.cat.id]) {
+      byCat[it.cat.id] = {
+        id: it.cat.id, emoji: it.cat.emoji, name_en: it.cat.name_en, name_ar: it.cat.name_ar,
+        color: it.cat.color, questions: []
+      };
+    }
+    byCat[it.cat.id].questions.push(it.q);
+  });
+  const out = {
+    meta: {
+      exported_at: new Date().toISOString(),
+      source: 'Question Reviewer',
+      filter: { category: state.category, search: state.search, flagged_only: state.flaggedOnly },
+      count: list.length
+    },
+    categories: Object.values(byCat),
+  };
+  const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `questions-filtered-${Date.now()}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  showToast(`⬇ Exported ${list.length} question${list.length === 1 ? '' : 's'}`);
+}
+
+/* =========================================
+   FILTER ACTIONS
+   ========================================= */
+function setLang(lang) {
+  state.lang = lang;
+  localStorage.setItem(LS_LANG, lang);
+  document.body.classList.remove('lang-both', 'lang-en', 'lang-ar');
+  document.body.classList.add('lang-' + lang);
+  document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  updateHash();
+}
+function setDensity(d) {
+  state.density = d;
+  localStorage.setItem(LS_DENSITY, d);
+  document.body.classList.remove('comfort', 'compact');
+  document.body.classList.add(d);
+  document.querySelectorAll('[data-d]').forEach(b => b.classList.toggle('on', b.dataset.d === d));
+}
+function toggleAnswers() {
+  state.showAnswers = !state.showAnswers;
+  localStorage.setItem(LS_ANS, state.showAnswers ? '1' : '0');
+  document.body.classList.toggle('no-answers', !state.showAnswers);
+  document.getElementById('toggle-ans').classList.toggle('on', !state.showAnswers);
+  document.getElementById('ans-label').textContent = state.showAnswers ? 'Answers' : 'Hidden';
+}
+function toggleFlaggedFilter() {
+  state.flaggedOnly = !state.flaggedOnly;
+  document.getElementById('toggle-flagged').classList.toggle('on', state.flaggedOnly);
+  document.getElementById('flag-label').textContent = state.flaggedOnly ? 'Flagged ✓' : 'Flagged';
+  renderCategoryRail();
+  renderList();
+  updateHash();
+}
+function setCategory(catId) {
+  state.category = catId;
+  state.focusIdx = -1;
+  renderCategoryRail();
+  renderList();
+  updateHash();
+  setTimeout(() => {
+    const rail = document.getElementById('cat-rail');
+    const activeChip = rail.querySelector('.cat-chip.on');
+    if (activeChip) activeChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, 30);
+}
+function getCat(id) {
+  return QUIZ_DATA.categories.find(c => c.id === id) || { name_en: id, name_ar: id };
+}
+function clearSearch() {
+  state.search = '';
+  document.getElementById('search').value = '';
+  document.getElementById('search-clear').classList.remove('on');
+  renderCategoryRail();
+  renderList();
+  updateHash();
+}
+
+/* =========================================
+   TOAST
+   ========================================= */
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('on'), 1800);
+}
+
+/* =========================================
+   IMAGE VIEWER
+   ========================================= */
+function openImgViewer(url, emoji, enLabel, arLabel) {
+  const v = document.getElementById('img-viewer');
+  const img = document.getElementById('img-viewer-img');
+  const cap = document.getElementById('img-viewer-caption');
+  const capAr = document.getElementById('img-viewer-caption-ar');
+  cap.textContent = enLabel || emoji || '';
+  capAr.textContent = arLabel || '';
+  if (url) {
+    img.src = url;
+    img.style.display = 'block';
+    img.onerror = () => { img.style.display = 'none'; cap.textContent = (emoji || '') + ' ' + cap.textContent; };
+  } else {
+    img.style.display = 'none';
+    cap.textContent = (emoji || '') + ' ' + cap.textContent;
+  }
+  v.classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeImgViewer(e, force) {
+  if (e && !force && e.target.tagName === 'IMG') return;
+  document.getElementById('img-viewer').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+/* =========================================
+   SHORTCUTS
+   ========================================= */
+function showKeys() { document.getElementById('kbd-overlay').classList.add('on'); }
+function closeKeys() { document.getElementById('kbd-overlay').classList.remove('on'); }
+
+/* =========================================
+   KEYBOARD
+   ========================================= */
+function updateFocusHighlight() {
+  document.querySelectorAll('.qr-card').forEach((c, i) => {
+    c.style.outline = (i === state.focusIdx) ? '3px solid var(--forest)' : '';
+    c.style.outlineOffset = (i === state.focusIdx) ? '2px' : '';
+  });
+  if (state.focusIdx >= 0) {
+    const el = document.querySelectorAll('.qr-card')[state.focusIdx];
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+function moveFocus(delta) {
+  const cards = document.querySelectorAll('.qr-card');
+  if (cards.length === 0) return;
+  state.focusIdx = Math.max(0, Math.min(cards.length - 1, state.focusIdx + delta));
+  if (state.focusIdx < 0) state.focusIdx = 0;
+  updateFocusHighlight();
+}
+document.addEventListener('keydown', e => {
+  const kbd = document.getElementById('kbd-overlay');
+  if (kbd.classList.contains('on')) { if (e.key === 'Escape') closeKeys(); return; }
+  const viewer = document.getElementById('img-viewer');
+  if (viewer.classList.contains('on')) { if (e.key === 'Escape') closeImgViewer(null, true); return; }
+  const inInput = ['INPUT', 'TEXTAREA'].includes((e.target.tagName || ''));
+  if (e.key === 'Escape') { if (inInput) { clearSearch(); e.target.blur(); } return; }
+  if (e.key === '/' && !inInput) { e.preventDefault(); document.getElementById('search').focus(); return; }
+  if (inInput) return;
+  switch (e.key.toLowerCase()) {
+    case 'j': e.preventDefault(); moveFocus(1); break;
+    case 'k': e.preventDefault(); moveFocus(-1); break;
+    case 'a': toggleAnswers(); break;
+    case 'd': setDensity(state.density === 'comfort' ? 'compact' : 'comfort'); break;
+    case 'l': {
+      const order = ['both', 'en', 'ar'];
+      setLang(order[(order.indexOf(state.lang) + 1) % order.length]);
+      break;
+    }
+    case 'f':
+      if (e.shiftKey && state.focusIdx >= 0) {
+        const cards = document.querySelectorAll('.qr-card');
+        const qid = cards[state.focusIdx]?.dataset.qid;
+        if (qid) { const btn = cards[state.focusIdx].querySelector('.qr-action.flag'); toggleFlag(qid, btn); }
+      } else { toggleFlaggedFilter(); }
+      break;
+    case 'c':
+      if (state.focusIdx >= 0) {
+        const cards = document.querySelectorAll('.qr-card');
+        const qid = cards[state.focusIdx]?.dataset.qid;
+        if (qid) copyQuestion(qid, cards[state.focusIdx].querySelector('.qr-action.copy'));
+      }
+      break;
+    case '?': showKeys(); break;
+    case '[': cycleCategory(-1); break;
+    case ']': cycleCategory(1); break;
+  }
+});
+function cycleCategory(dir) {
+  const ids = ['all', ...QUIZ_DATA.categories.map(c => c.id)];
+  const i = ids.indexOf(state.category);
+  const next = ids[(i + dir + ids.length) % ids.length];
+  setCategory(next);
+}
+
+/* =========================================
+   URL HASH
+   ========================================= */
+function readHash() {
+  const h = location.hash.replace(/^#/, '');
+  if (!h) return;
+  const params = new URLSearchParams(h);
+  if (params.has('cat')) state.category = params.get('cat') || 'all';
+  if (params.has('q'))   state.search   = params.get('q')   || '';
+  if (params.has('flagged')) state.flaggedOnly = params.get('flagged') === '1';
+  if (params.has('lang')) state.lang = params.get('lang') || 'both';
+  const s = document.getElementById('search');
+  if (s && state.search) { s.value = state.search; document.getElementById('search-clear').classList.add('on'); }
+}
+function updateHash() {
+  const params = new URLSearchParams();
+  if (state.category !== 'all') params.set('cat', state.category);
+  if (state.search)  params.set('q', state.search);
+  if (state.flaggedOnly) params.set('flagged', '1');
+  if (state.lang !== 'both') params.set('lang', state.lang);
+  const h = params.toString();
+  history.replaceState(null, '', h ? '#' + h : location.pathname);
+}
+
+/* =========================================
+   INIT
+   ========================================= */
+function init() {
+  buildFlat();
+  document.getElementById('stat-total').textContent = FLAT.length.toLocaleString();
+  document.getElementById('stat-cats').textContent = QUIZ_DATA.categories.length;
+  document.getElementById('stat-flagged').textContent = state.flags.size;
+
+  document.body.classList.remove('lang-both', 'lang-en', 'lang-ar');
+  document.body.classList.add('lang-' + state.lang);
+  document.body.classList.remove('comfort', 'compact');
+  document.body.classList.add(state.density);
+  document.body.classList.toggle('no-answers', !state.showAnswers);
+  document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === state.lang));
+  document.querySelectorAll('[data-d]').forEach(b => b.classList.toggle('on', b.dataset.d === state.density));
+  document.getElementById('toggle-ans').classList.toggle('on', !state.showAnswers);
+  document.getElementById('ans-label').textContent = state.showAnswers ? 'Answers' : 'Hidden';
+
+  readHash();
+  renderCategoryRail();
+  renderList();
+
+  const search = document.getElementById('search');
+  const clearBtn = document.getElementById('search-clear');
+  let searchTimer = null;
+  search.addEventListener('input', () => {
+    const v = search.value;
+    clearBtn.classList.toggle('on', v.length > 0);
+    if (searchTimer) clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      state.search = v;
+      state.focusIdx = -1;
+      renderCategoryRail();
+      renderList();
+      updateHash();
+    }, 130);
+  });
+
+  window.addEventListener('hashchange', () => { readHash(); renderCategoryRail(); renderList(); });
+
+  // Preload flag images for offline
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(preloadFlags, { timeout: 2000 });
+  } else {
+    setTimeout(preloadFlags, 1200);
+  }
+}
+function preloadFlags() {
+  QUIZ_DATA.categories.forEach(cat => {
+    cat.questions.forEach(q => {
+      if (q.flag_image_url) { const im = new Image(); im.src = q.flag_image_url; }
+    });
+  });
+}
+init();
+</script>
+</body>
+</html>

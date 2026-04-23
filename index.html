@@ -1088,6 +1088,937 @@
     .day-banner { padding: 24px 28px; }
     .day-title { font-size: 26px; }
   }
+
+  /* ==================== BUS QUIZ (public) ==================== */
+  .how-it-works {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+  .hiw-card {
+    padding: 36px 34px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .hiw-card.ember { background: linear-gradient(135deg, #f5e6d0, #f1dbbb); }
+  .hiw-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .hiw-title {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .hiw-card.ar { direction: rtl; text-align: right; }
+  .hiw-list { list-style: none; font-size: 15px; color: var(--ink-soft); line-height: 1.9; }
+  .hiw-list li { padding: 5px 0; padding-left: 24px; position: relative; }
+  .hiw-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--moss);
+    font-weight: 700;
+  }
+  .hiw-card.ar .hiw-list li { padding: 5px 0; padding-right: 24px; padding-left: 0; font-size: 17px; line-height: 2; }
+  .hiw-card.ar .hiw-list li::before { left: auto; right: 0; }
+
+  .cat-strip-head {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--forest);
+    margin: 32px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cat-strip-head .ar { font-weight: 400; font-size: 20px; color: var(--moss); }
+  .cat-strip-head .count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ember);
+    margin-left: auto;
+    letter-spacing: 0.1em;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2px;
+    background: var(--line-soft);
+    border: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .cat-card {
+    background: var(--cream);
+    padding: 28px 26px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .cat-card:hover { background: var(--paper-warm); }
+  .cat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--cat-color, var(--forest));
+  }
+  .cat-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .cat-name {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .cat-name-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cat-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    min-height: 40px;
+  }
+  .cat-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--cat-color, var(--forest));
+    letter-spacing: 0.1em;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-weight: 500;
+  }
+  .cat-count strong { font-size: 15px; font-weight: 700; }
+
+  .cat-loading, .cat-error {
+    padding: 48px;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    color: var(--ink-soft);
+    background: var(--cream);
+    border: 1px dashed var(--line);
+  }
+  .cat-error {
+    background: #fde4cc;
+    border-color: var(--ember);
+    color: var(--ember);
+  }
+
+  /* ==================== ADMIN GATE + MODAL ==================== */
+  .footer-lock {
+    display: inline-block;
+    margin-top: 20px;
+    opacity: 0.3;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    background: none;
+    border: none;
+    color: inherit;
+  }
+  .footer-lock:hover { opacity: 0.9; }
+
+  .gate-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 26, 30, 0.85);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .gate-overlay.on { display: flex; }
+  .gate-modal {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 48px 44px;
+    max-width: 440px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.3);
+    animation: gateIn 0.35s cubic-bezier(.22,.8,.3,1);
+  }
+  @keyframes gateIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .gate-modal.shake { animation: shake 0.4s ease; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+  .gate-close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+  .gate-close:hover { color: var(--ember); }
+  .gate-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .gate-title {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+  .gate-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .gate-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    letter-spacing: 0.1em;
+  }
+  .gate-input:focus { border-color: var(--ember); }
+  .gate-error {
+    font-size: 13px;
+    color: var(--ember);
+    margin-top: 10px;
+    min-height: 20px;
+  }
+  .gate-submit {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: var(--forest-deep);
+    color: var(--cream);
+    border: none;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .gate-submit:hover { background: var(--ember); }
+
+  /* ==================== ADMIN TAB + HOST GUIDE ==================== */
+  .tab.admin {
+    color: var(--ember) !important;
+    background: linear-gradient(90deg, transparent, rgba(200,90,36,0.08));
+  }
+  .tab.admin .tab-num { color: var(--ember) !important; opacity: 1 !important; }
+
+  .admin-wrap {
+    direction: rtl;
+    text-align: right;
+  }
+  .admin-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 20px 28px;
+    background: var(--forest-deep);
+    color: var(--cream);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .admin-head-title {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .admin-head-title .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    background: var(--ember);
+    color: var(--cream);
+    padding: 3px 9px;
+    font-weight: 500;
+  }
+  .admin-lock-btn {
+    background: transparent;
+    border: 1px solid rgba(253,250,243,0.3);
+    color: var(--cream);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .admin-lock-btn:hover { background: var(--ember); border-color: var(--ember); }
+
+  .admin-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    align-items: start;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    min-height: 600px;
+  }
+  .admin-nav {
+    background: #1d3520;
+    color: var(--cream);
+    padding: 24px 0;
+    position: sticky;
+    top: 70px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  .admin-nav-group {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    padding: 18px 24px 8px;
+    opacity: 0.7;
+  }
+  .admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: rgba(253,250,243,0.72);
+    padding: 11px 24px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: right;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-right: 3px solid transparent;
+    direction: rtl;
+  }
+  .admin-nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--cream);
+  }
+  .admin-nav-item.on {
+    background: rgba(200,90,36,0.12);
+    color: var(--gold-soft);
+    border-right-color: var(--ember);
+  }
+  .admin-nav-item .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ember);
+    opacity: 0.8;
+    font-weight: 500;
+    min-width: 20px;
+  }
+
+  .admin-content {
+    padding: 48px 56px;
+    direction: rtl;
+    text-align: right;
+    min-height: 600px;
+  }
+  .admin-sub {
+    display: none;
+    animation: fadeUp 0.4s cubic-bezier(.22,.8,.3,1);
+  }
+  .admin-sub.on { display: block; }
+  .admin-sub-head {
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .admin-sub-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .admin-sub-title {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 300;
+    font-size: 38px;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .admin-sub-title em { font-style: normal; font-weight: 700; color: var(--forest); }
+
+  .admin-sub h3 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--forest);
+    margin: 32px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .admin-sub h4 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ember);
+    margin: 20px 0 10px;
+  }
+  .admin-sub p {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.9;
+    margin-bottom: 14px;
+  }
+  .admin-sub ul, .admin-sub ol {
+    padding-right: 28px;
+    margin-bottom: 18px;
+  }
+  .admin-sub li {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.9;
+    margin-bottom: 6px;
+  }
+  .admin-sub .quote {
+    padding: 24px 28px;
+    background: var(--paper-warm);
+    border-right: 4px solid var(--ember);
+    font-family: 'Cairo', sans-serif;
+    font-size: 19px;
+    line-height: 1.95;
+    color: var(--ink);
+    margin: 20px 0;
+  }
+  .admin-sub .quote.quran {
+    font-size: 22px;
+    background: #f0ebe0;
+    border-right-color: var(--forest);
+    font-weight: 500;
+    line-height: 2.2;
+    color: var(--forest-deep);
+  }
+  .admin-sub .note-box {
+    padding: 18px 22px;
+    background: #fde4cc;
+    border-right: 3px solid var(--ember);
+    font-size: 14px;
+    color: var(--ink);
+    margin: 16px 0;
+    line-height: 1.7;
+  }
+  .admin-sub .note-box.tip {
+    background: #e9f1dc;
+    border-right-color: var(--moss);
+  }
+  .admin-sub .note-box.warn {
+    background: #fce0dc;
+    border-right-color: #c0392b;
+  }
+  .admin-sub .note-box strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--ember);
+  }
+  .admin-sub .note-box.tip strong { color: var(--moss); }
+  .admin-sub .note-box.warn strong { color: #c0392b; }
+
+  .admin-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 20px 0;
+  }
+  .admin-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .admin-card {
+    padding: 24px 26px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+  }
+  .admin-card h4 { margin-top: 0; }
+
+  .counts {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ember);
+    letter-spacing: 0.1em;
+    margin: 10px 0 18px;
+  }
+
+  /* admin checklist */
+  .admin-checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    margin: 14px 0;
+  }
+  .admin-check-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .admin-check-item .box {
+    margin-top: 3px;
+  }
+
+  /* poetry cheat sheet */
+  .letter-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 20px 0 28px;
+    direction: rtl;
+  }
+  .letter-chip {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--forest);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .letter-chip:hover { background: var(--paper-warm); }
+  .letter-chip.on {
+    background: var(--forest-deep);
+    color: var(--gold-soft);
+    border-color: var(--forest-deep);
+  }
+  .letter-chip.all {
+    width: auto;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .verse-list { margin-top: 18px; }
+  .verse {
+    padding: 18px 22px;
+    background: var(--cream);
+    border-right: 3px solid var(--gold);
+    margin-bottom: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 18px;
+    line-height: 2;
+    color: var(--ink);
+  }
+  .verse .hemi { color: var(--ember); padding: 0 4px; font-weight: 700; }
+  .verse-meta {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ==================== BUS QUIZ CONTROL TOOL ==================== */
+  .bq-tool {
+    direction: rtl;
+    text-align: right;
+  }
+  .bq-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--night-2);
+    color: var(--cream);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .bq-progress {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .bq-progress-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold-soft);
+    white-space: nowrap;
+  }
+  .bq-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.12);
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+  }
+  .bq-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--ember);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(.22,.8,.3,1);
+  }
+  .bq-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .bq-lang {
+    display: flex;
+    background: rgba(255,255,255,0.08);
+    padding: 3px;
+  }
+  .bq-lang button {
+    background: transparent;
+    border: none;
+    color: rgba(253,250,243,0.55);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+  }
+  .bq-lang button.on {
+    background: var(--ember);
+    color: var(--cream);
+  }
+  .bq-filter {
+    background: rgba(255,255,255,0.08);
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 8px 14px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    min-width: 180px;
+  }
+
+  .bq-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    padding: 56px 48px;
+    margin-bottom: 24px;
+    min-height: 340px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .bq-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .bq-cat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--cat-color, var(--forest));
+    color: var(--cream);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .bq-difficulty {
+    display: flex;
+    gap: 4px;
+  }
+  .bq-diff-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+  .bq-diff-dot.on { background: var(--ember); }
+  .bq-q-text {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .bq-q-text[lang="en"] { font-family: 'Cairo', sans-serif; letter-spacing: -0.01em; }
+  .bq-answer-toggle {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--forest);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+  }
+  .bq-answer-toggle:hover {
+    background: var(--forest-deep);
+    color: var(--cream);
+    border-color: var(--forest-deep);
+  }
+  .bq-answer {
+    display: none;
+    margin-top: 24px;
+    padding: 22px 26px;
+    background: #eaf0dc;
+    border-right: 3px solid var(--forest);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--forest-deep);
+  }
+  .bq-answer.on { display: block; }
+  .bq-used-row {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bq-used-check {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--moss);
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+  .bq-used-check.on { background: var(--ember); border-color: var(--ember); }
+  .bq-used-row label { font-size: 15px; color: var(--ink-soft); cursor: pointer; }
+
+  .bq-card.empty {
+    background: var(--paper-warm);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .bq-card.empty .bq-empty-icon { font-size: 52px; margin-bottom: 16px; }
+  .bq-card.empty .bq-empty-text { font-size: 18px; color: var(--ink-soft); max-width: 420px; line-height: 1.7; }
+
+  .bq-actions {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 28px;
+  }
+  .bq-action {
+    padding: 16px 18px;
+    background: var(--forest-deep);
+    color: var(--cream);
+    border: none;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.02em;
+  }
+  .bq-action:hover {
+    background: var(--ember);
+  }
+  .bq-action.secondary {
+    background: transparent;
+    color: var(--forest-deep);
+    border: 1px solid var(--line);
+  }
+  .bq-action.secondary:hover {
+    background: var(--paper-warm);
+    border-color: var(--forest);
+  }
+  .bq-action.danger {
+    background: transparent;
+    color: #8a3e2a;
+    border: 1px solid #e0c8b8;
+  }
+  .bq-action.danger:hover {
+    background: #fce0dc;
+    color: #c0392b;
+    border-color: #c0392b;
+  }
+
+  .bq-cat-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2px;
+    background: var(--line-soft);
+    border: 1px solid var(--line);
+    margin-top: 24px;
+  }
+  .bq-cat-pill {
+    padding: 14px 16px;
+    background: var(--cream);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border: none;
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+  }
+  .bq-cat-pill:hover { background: var(--paper-warm); }
+  .bq-cat-pill.on {
+    background: var(--forest-deep);
+    color: var(--cream);
+  }
+  .bq-cat-pill-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bq-cat-pill-bar {
+    height: 3px;
+    background: rgba(0,0,0,0.08);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .bq-cat-pill.on .bq-cat-pill-bar { background: rgba(255,255,255,0.15); }
+  .bq-cat-pill-fill {
+    height: 100%;
+    background: var(--cat-color, var(--ember));
+    transition: width 0.4s ease;
+  }
+  .bq-cat-pill.on .bq-cat-pill-fill { background: var(--gold-soft); }
+  .bq-cat-pill-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .bq-cat-pill.on .bq-cat-pill-count { color: rgba(253,250,243,0.6); }
+
+  @media (max-width: 900px) {
+    .how-it-works { grid-template-columns: 1fr; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .admin-body { grid-template-columns: 1fr; }
+    .admin-nav {
+      position: static;
+      max-height: none;
+      overflow-x: auto;
+      overflow-y: hidden;
+      display: flex;
+      flex-wrap: nowrap;
+      padding: 14px;
+      gap: 6px;
+    }
+    .admin-nav-group { display: none; }
+    .admin-nav-item {
+      flex-shrink: 0;
+      padding: 10px 14px;
+      border-right: none;
+      border-bottom: 2px solid transparent;
+      font-size: 13px;
+      background: rgba(255,255,255,0.05);
+    }
+    .admin-nav-item.on {
+      border-right: none;
+      border-bottom-color: var(--ember);
+    }
+    .admin-content { padding: 32px 24px; }
+    .admin-sub-title { font-size: 28px; }
+    .admin-grid-2, .admin-grid-3 { grid-template-columns: 1fr; }
+    .admin-checklist { grid-template-columns: 1fr; }
+    .bq-actions { grid-template-columns: 1fr 1fr; }
+    .bq-card { padding: 32px 24px; }
+    .bq-q-text { font-size: 22px; }
+    .bq-topbar { flex-direction: column; align-items: stretch; }
+    .bq-controls { flex-direction: column; width: 100%; }
+    .bq-filter { width: 100%; }
+    .letter-chip { width: 38px; height: 38px; font-size: 17px; }
+  }
 </style>
 </head>
 
@@ -1232,7 +2163,9 @@
     <button class="tab" onclick="show('sc',this)"><span class="tab-num">02</span>Schedule</button>
     <button class="tab" onclick="show('ac',this)"><span class="tab-num">03</span>Activities</button>
     <button class="tab" onclick="show('pk',this)"><span class="tab-num">04</span>Packing List</button>
-    <button class="tab" onclick="show('ru',this)"><span class="tab-num">05</span>Rules &amp; Tips</button>
+    <button class="tab" onclick="show('bq',this)"><span class="tab-num">05</span>Bus Quiz</button>
+    <button class="tab" onclick="show('ru',this)"><span class="tab-num">06</span>Rules &amp; Tips</button>
+    <button class="tab admin" id="admin-tab-btn" onclick="show('admin',this)" style="display:none;"><span class="tab-num">★</span>دليل المضيف</button>
   </nav>
 </div>
 
@@ -1723,11 +2656,30 @@
   </div>
 </section>
 
+<!-- ========== BUS QUIZ CHALLENGE ========== -->
+<section class="section" id="s-bq" style="display:none">
+ 
+  <div class="cat-strip-head">
+    Categories <span class="ar">· الفئات المتاحة</span>
+    <span class="count" id="bq-total-count">Loading…</span>
+  </div>
+
+  <div id="bq-cat-grid" class="cat-grid">
+    <div class="cat-loading">جاري التحميل · Loading categories…</div>
+  </div>
+
+  <div class="cat-strip-head" style="margin-top:48px;">Rules of the Game <span class="ar">· قواعد اللعبة</span></div>
+
+  <div class="rule"><span class="rule-icon">📵</span><div class="rule-text">No phones to look up answers. Your brain only.<span class="ar">ممنوع استخدام الهاتف للبحث عن الإجابة — عقلك فقط</span></div></div>
+  <div class="rule"><span class="rule-icon">🤫</span><div class="rule-text">No hinting for your friends. Let them shine on their own.<span class="ar">لا تساعد أصدقاءك — دعهم يتألقون بأنفسهم</span></div></div>
+  <div class="rule"><span class="rule-icon">🎯</span><div class="rule-text">One try per question. Be sure before you speak.<span class="ar">محاولة واحدة فقط لكل سؤال — تأكد قبل أن تتكلم</span></div></div>
+</section>
+
 <!-- ========== RULES ========== -->
 <section class="section" id="s-ru" style="display:none">
   <div class="section-head">
     <div class="section-head-main">
-      <span class="section-num">§ 05</span>
+      <span class="section-num">§ 06</span>
       <h2 class="section-title">Rules &amp; <em>Tips</em></h2>
     </div>
     <span class="section-title-ar">قواعد ونصائح</span>
@@ -1759,18 +2711,1020 @@
   </div>
 </section>
 
+<!-- ================================================================= -->
+<!-- ========== HOST GUIDE · دليل المضيف (locked admin) ============== -->
+<!-- ================================================================= -->
+<section class="section admin-wrap" id="s-admin" style="display:none">
+  <div class="admin-head">
+    <div class="admin-head-title">
+      <span class="badge">ADMIN</span>
+      <span>دليل المضيف · لوحة التحكم</span>
+    </div>
+    <button class="admin-lock-btn" onclick="lockAdmin()">🔒 قفل الدليل</button>
+  </div>
+
+  <div class="admin-body">
+    <aside class="admin-nav" id="admin-nav">
+      <div class="admin-nav-group">أ · قبل الرحلة والوصول</div>
+      <button class="admin-nav-item on" data-sub="a1"><span class="num">01</span><span>قائمة معدات المعلمين</span></button>
+      <button class="admin-nav-item" data-sub="a2"><span class="num">02</span><span>دعاء السفر</span></button>
+      <button class="admin-nav-item" data-sub="a3"><span class="num">03</span><span>كلمة الترحيب والأمنيات</span></button>
+      <button class="admin-nav-item" data-sub="a4"><span class="num">04</span><span>تعليمات نصب الخيام</span></button>
+      <button class="admin-nav-item" data-sub="a5"><span class="num">05</span><span>حلقة الترحيب والقواعد</span></button>
+
+      <div class="admin-nav-group">ب · الصلاة والذكر</div>
+      <button class="admin-nav-item" data-sub="b1"><span class="num">06</span><span>سور الصلوات الجهرية</span></button>
+      <button class="admin-nav-item" data-sub="b2"><span class="num">07</span><span>أذكار الصباح</span></button>
+
+      <div class="admin-nav-group">ج · الأنشطة الرئيسية</div>
+      <button class="admin-nav-item" data-sub="c1"><span class="num">08</span><span>🎒 تحكم مسابقة الباص</span></button>
+      <button class="admin-nav-item" data-sub="c2"><span class="num">09</span><span>خطة الألعاب الرياضية</span></button>
+      <button class="admin-nav-item" data-sub="c3"><span class="num">10</span><span>مطارحة الشعر — الصحيفة</span></button>
+      <button class="admin-nav-item" data-sub="c4"><span class="num">11</span><span>الدرس الديني — أشراط الساعة</span></button>
+      <button class="admin-nav-item" data-sub="c5"><span class="num">12</span><span>لعبة المعلم الغامض</span></button>
+      <button class="admin-nav-item" data-sub="c6"><span class="num">13</span><span>فقرات النار ونشاطات احتياطية</span></button>
+
+      <div class="admin-nav-group">د · الختام والطوارئ</div>
+      <button class="admin-nav-item" data-sub="d1"><span class="num">14</span><span>الكلمة الختامية</span></button>
+      <button class="admin-nav-item" data-sub="d2"><span class="num">15</span><span>الطوارئ وخطة الطقس</span></button>
+      <button class="admin-nav-item" data-sub="d3"><span class="num">16</span><span>دليل المضيف المبتدئ</span></button>
+    </aside>
+
+    <div class="admin-content" id="admin-content">
+
+<!-- ========================== A1 · معدات المعلمين ========================== -->
+<div class="admin-sub on" id="sub-a1">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠١ · قبل الانطلاق</span>
+    <h2 class="admin-sub-title">قائمة معدات <em>المعلمين</em></h2>
+  </div>
+  <p>هذه القائمة تُجهَّز قبل الرحلة بيومين. علّم على كل غرض عند تجهيزه، ولن ينسى أحد شيئاً بإذن الله. العلامات تُحفظ تلقائياً.</p>
+
+  <h3>الإسعافات والسلامة</h3>
+  <div class="admin-checklist">
+    <div class="admin-check-item"><span class="box"></span>حقيبة إسعافات أولية كاملة (ضمادات، مطهر، شاش، مقص، ترمومتر)</div>
+    <div class="admin-check-item"><span class="box"></span>مسكنات ألم (بنادول) + أدوية حساسية</div>
+    <div class="admin-check-item"><span class="box"></span>طارد الحشرات + كريم حماية من الشمس</div>
+    <div class="admin-check-item"><span class="box"></span>صافرة للطوارئ</div>
+    <div class="admin-check-item"><span class="box"></span>قائمة جهات الاتصال الطارئة لكل طالب</div>
+    <div class="admin-check-item"><span class="box"></span>تصاريح وأذونات الأهالي موقّعة</div>
+  </div>
+
+  <h3>الطبخ والوجبات</h3>
+  <div class="admin-checklist">
+    <div class="admin-check-item"><span class="box"></span>قدور كبيرة + مقلاة</div>
+    <div class="admin-check-item"><span class="box"></span>ألواح تقطيع + سكاكين + ملاقط</div>
+    <div class="admin-check-item"><span class="box"></span>فحم + سائل إشعال + كبريت/ولاعة</div>
+    <div class="admin-check-item"><span class="box"></span>شبك شواية + أسياخ</div>
+    <div class="admin-check-item"><span class="box"></span>ورق ألمنيوم + مناديل ورقية</div>
+    <div class="admin-check-item"><span class="box"></span>صندوق تبريد + ثلج</div>
+    <div class="admin-check-item"><span class="box"></span>أطباق وأكواب بلاستيكية احتياطية</div>
+    <div class="admin-check-item"><span class="box"></span>جالون ماء كبير</div>
+  </div>
+
+  <h3>الأنشطة والألعاب</h3>
+  <div class="admin-checklist">
+    <div class="admin-check-item"><span class="box"></span>حبل سميك (شد الحبل)</div>
+    <div class="admin-check-item"><span class="box"></span>بالونات × ٣٠</div>
+    <div class="admin-check-item"><span class="box"></span>دلاء × ٤ (لسباق الماء)</div>
+    <div class="admin-check-item"><span class="box"></span>بطاقات أسئلة المسابقة + حقيبة لخلط السحب</div>
+    <div class="admin-check-item"><span class="box"></span>لوحة نتائج + أقلام ماركر</div>
+    <div class="admin-check-item"><span class="box"></span>جوائز صغيرة + ميداليات + شهادات</div>
+    <div class="admin-check-item"><span class="box"></span>ورقة تسجيل الفقرات الحرة</div>
+    <div class="admin-check-item"><span class="box"></span>بطاقات لعبة المعلم الغامض (٣ لكل معلم)</div>
+  </div>
+
+  <h3>المخيم والإضاءة</h3>
+  <div class="admin-checklist">
+    <div class="admin-check-item"><span class="box"></span>خيام + أوتاد + حبال تثبيت</div>
+    <div class="admin-check-item"><span class="box"></span>مطرقة لدق الأوتاد</div>
+    <div class="admin-check-item"><span class="box"></span>حطب + فحم إضافي</div>
+    <div class="admin-check-item"><span class="box"></span>أكياس قمامة كبيرة</div>
+    <div class="admin-check-item"><span class="box"></span>مصابيح كشافة + بطاريات احتياطية</div>
+    <div class="admin-check-item"><span class="box"></span>فانوس كبير لمنطقة الجلوس</div>
+  </div>
+
+  <h3>التقنية والذاكرة</h3>
+  <div class="admin-checklist">
+    <div class="admin-check-item"><span class="box"></span>مكبر صوت بلوتوث</div>
+    <div class="admin-check-item"><span class="box"></span>حامل كاميرا / تريبود</div>
+    <div class="admin-check-item"><span class="box"></span>بطاريات وباور بانك احتياطي للمعلمين</div>
+    <div class="admin-check-item"><span class="box"></span>بوصلة القبلة</div>
+  </div>
+
+  <div class="note-box tip"><strong>نصيحة:</strong> اجعل هذه القائمة عند معلم واحد فقط، ليتحمل مسؤولية مراجعتها. التقسيم يُضيّع الأغراض.</div>
+</div>
+
+<!-- ========================== A2 · دعاء السفر ========================== -->
+<div class="admin-sub" id="sub-a2">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٢ · بعد استقرار الرحلة</span>
+    <h2 class="admin-sub-title">دعاء <em>السفر</em></h2>
+  </div>
+  <p>يُقال بعد استقرار المسافر على وسيلة السفر (الباص) وقبل انطلاقها، برفع الصوت قليلاً ليردّد الطلاب معك. كبّر ثلاثاً ثم اقرأ:</p>
+
+  <div class="quote quran">
+    اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، اللهُ أَكْبَرُ،<br>
+    ﴿سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ﴾.<br>
+    اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا البِرَّ وَالتَّقْوَى، وَمِنَ العَمَلِ مَا تَرْضَى،<br>
+    اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا، وَاطْوِ عَنَّا بُعْدَهُ،<br>
+    اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالخَلِيفَةُ فِي الأَهْلِ،<br>
+    اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ المَنْظَرِ، وَسُوءِ المُنْقَلَبِ فِي المَالِ وَالأَهْلِ.
+  </div>
+
+  <div class="note-box tip">
+    <strong>قبل أن تقرأ:</strong>
+    قل للطلاب: «ارفعوا أيديكم وكرّروا خلفي». هذا يشركهم ويربط الرحلة بذكر الله من اللحظة الأولى. لا تُطِل الدعاء — هذا ليس محاضرة، بل بداية مباركة.
+  </div>
+
+  <div class="note-box">
+    <strong>عند العودة:</strong>
+    تزيد في آخر الدعاء: «آيِبُونَ، تَائِبُونَ، عَابِدُونَ، لِرَبِّنَا حَامِدُونَ».
+  </div>
+</div>
+
+<!-- ========================== A3 · كلمة الترحيب ========================== -->
+<div class="admin-sub" id="sub-a3">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٣ · بعد دعاء السفر في الباص</span>
+    <h2 class="admin-sub-title">كلمة الترحيب <em>والأمنيات</em></h2>
+  </div>
+  <p>الهدف: كلمة دافئة قصيرة (دقيقة ونصف كحد أقصى) تضبط جو الرحلة وتفتح قلوب الطلاب. ليست محاضرة. ليست وعظاً. مجرد ترحيب صادق.</p>
+
+  <h3>المحاور الثلاثة</h3>
+  <ol>
+    <li><strong>الترحيب والشكر</strong> — رحّب بالطلاب، اشكرهم على قدومهم، واذكر أن هذه رحلة «لكم» لا «عليكم».</li>
+    <li><strong>الوعد بالمتعة</strong> — اخبرهم باختصار عن أهم ثلاث لحظات تنتظرهم (النار، الألعاب، الفقرات) — دون تفاصيل كثيرة.</li>
+    <li><strong>الأمنية الصادقة</strong> — أمنيتك لهم أن يعودوا بذكرى واحدة على الأقل لن ينسوها.</li>
+  </ol>
+
+  <h3>مسودة جاهزة (عدّل عليها)</h3>
+  <div class="quote">
+    «يا شباب، يا شابات،<br>
+    اللهم بارك لنا في هذه الرحلة.<br>
+    أنا مبسوط جداً إنكم معنا اليوم. هذه الرحلة مش «نشاط مدرسي»، هذه أيامكم أنتم.<br>
+    بانتظاركم نار وأحلى عشاء، ألعاب رح تضحككم لدرجة وجع البطن، وفقرات على النار كل واحد فيكم رح يترك فيها بصمته.<br>
+    كل أمنيتي إنكم ترجعوا يوم الأحد وكل واحد فيكم في قلبه ذكرى ما رح ينساها.<br>
+    خلّونا ننطلق بسم الله.»
+  </div>
+
+  <div class="note-box tip">
+    <strong>نبرة الكلام:</strong> بطيئة، مبتسمة، واثقة. لا ترفع الصوت. تواصل بصرياً مع الطلاب الذين لا يتكلمون كثيراً — هم الذين يحتاجون هذه الكلمات أكثر.
+  </div>
+</div>
+
+<!-- ========================== A4 · نصب الخيام ========================== -->
+<div class="admin-sub" id="sub-a4">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٤ · عند الوصول</span>
+    <h2 class="admin-sub-title">تعليمات <em>نصب الخيام</em></h2>
+  </div>
+  <p>اقسم الطلاب إلى مجموعات من ٣-٤ لكل خيمة. عيّن معلماً واحداً مسؤولاً عن كل منطقة (أولاد/بنات). لا تنصب الخيام بنفسك — علّم الطلاب ليتعلموا.</p>
+
+  <h3>الخطوات بالترتيب</h3>
+  <ol>
+    <li><strong>اختر الأرض</strong> — مستوية، بعيدة عن المنخفضات التي تتجمع فيها المياه، بعيدة عن الأشجار الكبيرة (خطر الأغصان)، بعيدة عن النار بـ ٥-٧ أمتار.</li>
+    <li><strong>أزل الحجارة والأغصان</strong> — حتى ما تحت الفرشة. ظهر طالب نام على حجر لن ينسى الرحلة — لكن للأسباب الخطأ.</li>
+    <li><strong>افرش الأرضية (Ground Sheet)</strong> — قبل أي شيء. تحمي قاع الخيمة من الرطوبة والحصى.</li>
+    <li><strong>افتح الخيمة واقرأ اتجاه الباب</strong> — الباب يواجه مكان اللقاء، لا الريح.</li>
+    <li><strong>ركّب الأعمدة</strong> — من الأطول إلى الأقصر. لا تضغط بقوة — الأعمدة تتصل بسهولة.</li>
+    <li><strong>أدخل الأعمدة في الجيوب</strong> — بهدوء. قد تعلق — حركها برفق لا بعنف.</li>
+    <li><strong>ارفع الخيمة</strong> — شخصان يشدان بالتبادل.</li>
+    <li><strong>ثبّت الأوتاد</strong> — بزاوية ٤٥ درجة، الرأس مائل بعيداً عن الخيمة. اطرق بالمطرقة حتى تغوص بالكامل.</li>
+    <li><strong>شدّ حبال التثبيت</strong> — مشدودة لكن غير متوترة.</li>
+    <li><strong>الغطاء الخارجي (Rainfly)</strong> — لا تنسَ، حتى لو بدت السماء صافية.</li>
+    <li><strong>اختبر السحّاب</strong> — افتح وأغلق ثلاث مرات. إن علق — لا تشده، ليّن الجيوب حوله.</li>
+  </ol>
+
+  <h3>أخطاء شائعة (تجنّبها)</h3>
+  <div class="note-box warn">
+    <strong>خطأ ١:</strong> نصب الخيمة على منحدر. النوم فيها كابوس.<br>
+    <strong>خطأ ٢:</strong> عدم استخدام Rainfly. مطر مفاجئ = خيمة غارقة.<br>
+    <strong>خطأ ٣:</strong> أوتاد سطحية. أول ريح ستقلبها.<br>
+    <strong>خطأ ٤:</strong> نصب الخيمة بجانب النار مباشرة. الشرر = ثقب في النايلون.
+  </div>
+
+  <div class="note-box tip">
+    <strong>نصيحة:</strong> بعد نصب جميع الخيام، اجمع الطلاب ثم قل: «اذهبوا واجلسوا داخل خيمتكم». إذا حدث ازدحام أو شكوى — تعرف أن التوزيع يحتاج تعديلاً.
+  </div>
+</div>
+
+<!-- ========================== A5 · حلقة الترحيب ========================== -->
+<div class="admin-sub" id="sub-a5">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٥ · ٤:٣٠ مساءً يوم الجمعة</span>
+    <h2 class="admin-sub-title">حلقة الترحيب <em>والقواعد</em></h2>
+  </div>
+  <p>خمس دقائق فقط. اجلس مع الطلاب في حلقة نصف دائرية — دافئة لا رسمية. قدّم الشاي والبسكويت أولاً، ثم تكلم.</p>
+
+  <h3>بنية الكلمة (٥ دقائق)</h3>
+  <ol>
+    <li><strong>الدقيقة ١ — الترحيب</strong>: «هذه مش مدرسة، لكن في قواعد بسيطة لنعيش يومين رائعين معاً».</li>
+    <li><strong>الدقيقتان ٢-٤ — القواعد</strong>: اذكر القواعد أدناه بصوت هادئ، جملة لكل قاعدة.</li>
+    <li><strong>الدقيقة ٥ — السؤال</strong>: «هل من أحد لديه سؤال أو شيء يقلقه؟» — انتظر ٢٠ ثانية قبل الانتقال. بعض الطلاب يحتاجون وقتاً ليتكلموا.</li>
+  </ol>
+
+  <h3>القواعد (تُقرأ بصوت واحد متتابع)</h3>
+  <ul>
+    <li><strong>الصلاة قبل كل شيء</strong> — عند الأذان نتوقف ونستعدّ. لا استثناءات.</li>
+    <li><strong>الفصل بين الأولاد والبنات</strong> في المناطق وأوقات النوم والوقت الحر. الأنشطة المختلطة فقط هي: الصلاة، الوجبات، المسابقات.</li>
+    <li><strong>لا أحد يغادر حدود المخيم</strong> دون إخبار معلم — حتى لو للدقيقة فقط.</li>
+    <li><strong>النظافة</strong> — كل واحد مسؤول عن منطقته، والقمامة في الأكياس.</li>
+    <li><strong>الهاتف</strong> — مسموح لكن ليس أثناء الأنشطة، وليس بعد منتصف الليل.</li>
+    <li><strong>الصمت بعد منتصف الليل</strong> — احتراماً لمن ينام.</li>
+    <li><strong>لا تنمّر، لا إقصاء</strong> — هذه ليست قاعدة، هذه قِيمة.</li>
+    <li><strong>أخبر معلماً إذا لم تكن بخير</strong> — صداع، غثيان، أي شيء. نحن هنا من أجلكم.</li>
+  </ul>
+
+  <div class="note-box tip">
+    <strong>نبرة القواعد:</strong> لا تقرأها كأنها قائمة عقوبات. قلها كأنك تشارك اتفاقاً متبادلاً. ابتسم. قل «اتفقنا؟» في النهاية وانتظر رد «اتفقنا».
+  </div>
+
+  <div class="note-box">
+    <strong>بعد الكلمة:</strong> الدقيقتان الأوليان من الصمت بعد الكلمة مهمتان جداً. لا تملأها بكلام. اترك الطلاب يشعرون أن «شيئاً جدياً» بدأ.
+  </div>
+</div>
+
+<!-- ========================== B1 · سور الصلوات الجهرية ========================== -->
+<div class="admin-sub" id="sub-b1">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٦ · كلما حان وقت الصلاة</span>
+    <h2 class="admin-sub-title">سور القرآن <em>للصلوات الجهرية</em></h2>
+  </div>
+  <p>الصلوات الجهرية ثلاث: الفجر، المغرب، العشاء. اختر سوراً تناسب الموقف: قصيرة إن كان الطلاب متعبين، متوسطة في الوضع العادي، أطول للفجر (إن أمكن).</p>
+
+  <h3>الفجر — ركعتان جهراً</h3>
+  <div class="admin-grid-2">
+    <div class="admin-card">
+      <h4>قصيرة (إذا كان الوقت ضيقاً)</h4>
+      <ul>
+        <li>الأعلى (٨٧) + الغاشية (٨٨)</li>
+        <li>الشمس (٩١) + الليل (٩٢)</li>
+        <li>الضحى (٩٣) + الشرح (٩٤)</li>
+      </ul>
+    </div>
+    <div class="admin-card">
+      <h4>متوسطة (الموقف العادي)</h4>
+      <ul>
+        <li>النبأ (٧٨) + النازعات (٧٩)</li>
+        <li>عبس (٨٠) + التكوير (٨١)</li>
+        <li>البروج (٨٥) + الطارق (٨٦)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="admin-card">
+    <h4>أطول (إذا كان الطلاب في حالة خشوع جيدة)</h4>
+    <ul>
+      <li>المرسلات (٧٧) + النبأ (٧٨)</li>
+      <li>الواقعة (٥٦) — للركعة الأولى، ثم القصار</li>
+      <li>السجدة (٣٢) + الإنسان (٧٦) — سنة يوم الجمعة</li>
+    </ul>
+  </div>
+
+  <h3>المغرب — ركعتان جهراً + ركعة سراً</h3>
+  <div class="admin-card">
+    <h4>قصيرة مستحبة (من قصار المفصّل)</h4>
+    <ul>
+      <li>الإخلاص (١١٢) + الفلق (١١٣) + الناس (١١٤)</li>
+      <li>الكوثر (١٠٨) + النصر (١١٠)</li>
+      <li>الماعون (١٠٧) + الكافرون (١٠٩)</li>
+      <li>العصر (١٠٣) + الهمزة (١٠٤)</li>
+      <li>التين (٩٥) + القدر (٩٧)</li>
+    </ul>
+  </div>
+
+  <h3>العشاء — ركعتان جهراً + ركعتان سراً</h3>
+  <div class="admin-card">
+    <h4>متوسطة (من أوساط المفصّل)</h4>
+    <ul>
+      <li>الضحى (٩٣) + الشرح (٩٤)</li>
+      <li>التين (٩٥) + العلق (٩٦)</li>
+      <li>القدر (٩٧) + البينة (٩٨)</li>
+      <li>الزلزلة (٩٩) + العاديات (١٠٠)</li>
+      <li>البلد (٩٠) + الشمس (٩١)</li>
+    </ul>
+  </div>
+
+  <h3>أذكار بعد كل صلاة</h3>
+  <div class="quote">
+    «أَسْتَغْفِرُ اللهَ» (٣)<br>
+    «اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الجَلَالِ وَالإِكْرَامِ»<br>
+    «لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ»<br>
+    سبحان الله (٣٣) — الحمد لله (٣٣) — الله أكبر (٣٤)<br>
+    آية الكرسي — الإخلاص والمعوذتين (بعد الفجر والمغرب ثلاثاً، وبعد كل صلاة مرة)
+  </div>
+
+  <div class="note-box tip">
+    <strong>نصيحة:</strong> لا تطوّل بعد الفجر في البرنامج — اتركهم لأذكار الصباح ثم استراحة. ولا تقصّر في المغرب — لحظة وصل بعد غروب مميّز.
+  </div>
+</div>
+
+<!-- ========================== B2 · أذكار الصباح ========================== -->
+<div class="admin-sub" id="sub-b2">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٧ · بعد صلاة الفجر</span>
+    <h2 class="admin-sub-title">أذكار <em>الصباح</em></h2>
+  </div>
+  <p>اقرأها بصوت جماعي. اجعل طالباً يقرأ أمام الجميع كل مرة — يُشعره بالثقة. اجلسوا في حلقة، بهدوء، قبل شروق الشمس.</p>
+
+  <h3>١. آية الكرسي (مرة)</h3>
+  <div class="quote quran">﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾.</div>
+
+  <h3>٢. الإخلاص + المعوذتين (ثلاث مرات)</h3>
+  <div class="quote quran">
+    ﴿قُلْ هُوَ اللَّهُ أَحَدٌ، اللَّهُ الصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾.<br>
+    ﴿قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ...﴾.<br>
+    ﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ...﴾.
+  </div>
+
+  <h3>٣. سيد الاستغفار (مرة)</h3>
+  <div class="quote">
+    «اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ».
+  </div>
+
+  <h3>٤. أصبحنا على فطرة الإسلام (مرة)</h3>
+  <div class="quote">
+    «أَصْبَحْنَا وَأَصْبَحَ المُلْكُ لِلَّهِ، وَالحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ».
+  </div>
+
+  <h3>٥. اللهم بك أصبحنا (مرة)</h3>
+  <div class="quote">
+    «اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ».
+  </div>
+
+  <h3>٦. رضيت بالله رباً (ثلاث مرات)</h3>
+  <div class="quote">
+    «رَضِيتُ بِاللهِ رَبّاً، وَبِالإِسْلَامِ دِينَاً، وَبِمُحَمَّدٍ ﷺ نَبِيّاً».
+  </div>
+
+  <h3>٧. اللهم عافني (ثلاث مرات)</h3>
+  <div class="quote">
+    «اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ».
+  </div>
+
+  <h3>٨. حسبي الله (سبع مرات)</h3>
+  <div class="quote">
+    «حَسْبِيَ اللهُ لَا إِلَهَ إِلَّا هُوَ، عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ العَرْشِ العَظِيمِ».
+  </div>
+
+  <h3>٩. اللهم إني أسألك العفو والعافية (مرة)</h3>
+  <div class="quote">
+    «اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي».
+  </div>
+
+  <h3>١٠. سبحان الله وبحمده (مئة مرة)</h3>
+  <div class="quote">
+    «سُبْحَانَ اللهِ وَبِحَمْدِهِ» — يُفرّد لكل طالب وتُقرأ في صمت (يعدّ كل واحد على أصابعه أو مسبحته).
+  </div>
+
+  <div class="note-box tip">
+    <strong>نصيحة:</strong> لا تقرأ الأذكار العشرة كلها جماعياً — ستستغرق ٣٠ دقيقة ويتوه الطلاب. اقرأ أولاً ٦ جماعياً، واترك البقية يقرأها كل واحد بنفسه. النتيجة: ١٠ دقائق خشوع حقيقي بدل ٣٠ دقيقة شرود.
+  </div>
+</div>
+
+<!-- ========================== C1 · مركز تحكم مسابقة الباص ========================== -->
+<div class="admin-sub" id="sub-c1">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٨ · في الباص — كلما أردتَ سؤالاً</span>
+    <h2 class="admin-sub-title">🎒 مركز تحكم <em>مسابقة الباص</em></h2>
+  </div>
+  <p>اضغط «سؤال عشوائي» لسحب سؤال لم يُطرح من قبل. عند طرحه على الطلاب، علّم عليه بـ «مستخدم» حتى لا يتكرر. كل التعليمات محفوظة تلقائياً.</p>
+
+  <div class="bq-tool" id="bq-tool">
+    <!-- Topbar -->
+    <div class="bq-topbar">
+      <div class="bq-progress">
+        <span class="bq-progress-label" id="bq-progress-label">تم استخدام: ٠ / ٠</span>
+        <div class="bq-progress-bar"><div class="bq-progress-fill" id="bq-progress-fill"></div></div>
+      </div>
+      <div class="bq-controls">
+        <div class="bq-lang">
+          <button id="bq-lang-ar" class="on" onclick="setBqLang('ar')">العربية</button>
+          <button id="bq-lang-en" onclick="setBqLang('en')">English</button>
+        </div>
+        <select class="bq-filter" id="bq-filter" onchange="setBqFilter(this.value)">
+          <option value="">كل الفئات</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Main card -->
+    <div id="bq-card-slot">
+      <div class="bq-card empty">
+        <div class="bq-empty-icon">🎲</div>
+        <div class="bq-empty-text">اضغط «سؤال عشوائي» لبدء المسابقة.<br>إن لم يظهر شيء، تأكد من وجود ملف <code>questions.json</code> بجانب الصفحة.</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="bq-actions">
+      <button class="bq-action" onclick="bqDraw()">🎲 سؤال عشوائي غير مستخدم</button>
+      <button class="bq-action secondary" onclick="bqRedraw()">↩️ إعادة العرض</button>
+      <button class="bq-action danger" onclick="bqResetCategory()">🗑️ إعادة الفئة</button>
+      <button class="bq-action danger" onclick="bqResetAll()">🧹 إعادة الكل</button>
+    </div>
+
+    <!-- Category strip -->
+    <div class="bq-cat-strip" id="bq-cat-strip"></div>
+  </div>
+</div>
+
+<!-- ========================== C2 · الألعاب الرياضية ========================== -->
+<div class="admin-sub" id="sub-c2">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ٠٩ · يوم السبت صباحاً</span>
+    <h2 class="admin-sub-title">خطة <em>الألعاب الرياضية</em></h2>
+  </div>
+  <p>ثلاث ألعاب، جولات قصيرة، ضحك عالٍ. هدفك مش الفوز — هدفك الضحك والذكريات. كل لعبة مُنظَّمة، بقواعد واضحة، حتى لا يشعر أحد بالظلم.</p>
+
+  <h3>اللعبة ١ · سباق الدلو بدون أيدي 🪣</h3>
+  <div class="admin-card">
+    <h4>المعدات</h4>
+    <ul>
+      <li>دلوان: أحدهما مملوء ماءً والآخر فارغ، متباعدان ١٠ أمتار</li>
+      <li>كوب بلاستيك كبير لكل مجموعة</li>
+      <li>مناشف للتجفيف بعد اللعبة</li>
+    </ul>
+    <h4>قواعد اللعب</h4>
+    <ol>
+      <li>كل مجموعة ٤ لاعبين بالتبادل.</li>
+      <li>ينقل اللاعب الماء من الدلو الأول إلى الثاني بدون استخدام يديه.</li>
+      <li>يُسمح باستخدام الفم، الرأس، الكتف، القميص — أي شيء إلا اليدين.</li>
+      <li>الجولة ٣ دقائق. الفريق الذي ينقل ماءً أكثر يفوز.</li>
+      <li>كل محاولة باليد = إنذار. ثلاث إنذارات = خسارة الجولة.</li>
+    </ol>
+    <h4>السلامة</h4>
+    <div class="note-box warn">لا تلعبها على صخور أو جذور. أرض مسطحة ناعمة فقط.</div>
+  </div>
+
+  <h3>اللعبة ٢ · سباق البالون بدون أيدي 🎈</h3>
+  <div class="admin-card">
+    <h4>المعدات</h4>
+    <ul>
+      <li>بالون لكل فريق (واحتياطي × ٥)</li>
+      <li>خط بداية وخط نهاية بمسافة ١٥ متراً</li>
+    </ul>
+    <h4>قواعد اللعب</h4>
+    <ol>
+      <li>فريقان، ٤ لاعبين لكل فريق، بالتتابع.</li>
+      <li>حمل البالون من خط البداية إلى خط النهاية بدون لمسه باليد.</li>
+      <li>اللاعب التالي لا يبدأ إلا بعد عودة السابق.</li>
+      <li>انفجار البالون = إعادة من البداية.</li>
+      <li>لمس باليد = العودة ٥ خطوات.</li>
+    </ol>
+    <h4>الصيغ الإضافية</h4>
+    <ul>
+      <li>ثنائيات: بالون بين ظهرين</li>
+      <li>الزيغزاغ: عبور بين أعلام موضوعة</li>
+    </ul>
+  </div>
+
+  <h3>اللعبة ٣ · نهائي شد الحبل 💪</h3>
+  <div class="admin-card">
+    <h4>المعدات</h4>
+    <ul>
+      <li>حبل سميك (٨-١٠ أمتار)</li>
+      <li>شريط في منتصف الحبل</li>
+      <li>خطان على الأرض بمسافة ٣ أمتار</li>
+    </ul>
+    <h4>القواعد</h4>
+    <ol>
+      <li>فريقان متساويان بالعدد (٥-٧ كل فريق).</li>
+      <li>إشارة البدء من المعلم.</li>
+      <li>يفوز الفريق الذي يجذب الشريط عبر خطه.</li>
+      <li>ثلاث جولات — الفوز ٢ من ٣.</li>
+      <li>لا سحب مفاجئ — إشارة البدء واضحة.</li>
+    </ol>
+    <h4>السلامة</h4>
+    <div class="note-box warn">
+      • تأكد من عدم وجود حجارة حيث سيسقط الفريق الخاسر<br>
+      • لا تسمح بلفّ الحبل حول اليد (خطر كسر الأصابع)<br>
+      • الأرض الرطبة = الفريقان يخسران
+    </div>
+  </div>
+
+  <h3>التنقيط والجوائز</h3>
+  <div class="admin-card">
+    <ul>
+      <li>كل لعبة: الفائز ٣ نقاط، الخاسر ١ نقطة (للمشاركة).</li>
+      <li>مجموع النقاط بعد الألعاب الثلاث = المركز الأول.</li>
+      <li>الجوائز: ميدالية للجميع، ميدالية ذهبية رمزية للفريق الأول.</li>
+      <li>قائمة الفائزين تُعلن في حفل الختام يوم الأحد، لا الآن — ليزيد الترقب.</li>
+    </ul>
+  </div>
+
+  <div class="note-box tip">
+    <strong>نصيحة:</strong> قبل كل لعبة، اسأل الفريقين: «هل القواعد واضحة؟» ولا تبدأ قبل سماع نعم من الجميع. نصف الشكاوى تأتي من غموض القواعد.
+  </div>
+</div>
+
+<!-- ========================== C3 · مطارحة الشعر ========================== -->
+<div class="admin-sub" id="sub-c3">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١٠ · يوم السبت بعد المغرب</span>
+    <h2 class="admin-sub-title">مطارحة الشعر — <em>صحيفة الحروف</em></h2>
+  </div>
+  <p>أحد أجمل نشاطات الرحلة. هذه الصحيفة مساعدك الشخصي — إذا جاءك حرف صعب، اضغط عليه وستجد أبياتاً جاهزة. اضغط «الكل» لعرض جميع الأبيات.</p>
+
+  <h3>قواعد المطارحة</h3>
+  <div class="admin-card">
+    <ol>
+      <li>فريقان: معلمون ضد طلاب.</li>
+      <li>كل فريق يُلقي بيتاً واحداً.</li>
+      <li>آخر حرف من البيت السابق = أول حرف من البيت التالي.</li>
+      <li>مهلة ١٠ ثوانٍ بعد انتهاء الخصم — بعدها خسارة نقطة.</li>
+      <li>البيت لا يُعاد. تكرار = خسارة نقطة.</li>
+      <li>الفائز: من يصل أولاً إلى ٥ نقاط — أو الأسرع في الوصول إلى حرف صعب (الذال، الضاد، الظاء...).</li>
+      <li>التصويت النهائي للجمهور إذا تعادل الفريقان.</li>
+    </ol>
+  </div>
+
+  <h3>اختر حرفاً</h3>
+  <div class="letter-grid" id="poetry-letters">
+    <button class="letter-chip all on" data-letter="">الكل</button>
+    <!-- Letters will be rendered by JS -->
+  </div>
+
+  <div class="verse-list" id="poetry-verses"></div>
+
+  <div class="note-box tip">
+    <strong>نصيحة للمضيف:</strong> ابدأ بحرف سهل («ألف» أو «باء»). أبطل قوة الفريق المنافس عمداً باختيار حرف تعرف أن لديك أبياتاً كثيرة فيه. تذكّر: هذه للمتعة، لا للمباراة.
+  </div>
+
+  <div class="note-box"><strong>ملاحظة:</strong> هذه صحيفة أولية (٣ أبيات لكل حرف). أضف أبياتك المفضّلة في ملف <code>index.html</code> ضمن مصفوفة <code>poetryVerses</code>.</div>
+</div>
+
+<!-- ========================== C4 · الدرس الديني ========================== -->
+<div class="admin-sub" id="sub-c4">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١١ · يوم السبت بعد المغرب</span>
+    <h2 class="admin-sub-title">الدرس الديني — <em>أشراط الساعة</em></h2>
+  </div>
+  <p>درس حول نار، ١٥-٢٠ دقيقة، ليس محاضرة. اجعل الأمر نقاشاً — اطرح أسئلة، استمع لإجاباتهم، أضف عليها. الهدف: أن يذهبوا مع تساؤل جميل، لا مع حفظ قائمة.</p>
+
+  <h3>١. الافتتاحية (دقيقتان) — الخطاف</h3>
+  <div class="quote">
+    ابدأ بقصة: «في يوم من الأيام، جاء رجل غريب، لا من أهل المدينة، ولا من أهل السفر. جلس إلى النبي ﷺ ووضع ركبتيه على ركبتيه، وسأله: متى الساعة؟ ماذا كان الجواب؟».
+  </div>
+  <p>هذا حديث جبريل. أعد قصته قصيرة، ثم قل: «النبي ﷺ قال: ما المسؤول عنها بأعلم من السائل. لكنه ذكر العلامات...»</p>
+
+  <h3>٢. العلامات الصغرى (٥ دقائق)</h3>
+  <ul>
+    <li><strong>بعثة النبي ﷺ</strong> — «بُعثتُ والساعةَ كهاتين» (أشار بإصبعيه).</li>
+    <li><strong>موت النبي ﷺ</strong> وانقسام أمته.</li>
+    <li><strong>فتح بيت المقدس</strong>.</li>
+    <li><strong>ظهور الفتن وكثرة القتل</strong>.</li>
+    <li><strong>تطاول الرعاة في البنيان</strong> — ناقش مع الطلاب: «ما معنى هذا في عصرنا؟».</li>
+    <li><strong>ولادة الأمة لربّتها</strong> — أي ابتعاد الأبناء عن آبائهم.</li>
+    <li><strong>قبض العلم وظهور الجهل</strong>.</li>
+    <li><strong>انتشار الزنا والربا</strong>.</li>
+  </ul>
+
+  <h3>٣. العلامات الكبرى (٥ دقائق — باختصار)</h3>
+  <ul>
+    <li>خروج المهدي</li>
+    <li>خروج الدجال</li>
+    <li>نزول عيسى عليه السلام</li>
+    <li>خروج يأجوج ومأجوج</li>
+    <li>الدخان</li>
+    <li>ثلاث خسوفات</li>
+    <li>طلوع الشمس من مغربها</li>
+    <li>خروج الدابة</li>
+    <li>نار تحشر الناس</li>
+  </ul>
+  <div class="note-box">لا تُثقل الطلاب بالتفاصيل. يكفي الاسم وجملة واحدة عن كل واحدة.</div>
+
+  <h3>٤. الأسئلة التفاعلية (٤ دقائق)</h3>
+  <ol>
+    <li>«لماذا أخبرنا النبي ﷺ بالعلامات؟ — هل ليخيفنا أم ليحذّرنا؟»</li>
+    <li>«ما العلامة التي تشعر أنها قريبة من وضعنا اليوم؟»</li>
+    <li>«إذا علمنا أن الساعة قريبة، ما أهم شيء علينا فعله؟»</li>
+    <li>«كيف نتحضّر بدون خوف؟»</li>
+    <li>«ما الفرق بين من يخاف الساعة ومن يستعدّ لها؟»</li>
+  </ol>
+
+  <h3>٥. الخاتمة والدعاء (دقيقتان)</h3>
+  <div class="quote">
+    «يا شباب، النبي ﷺ لم يخبرنا بالعلامات لنخاف، بل لنستيقظ. من كانت صلاته ووالداه وأخلاقه على الحق — لن تخيفه علامة. اللهم اجعلنا ممن يعملون قبل فوات الأوان».<br><br>
+    ثم: «اللهم إنا نسألك من فضلك ورحمتك، اللهم لا تؤاخذنا بما فعل السفهاء منا، اللهم ثبّت قلوبنا على دينك...»
+  </div>
+
+  <div class="note-box tip">
+    <strong>جو الدرس:</strong> هادئ، صوت النار هو الموسيقى، لا تقاطع من يتكلم. إذا طرح طالب سؤالاً صعباً، قل بصدق: «سؤال مهم، دعني أبحث وأرد عليك غداً».
+  </div>
+</div>
+
+<!-- ========================== C5 · لعبة المعلم الغامض ========================== -->
+<div class="admin-sub" id="sub-c5">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١٢ · يوم السبت مساءً</span>
+    <h2 class="admin-sub-title">لعبة <em>المعلم الغامض</em></h2>
+  </div>
+  <p>لعبة تُقرّب القلوب. الطلاب يكتشفون أن معلميهم «بشر» مثلهم — كل معلم كان طفلاً، له هوايات، خجولاً، وربما طريفاً. اضحكوا معاً.</p>
+
+  <h3>الإعداد (قبل الرحلة)</h3>
+  <ol>
+    <li><strong>قبل الرحلة بيومين:</strong> اطلب من كل معلم (٦ معلمين) كتابة ٣ حقائق سرّية عن نفسه على بطاقة.</li>
+    <li><strong>الشروط:</strong>
+      <ul>
+        <li>على الأقل واحدة «مدهشة» أو «مضحكة» (مثال: «كنت أتكلم خلال النوم حتى عمر ١٦»).</li>
+        <li>لا شيء محرج أو سرّي بحق.</li>
+        <li>الأسرار يجب أن يكون الطلاب قادرين على تصديقها — لا خيال.</li>
+      </ul>
+    </li>
+    <li>اجمع البطاقات، اقرأها كلها، واحذف الضعيفة.</li>
+    <li>رقّم البطاقات (١-٦) لكن لا تكتب اسم المعلم عليها.</li>
+    <li>اصنع قائمة سرّية عندك بربط كل بطاقة بمعلمها.</li>
+  </ol>
+
+  <h3>التنفيذ في المخيم</h3>
+  <ol>
+    <li>اجمع الطلاب حول النار، والمعلمون في الخلف (حتى لا يُفسدوا اللعبة بردود فعلهم).</li>
+    <li>استدع طالباً ليقرأ البطاقة بصوت عالٍ.</li>
+    <li>الطلاب يتناقشون: «من هذا المعلم؟» — أعطهم ٦٠ ثانية.</li>
+    <li>صوّت بيد مرفوعة لكل احتمال. اكتب الأصوات.</li>
+    <li>اكشف المعلم الحقيقي — دعه يقف ويأخذ التصفيق.</li>
+    <li>اطلب من المعلم قصة سريعة خلف إحدى الحقائق. هذه أغلى لحظات اللعبة.</li>
+    <li>كرّر لـ ٦ بطاقات.</li>
+  </ol>
+
+  <h3>نظام النقاط</h3>
+  <div class="admin-grid-2">
+    <div class="admin-card">
+      <h4>خيار ١ — الطلاب يكسبون</h4>
+      <ul>
+        <li>لكل بطاقة يعرفون صاحبها بالأغلبية: نقطة واحدة للجميع.</li>
+        <li>الفوز يعني: المعلمون «مكشوفون». هو تشاركي لا تنافسي.</li>
+      </ul>
+    </div>
+    <div class="admin-card">
+      <h4>خيار ٢ — تحدي (للصفوف العليا)</h4>
+      <ul>
+        <li>إذا عرف الطلاب ٤ من ٦ → فاز الطلاب.</li>
+        <li>إذا عرفوا ٣ أو أقل → فاز المعلمون.</li>
+        <li>الخاسر يُقدّم فقرة للفائز.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note-box tip">
+    <strong>سرّ النجاح:</strong> اللعبة تعتمد على جودة الحقائق. قلها للمعلمين صراحة: «أفضل حقيقة هي ما لا يخطر ببال الطلاب». حقيقة مثل «أحب القهوة» = ملل. حقيقة مثل «كنت بطل كاراتيه للأحزمة الصفراء» = ذهب.
+  </div>
+</div>
+
+<!-- ========================== C6 · الفقرات الحرة والنشاطات الاحتياطية ========================== -->
+<div class="admin-sub" id="sub-c6">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١٣ · عند الحاجة</span>
+    <h2 class="admin-sub-title">فقرات النار + <em>نشاطات احتياطية</em></h2>
+  </div>
+
+  <h3>ورقة تسجيل الفقرات الحرة</h3>
+  <p>افتح التسجيل يوم الجمعة مساءً، وقفّل يوم السبت قبل المغرب. هذا يعطي الطلاب وقتاً للتحضير — ولا يفاجئك أحد.</p>
+
+  <div class="admin-card">
+    <h4>نموذج الورقة</h4>
+    <p>اكتب في أعلى الورقة: «سجّل فقرتك — لحظة أمام الجميع». ثم:</p>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:8px;">
+      <tr style="border-bottom:2px solid var(--forest);">
+        <th style="padding:10px;text-align:right;">الاسم</th>
+        <th style="padding:10px;text-align:right;">نوع الفقرة</th>
+        <th style="padding:10px;text-align:right;">المدة</th>
+        <th style="padding:10px;text-align:right;">ملاحظات</th>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line);"><td style="padding:10px;">_______</td><td style="padding:10px;">_______</td><td style="padding:10px;">_______</td><td style="padding:10px;">_______</td></tr>
+      <tr style="border-bottom:1px solid var(--line);"><td style="padding:10px;">_______</td><td style="padding:10px;">_______</td><td style="padding:10px;">_______</td><td style="padding:10px;">_______</td></tr>
+    </table>
+    <p style="margin-top:14px;"><strong>الحد الأقصى:</strong> ٣ دقائق لكل فقرة.</p>
+  </div>
+
+  <h3>أنواع الفقرات المقبولة</h3>
+  <ul>
+    <li>نشيد (فردي أو جماعي)</li>
+    <li>نكتة (نظيفة)</li>
+    <li>تقليد معلم/شخصية (بلطف)</li>
+    <li>قصة قصيرة</li>
+    <li>شعر</li>
+    <li>عرض مهارة (ورق، يد، قدم...)</li>
+    <li>مسرحية قصيرة (فريق ٢-٣)</li>
+  </ul>
+
+  <h3>النشاطات الاحتياطية — إذا نفد الوقت أو انخفضت الطاقة</h3>
+
+  <div class="admin-grid-2">
+    <div class="admin-card">
+      <h4>١. حقيقتان وكذبة (٥ دقائق)</h4>
+      <p>كل طالب يقول ثلاث جمل عن نفسه — اثنتان صحيحتان وواحدة كاذبة. الباقون يخمّنون الكذبة.</p>
+    </div>
+    <div class="admin-card">
+      <h4>٢. ماذا لو... (١٠ دقائق)</h4>
+      <p>اطرح سؤالاً خيالياً: «ماذا لو اكتشفت كهفاً في المخيم؟». كل طالب يكمل القصة بجملة واحدة.</p>
+    </div>
+    <div class="admin-card">
+      <h4>٣. سلسلة النشيد (٧ دقائق)</h4>
+      <p>نشيد جماعي بسيط، يدور بين الطلاب — كل واحد يغني بيتاً واحداً. الذي ينسى = يقف.</p>
+    </div>
+    <div class="admin-card">
+      <h4>٤. لعبة الكلمة والكلمة (٥ دقائق)</h4>
+      <p>اختر كلمة. كل طالب يقول كلمة مرتبطة بالتي قبلها. من يتأخر ٣ ثوانٍ أو يكرّر = خارج.</p>
+    </div>
+    <div class="admin-card">
+      <h4>٥. القصة المقطوعة (١٥ دقيقة)</h4>
+      <p>معلم يبدأ قصة بجملة. كل طالب يضيف جملة. في النهاية — قصة جماعية مجنونة.</p>
+    </div>
+    <div class="admin-card">
+      <h4>٦. الصمت (دقيقة واحدة)</h4>
+      <p>دقيقة صمت حول النار، الجميع يستمع للصوت. ثم اسأل: «ماذا سمعتم؟». لحظة هادئة تُغيّر الجو.</p>
+    </div>
+  </div>
+
+  <div class="note-box tip">
+    <strong>نصيحة:</strong> الاحتياطي الأهم هو الصمت. لا تخف من اللحظات الهادئة — أفضل الذكريات غالباً ليست في الضحك العالي، بل في النظر إلى النار في سكون.
+  </div>
+</div>
+
+<!-- ========================== D1 · الكلمة الختامية ========================== -->
+<div class="admin-sub" id="sub-d1">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١٤ · يوم الأحد قبل المغادرة</span>
+    <h2 class="admin-sub-title">الكلمة <em>الختامية</em></h2>
+  </div>
+  <p>دقيقة واحدة. ليست محاضرة، بل «عناق بالكلمات» قبل الرحيل. قلها بعد حفل الختام والجوائز، وقبل تنظيف المخيم.</p>
+
+  <h3>بنية الكلمة (دقيقة ٦٠ ثانية)</h3>
+  <ol>
+    <li><strong>الشكر (١٥ ثانية)</strong> — شكر للطلاب، للمعلمين، لبعضنا البعض.</li>
+    <li><strong>انتصارنا المشترك (٢٥ ثانية)</strong> — «نظرت إلى هذه الرحلة، ووجدت...» — اذكر لحظتين أو ثلاث حدثت وكانت مميزة. اجعلها ملموسة: «لحظة فوز فريق... ، نشيد طالب... ، ضحكة في درس الدين».</li>
+    <li><strong>التحدي للعودة (١٥ ثانية)</strong> — «عودوا للمدرسة بهذه الطاقة، وبهذا الاحترام، وبهذه الضحكة».</li>
+    <li><strong>الدعاء (٥ ثوانٍ)</strong> — «اللهم تقبّل منا، واجمعنا مرة أخرى على خير».</li>
+  </ol>
+
+  <h3>مسودة جاهزة</h3>
+  <div class="quote">
+    «يا شباب، يا شابات،<br>
+    شكراً لكم. حقاً، من القلب، شكراً.<br>
+    هذه الرحلة لم تكن «نشاطاً مدرسياً». كانت يومين أنتم فيها كنتم أنتم — صادقين، متحمسين، مضحكين، ومتعاونين.<br>
+    رأيت في هذه الساعات أشياء جعلتني فخوراً: [اذكر لحظتين حقيقيتين]. هذه أنتم.<br>
+    عودوا إلى المدرسة، إلى بيوتكم، بهذه الطاقة. لا تتركوها هنا.<br>
+    اللهم تقبّل منا، واجمعنا مرة أخرى على خير. أحبكم في الله».
+  </div>
+
+  <div class="note-box tip">
+    <strong>نبرة الكلام:</strong> بطيئة، عاطفية، بدون ارتفاع صوت. إذا دمعت عيناك، لا بأس — هذا إنساني. بعض الطلاب سيبكون — دعهم. هذه لحظة صادقة.
+  </div>
+
+  <div class="note-box">
+    <strong>بعد الكلمة:</strong> اترك صمتاً ٥ ثوانٍ، ثم قل: «هيا، ننظّف ونغادر كمحاربين». يُحبوا هذا.
+  </div>
+</div>
+
+<!-- ========================== D2 · الطوارئ ========================== -->
+<div class="admin-sub" id="sub-d2">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١٥ · اطبعها واحملها</span>
+    <h2 class="admin-sub-title">الطوارئ وخطة <em>الطقس</em></h2>
+  </div>
+  <p>هذه صفحة تُطبع وتُحفظ في حقيبة الإسعافات. لا تعتمد على الهاتف وحده — تغطية الشبكة في الغابة ليست مضمونة.</p>
+
+  <h3>أرقام الطوارئ في تركيا</h3>
+  <div class="admin-grid-3">
+    <div class="admin-card"><h4>الإسعاف / الإطفاء / الشرطة</h4><p style="font-size:32px;font-weight:700;color:var(--ember);text-align:center;margin:10px 0;">112</p><p>الرقم الموحّد — اتصل في أي طارئ.</p></div>
+    <div class="admin-card"><h4>أقرب مستشفى</h4><p style="font-size:16px;color:var(--forest);">________________________</p><p>اكتب اسم ورقم أقرب مستشفى لمنطقة İncekum قبل الرحلة.</p></div>
+    <div class="admin-card"><h4>رقم المخيم / المالك</h4><p style="font-size:16px;color:var(--forest);">________________________</p><p>رقم الاتصال بإدارة المخيم.</p></div>
+  </div>
+
+  <h3>جهات الاتصال الداخلية</h3>
+  <div class="admin-card">
+    <p>املأ هذه القائمة قبل الرحلة:</p>
+    <ul>
+      <li>قائد الرحلة: _______________ — رقم: _______________</li>
+      <li>المعلم ١: _______________ — رقم: _______________</li>
+      <li>المعلم ٢: _______________ — رقم: _______________</li>
+      <li>المعلم ٣: _______________ — رقم: _______________</li>
+      <li>المعلم ٤: _______________ — رقم: _______________</li>
+      <li>المعلم ٥: _______________ — رقم: _______________</li>
+      <li>المعلم ٦: _______________ — رقم: _______________</li>
+      <li>سائق الباص: _______________ — رقم: _______________</li>
+      <li>إدارة المدرسة: _______________ — رقم: _______________</li>
+    </ul>
+  </div>
+
+  <h3>إسعافات أولية — مرجع سريع</h3>
+
+  <h4>حرق خفيف (من النار أو ماء ساخن)</h4>
+  <ul>
+    <li>ماء بارد جارٍ فوراً، ١٥ دقيقة متواصلة.</li>
+    <li>لا تضع ثلجاً مباشرة على الحرق.</li>
+    <li>لا تفتح البثور.</li>
+    <li>غطّ بشاش نظيف بعد التبريد.</li>
+    <li>إذا كان الحرق كبيراً أو على الوجه → مستشفى فوراً.</li>
+  </ul>
+
+  <h4>جرح قطعي</h4>
+  <ul>
+    <li>اضغط بشاش نظيف لوقف النزيف.</li>
+    <li>اغسل بماء نظيف بعد توقف النزيف.</li>
+    <li>ضع مطهراً (بيتادين).</li>
+    <li>غطّ بضمادة.</li>
+    <li>نزيف لا يتوقف بعد ١٠ دقائق ضغط → مستشفى.</li>
+  </ul>
+
+  <h4>لدغة حشرة (نحل، دبور)</h4>
+  <ul>
+    <li>أزل الإبرة إن كانت ظاهرة — بحركة جانبية، لا بضغط.</li>
+    <li>ماء بارد + كمادة باردة.</li>
+    <li>مضاد هيستامين إذا توفّر.</li>
+    <li>صعوبة تنفس / تورم في الوجه = طارئ → ١١٢ فوراً.</li>
+  </ul>
+
+  <h4>ضربة شمس / إجهاد حراري</h4>
+  <ul>
+    <li>انقل إلى ظل بارد.</li>
+    <li>رطّب الجسم بماء بارد (منشفة مبللة).</li>
+    <li>اسقه ماءً ببطء.</li>
+    <li>فقدان وعي / قيء / تشنّج = طارئ → ١١٢.</li>
+  </ul>
+
+  <h4>حنين للبيت / نوبة قلق</h4>
+  <ul>
+    <li>لا تقلّل من مشاعره («هذا طبيعي»).</li>
+    <li>اجلس معه بعيداً عن الباقين.</li>
+    <li>اسأله: «أخبرني عن بيتك، ما أول شيء تشتاقه؟».</li>
+    <li>تنفّس عميق معه (٤ ثوانٍ شهيق، ٧ ثوانٍ زفير).</li>
+    <li>إذا استمر أكثر من ساعة → اتصل بالأهل. لا تعذّبه.</li>
+  </ul>
+
+  <h3>خطة الطقس — ماذا لو أمطرت؟</h3>
+  <div class="admin-card">
+    <h4>قبل الرحلة</h4>
+    <ul>
+      <li>تحقق من تطبيق الطقس قبل الخروج بيوم — إذا كان التوقع ٧٠٪+ مطر غزير، أجّل.</li>
+      <li>احمل مظلات كبيرة / قماش مشمّع (٣ أمتار × ٣) لتغطية منطقة النار.</li>
+      <li>تأكد أن الأحطاب جافة ومغلّفة.</li>
+    </ul>
+    <h4>أثناء المطر الخفيف</h4>
+    <ul>
+      <li>انقل الأنشطة تحت المظلات أو في الخيام الكبيرة.</li>
+      <li>استبدل الألعاب الخارجية بمسابقات شفهية وألغاز وأسئلة (مسابقة الباص تصلح هنا).</li>
+      <li>النار تستمر تحت قماش محمي.</li>
+    </ul>
+    <h4>أثناء مطر غزير أو عاصفة</h4>
+    <ul>
+      <li>الجميع يدخل الخيام.</li>
+      <li>لا تشعل نيراناً. لا تقف تحت أشجار.</li>
+      <li>لو استمر ٢+ ساعات → فكّر جدياً في العودة المبكرة.</li>
+      <li>اتصل بإدارة المدرسة إذا اتخذت قرار العودة.</li>
+    </ul>
+  </div>
+
+  <div class="note-box warn">
+    <strong>قاعدة ذهبية:</strong> سلامة الطلاب > البرنامج. أي قرار يحمي الأرواح = قرار صحيح. والأهل يفهمون.
+  </div>
+</div>
+
+<!-- ========================== D3 · دليل المضيف المبتدئ ========================== -->
+<div class="admin-sub" id="sub-d3">
+  <div class="admin-sub-head">
+    <span class="admin-sub-num">الفصل ١٦ · للمرة الأولى</span>
+    <h2 class="admin-sub-title">دليل المضيف <em>المبتدئ</em></h2>
+  </div>
+  <p>هذه أول رحلة تخييم تقودها. ممتاز. نصائح من «من سبقوا»، مقسّمة حسب المواقف التي ستواجهها. اقرأها قبل الرحلة مرة، ثم راجعها سريعاً ليلة الجمعة.</p>
+
+  <h3>المبادئ الخمسة</h3>
+  <ol>
+    <li><strong>ابقَ هادئاً دائماً</strong> — حتى لو احترق الطعام، الطلاب يقرؤون وجهك. خوفك يعديهم.</li>
+    <li><strong>عزّز الإيجاب علناً، صحّح الخطأ سرّاً</strong> — لا تُذِلّ طالباً أمام الآخرين.</li>
+    <li><strong>لا تفعل كل شيء بنفسك</strong> — وزّع الأدوار بين المعلمين الستة. شاركهم.</li>
+    <li><strong>انتبه للطالب الصامت</strong> — ذو الضجيج يدير نفسه. الصامت هو من يحتاجك.</li>
+    <li><strong>الخطة ليست مقدّسة</strong> — إذا كانت اللحظة مميّزة، مدّها. إذا كانت ميتة، اقفز للتالي.</li>
+  </ol>
+
+  <h3>المواقف الستة</h3>
+
+  <div class="admin-card">
+    <h4>١. طالب يشعر بالحنين ويريد العودة لبيته</h4>
+    <ul>
+      <li><strong>لا تقل</strong>: «لا تكن طفلاً» أو «رجالاً كن».</li>
+      <li><strong>قل</strong>: «هذا شعور صعب، وأفهمه. تعال نمشي قليلاً».</li>
+      <li>امشِ معه ٥ دقائق بعيداً عن المجموعة.</li>
+      <li>اسأله: «ما أول شيء تريد أن تفعله عندما تعود؟» — هذا يفرّغ المشاعر.</li>
+      <li>اجعله في نشاط يضعه مع طالب اجتماعي — الحنين يموت بالانشغال.</li>
+      <li>إذا استمر ٢+ ساعات — اتصل بالأهل. ليس فشلاً.</li>
+    </ul>
+  </div>
+
+  <div class="admin-card">
+    <h4>٢. طالبان يتخاصمان</h4>
+    <ul>
+      <li>افصلهما فوراً، دون دراما.</li>
+      <li>لا تسأل أمام الآخرين «من بدأ؟» — لن يجيب أحد بصدق.</li>
+      <li>اجلس مع كل واحد على انفراد. اسمع. لا تقاطع.</li>
+      <li>بعد سماع الطرفين، اطلب منهما الجلوس معاً واقترح حلاً.</li>
+      <li>لا تطلب اعتذاراً مزيفاً — اطلب «مصافحة لنكمل الرحلة».</li>
+      <li>راقبهما في النشاطات اللاحقة، لا تحرجهما.</li>
+    </ul>
+  </div>
+
+  <div class="admin-card">
+    <h4>٣. الطاقة تنخفض فجأة (لا أحد يضحك)</h4>
+    <ul>
+      <li>هذه إشارة: الطلاب تعبوا. لا تضغط.</li>
+      <li>استراحة ١٥ دقيقة فوراً — ماء، شاي، جلوس.</li>
+      <li>بعدها ابدأ بنشاط «جسدي خفيف» (لعبة ضحك، بالون، حتى نشيد جماعي).</li>
+      <li>لا تستخدم «درساً» لرفع الطاقة — ستتسع الهوة.</li>
+      <li>إذا كانت الطاقة منخفضة بعد وجبة = طبيعي. اترك ٢٠ دقيقة للاستراحة.</li>
+    </ul>
+  </div>
+
+  <div class="admin-card">
+    <h4>٤. طالب يرفض المشاركة في نشاط</h4>
+    <ul>
+      <li><strong>لا تجبره</strong>. الإجبار يكسره.</li>
+      <li>اسأله سرّاً: «هل في شيء مزعج؟» — أحياناً يكون خائفاً من السخرية.</li>
+      <li>عيّن له دوراً مختلفاً: «أنت حكم هذه الجولة» أو «أنت المصوّر».</li>
+      <li>إذا استمر في الرفض، اتركه يرى. غالباً سينضم في الجولة التالية.</li>
+      <li>شكراً له لاحقاً أمام الجميع، حتى لو شارك قليلاً.</li>
+    </ul>
+  </div>
+
+  <div class="admin-card">
+    <h4>٥. طالب خجول يتم تجاهله</h4>
+    <ul>
+      <li>لا تنادِه «الخجول» ولا «الهادئ» — هذه تسمية تعلق.</li>
+      <li>أعطِه دوراً صغيراً علنياً: «قل لنا تاريخ اليوم»، «اقرأ السؤال التالي».</li>
+      <li>أثناء الأنشطة، قف بجانبه. وجودك حوله يُشعره بالأمان.</li>
+      <li>اذكر اسمه ٣ مرات على الأقل في اليوم — الناس تتألّق عندما تُسمّى.</li>
+      <li>بعد الرحلة، ابحث عنه في المدرسة. استمر في الاتصال — لا تكن «معلّم رحلة».</li>
+    </ul>
+  </div>
+
+  <div class="admin-card">
+    <h4>٦. معلم زميل مُرهق أو متوتّر</h4>
+    <ul>
+      <li>لاحظ، ولا تعلّق.</li>
+      <li>تواصل معه سرّاً: «تبدو متعباً، هل كل شيء بخير؟».</li>
+      <li>استلم مكانه نشاطاً واحداً — لا تكرّر، لكن أعطِه استراحة.</li>
+      <li>لا تشتكِ منه أمام الطلاب، أبداً.</li>
+      <li>بعد الرحلة، اعترف بجهده علناً.</li>
+    </ul>
+  </div>
+
+  <h3>ماذا تفعل إذا شعرتَ أنت بالإرهاق</h3>
+  <div class="admin-card">
+    <ul>
+      <li>خذ ١٠ دقائق لوحدك. اختفِ. لا أحد يحتاجك ١٠٠٪ من الوقت.</li>
+      <li>تنفّس عميقاً. اشرب ماءً.</li>
+      <li>تذكّر: أنت لست البطل — أنت فقط المضيف. الأبطال هم الطلاب.</li>
+      <li>إذا كان شيء يضايقك، كلّم معلماً صديقاً.</li>
+      <li>ابتسم. الابتسامة تُغيّر الكيمياء — حتى لو مزيفة في البداية.</li>
+    </ul>
+  </div>
+
+  <h3>في نهاية الرحلة</h3>
+  <div class="note-box tip">
+    <strong>اكتب لنفسك:</strong> بعد الرحلة بيومين، اجلس وأكتب: ٣ أشياء نجحت، ٣ أشياء نفعلها بشكل مختلف في المرة القادمة. هذا دفترك الشخصي — سيجعل الرحلة الثانية أفضل من هذه مرتين.
+  </div>
+
+  <div class="quote">
+    «يا أيها المضيف، أنت تذهب لأيام لن يتذكرها الطلاب بالتفاصيل، بل بالإحساس. حاول أن يشعروا بالأمان، والانتماء، والاحترام. كل ما سوى ذلك سيأتي تلقائياً».
+  </div>
+</div>
+
+    </div><!-- end admin-content -->
+  </div><!-- end admin-body -->
+</section>
+
 </main>
+
+<!-- ========== GATE MODAL ========== -->
+<div class="gate-overlay" id="gate-overlay" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-modal" id="gate-modal">
+    <button class="gate-close" onclick="closeGate()" aria-label="إغلاق">✕</button>
+    <div class="gate-label">Host Access · وصول المضيف</div>
+    <h3 class="gate-title" id="gate-title">دليل المضيف</h3>
+    <p class="gate-sub">هذا الدليل للمضيف فقط. أدخل رمز الوصول للمتابعة.</p>
+    <form onsubmit="return tryUnlock(event)">
+      <input type="password" class="gate-input" id="gate-input" placeholder="• • • • • • • •" autocomplete="off" dir="ltr" />
+      <div class="gate-error" id="gate-error"></div>
+      <button type="submit" class="gate-submit">فتح الدليل</button>
+    </form>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="footer-mark">High School Team</div>
   <div class="footer-sub">Camping Chronicle · Vol. 01 · Spring 2026</div>
+  <button class="footer-lock" onclick="openGate()" aria-label="Host access" title="Host access">🔒</button>
 </footer>
 
 </div>
 
 <script>
+  /* ==================== TAB SWITCHING ==================== */
+  var ALL_TABS = ['ov','sc','ac','pk','bq','ru','admin'];
+
   function show(id, btn) {
-    ['ov','sc','ac','pk','ru'].forEach(function(t) {
+    ALL_TABS.forEach(function(t) {
       var el = document.getElementById('s-' + t);
       if (el) el.style.display = 'none';
     });
@@ -1781,12 +3735,11 @@
     window.scrollTo({ top: document.querySelector('.nav-wrap').offsetTop - 1, behavior: 'smooth' });
   }
 
-  // Checklist toggle — persists in localStorage
+  /* ==================== CHECKLIST BOXES ==================== */
   function storageKey(el) {
-    var parent = el.closest('.pack-item');
+    var parent = el.closest('.pack-item') || el.closest('.admin-check-item');
     return parent ? 'pack:' + (parent.textContent.trim()) : null;
   }
-
   function applyChecked(box) {
     box.style.background = 'var(--forest)';
     box.style.borderColor = 'var(--forest)';
@@ -1799,7 +3752,6 @@
     box.innerHTML = '';
     box.dataset.checked = '';
   }
-
   document.addEventListener('click', function(e) {
     if (e.target.classList && e.target.classList.contains('box')) {
       var key = storageKey(e.target);
@@ -1813,16 +3765,538 @@
     }
   });
 
+  /* ==================== HOST GATE (admin password) ==================== */
+  // SHA-256 hash of default password "camp2026".
+  // To change password: in browser console run:
+  //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_PWD')).then(b => console.log(Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')))
+  // Then replace this string with the output.
+  var ADMIN_HASH = 'dfdbdf4b8c0405370c4dfa25c34e1e63dbe83b693d0fb04b8bf85f2213605bbc';
+
+  function openGate() {
+    document.getElementById('gate-overlay').classList.add('on');
+    document.getElementById('gate-error').textContent = '';
+    setTimeout(function() { document.getElementById('gate-input').focus(); }, 100);
+  }
+  function closeGate() {
+    document.getElementById('gate-overlay').classList.remove('on');
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-error').textContent = '';
+  }
+  async function sha256Hex(str) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+  async function tryUnlock(e) {
+    e.preventDefault();
+    var input = document.getElementById('gate-input');
+    var err = document.getElementById('gate-error');
+    var modal = document.getElementById('gate-modal');
+    var val = input.value;
+    if (!val) { err.textContent = 'الرجاء إدخال رمز الوصول'; return false; }
+    try {
+      var h = await sha256Hex(val);
+      if (h === ADMIN_HASH) {
+        sessionStorage.setItem('host:unlocked', '1');
+        revealAdminTab();
+        closeGate();
+        var btn = document.getElementById('admin-tab-btn');
+        if (btn) show('admin', btn);
+      } else {
+        err.textContent = 'رمز الوصول غير صحيح';
+        modal.classList.remove('shake');
+        void modal.offsetWidth;
+        modal.classList.add('shake');
+        input.value = '';
+      }
+    } catch (ex) {
+      err.textContent = 'خطأ في التحقق — حدّث الصفحة وحاول مجدداً';
+    }
+    return false;
+  }
+  function revealAdminTab() {
+    var btn = document.getElementById('admin-tab-btn');
+    if (btn) btn.style.display = 'inline-flex';
+  }
+  function lockAdmin() {
+    sessionStorage.removeItem('host:unlocked');
+    var btn = document.getElementById('admin-tab-btn');
+    if (btn) btn.style.display = 'none';
+    var adminSection = document.getElementById('s-admin');
+    if (adminSection && adminSection.style.display !== 'none') {
+      var ovBtn = document.querySelector('.tab[onclick*="\'ov\'"]');
+      show('ov', ovBtn);
+    }
+  }
+
+  /* ==================== ADMIN SUB-NAV ==================== */
+  document.addEventListener('click', function(e) {
+    var item = e.target.closest('.admin-nav-item');
+    if (!item) return;
+    var sub = item.dataset.sub;
+    if (!sub) return;
+    document.querySelectorAll('.admin-nav-item').forEach(function(x) { x.classList.remove('on'); });
+    item.classList.add('on');
+    document.querySelectorAll('.admin-sub').forEach(function(x) { x.classList.remove('on'); });
+    var target = document.getElementById('sub-' + sub);
+    if (target) target.classList.add('on');
+    var content = document.getElementById('admin-content');
+    if (content && window.innerWidth < 900) {
+      content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  /* ==================== BUS QUIZ — DATA ==================== */
+  var QUIZ_DATA = null;
+  var QUIZ_STATE = {
+    currentQuestion: null,
+    filter: sessionStorage.getItem('bq:filter') || '',
+    lang: localStorage.getItem('bq:lang') || 'ar',
+    showAnswer: false
+  };
+
+  async function loadQuiz() {
+    try {
+      var res = await fetch('questions.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      QUIZ_DATA = await res.json();
+      renderPublicCategories();
+      renderQuizTool();
+    } catch (err) {
+      console.error('Failed to load questions.json:', err);
+      var grid = document.getElementById('bq-cat-grid');
+      if (grid) grid.innerHTML = '<div class="cat-error">تعذّر تحميل ملف الأسئلة · Could not load questions.json. تأكد أن الملف موجود بجوار الصفحة.</div>';
+      var total = document.getElementById('bq-total-count');
+      if (total) total.textContent = 'ERROR';
+    }
+  }
+
+  /* ---- Public category grid ---- */
+  function renderPublicCategories() {
+    var grid = document.getElementById('bq-cat-grid');
+    if (!grid || !QUIZ_DATA) return;
+    var totalQ = 0;
+    grid.innerHTML = '';
+    QUIZ_DATA.categories.forEach(function(cat) {
+      totalQ += cat.questions.length;
+      var card = document.createElement('div');
+      card.className = 'cat-card';
+      card.style.setProperty('--cat-color', cat.color || '#2a4a1f');
+      card.innerHTML =
+        '<div class="cat-icon">' + cat.icon + '</div>' +
+        '<div class="cat-name">' + cat.name_ar + '</div>' +
+        '<div class="cat-name-en">' + cat.name_en + '</div>' +
+        '<div class="cat-desc">' + (cat.description_ar || '') + '</div>' +
+        '<div class="cat-count"><strong>' + cat.questions.length + '</strong> سؤال · questions</div>';
+      grid.appendChild(card);
+    });
+    var totalEl = document.getElementById('bq-total-count');
+    if (totalEl) totalEl.textContent = QUIZ_DATA.categories.length + ' فئات · ' + totalQ + ' سؤال';
+  }
+
+  /* ---- Bus Quiz control tool ---- */
+  function isUsed(qid) { return localStorage.getItem('bq:used:' + qid) === '0'; }
+  function setUsed(qid, v) {
+    if (v) localStorage.setItem('bq:used:' + qid, '1');
+    else localStorage.removeItem('bq:used:' + qid);
+  }
+  function allQuestions(filterId) {
+    if (!QUIZ_DATA) return [];
+    var pool = [];
+    QUIZ_DATA.categories.forEach(function(cat) {
+      if (filterId && cat.id !== filterId) return;
+      cat.questions.forEach(function(q) { pool.push({ q: q, cat: cat }); });
+    });
+    return pool;
+  }
+  function unusedQuestions(filterId) {
+    return allQuestions(filterId).filter(function(x) { return !isUsed(x.q.id); });
+  }
+
+  function renderQuizTool() {
+    renderQuizTopbar();
+    renderQuizCatStrip();
+  }
+
+  function renderQuizTopbar() {
+    if (!QUIZ_DATA) return;
+    var total = allQuestions('').length;
+    var used = 0;
+    allQuestions('').forEach(function(x) { if (isUsed(x.q.id)) used++; });
+    var label = document.getElementById('bq-progress-label');
+    var fill = document.getElementById('bq-progress-fill');
+    if (label) label.textContent = 'تم استخدام: ' + used + ' / ' + total;
+    if (fill) fill.style.width = (total ? (used / total * 100) : 0) + '%';
+
+    var sel = document.getElementById('bq-filter');
+    if (sel && sel.options.length <= 1) {
+      QUIZ_DATA.categories.forEach(function(cat) {
+        var opt = document.createElement('option');
+        opt.value = cat.id;
+        opt.textContent = cat.icon + ' ' + cat.name_ar;
+        sel.appendChild(opt);
+      });
+    }
+    if (sel) sel.value = QUIZ_STATE.filter;
+
+    var langAr = document.getElementById('bq-lang-ar');
+    var langEn = document.getElementById('bq-lang-en');
+    if (langAr && langEn) {
+      langAr.classList.toggle('on', QUIZ_STATE.lang === 'ar');
+      langEn.classList.toggle('on', QUIZ_STATE.lang === 'en');
+    }
+  }
+
+  function renderQuizCatStrip() {
+    if (!QUIZ_DATA) return;
+    var strip = document.getElementById('bq-cat-strip');
+    if (!strip) return;
+    strip.innerHTML = '';
+    var allPill = document.createElement('button');
+    allPill.className = 'bq-cat-pill' + (QUIZ_STATE.filter === '' ? ' on' : '');
+    allPill.onclick = function() { setBqFilter(''); };
+    var allTotal = allQuestions('').length;
+    var allUsed = allQuestions('').filter(function(x) { return isUsed(x.q.id); }).length;
+    allPill.innerHTML =
+      '<div class="bq-cat-pill-name">🎲 كل الفئات</div>' +
+      '<div class="bq-cat-pill-bar"><div class="bq-cat-pill-fill" style="width:' + (allTotal ? (allUsed / allTotal * 100) : 0) + '%"></div></div>' +
+      '<div class="bq-cat-pill-count">' + allUsed + ' / ' + allTotal + '</div>';
+    strip.appendChild(allPill);
+
+    QUIZ_DATA.categories.forEach(function(cat) {
+      var pool = cat.questions;
+      var used = pool.filter(function(q) { return isUsed(q.id); }).length;
+      var pill = document.createElement('button');
+      pill.className = 'bq-cat-pill' + (QUIZ_STATE.filter === cat.id ? ' on' : '');
+      pill.style.setProperty('--cat-color', cat.color || '#c85a24');
+      pill.onclick = function() { setBqFilter(cat.id); };
+      pill.innerHTML =
+        '<div class="bq-cat-pill-name">' + cat.icon + ' ' + cat.name_ar + '</div>' +
+        '<div class="bq-cat-pill-bar"><div class="bq-cat-pill-fill" style="width:' + (pool.length ? (used / pool.length * 100) : 0) + '%"></div></div>' +
+        '<div class="bq-cat-pill-count">' + used + ' / ' + pool.length + '</div>';
+      strip.appendChild(pill);
+    });
+  }
+
+  function setBqLang(lang) {
+    QUIZ_STATE.lang = lang;
+    localStorage.setItem('bq:lang', lang);
+    renderQuizTopbar();
+    if (QUIZ_STATE.currentQuestion) paintCurrentQuestion();
+  }
+  function setBqFilter(id) {
+    QUIZ_STATE.filter = id;
+    sessionStorage.setItem('bq:filter', id);
+    renderQuizTopbar();
+    renderQuizCatStrip();
+  }
+
+  function bqDraw() {
+    if (!QUIZ_DATA) return;
+    var pool = unusedQuestions(QUIZ_STATE.filter);
+    if (pool.length === 0) {
+      paintEmpty(QUIZ_STATE.filter
+        ? 'استُخدمت جميع أسئلة هذه الفئة. 🎉 اضغط «إعادة الفئة» لإعادة الاستخدام.'
+        : 'مبروك! استُخدمت كل الأسئلة. 🏆 اضغط «إعادة الكل» لبدء جولة جديدة.');
+      return;
+    }
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    QUIZ_STATE.currentQuestion = pick;
+    QUIZ_STATE.showAnswer = false;
+    paintCurrentQuestion();
+  }
+  function bqRedraw() { paintCurrentQuestion(); }
+
+  function paintEmpty(msg) {
+    var slot = document.getElementById('bq-card-slot');
+    if (!slot) return;
+    slot.innerHTML =
+      '<div class="bq-card empty">' +
+      '<div class="bq-empty-icon">🎯</div>' +
+      '<div class="bq-empty-text">' + msg + '</div>' +
+      '</div>';
+  }
+
+  function paintCurrentQuestion() {
+    var slot = document.getElementById('bq-card-slot');
+    if (!slot || !QUIZ_STATE.currentQuestion) return;
+    var pick = QUIZ_STATE.currentQuestion;
+    var q = pick.q;
+    var cat = pick.cat;
+    var isAr = QUIZ_STATE.lang === 'ar';
+    var qText = isAr ? q.q_ar : q.q_en;
+    var aText = isAr ? q.a_ar : q.a_en;
+    var catName = isAr ? cat.name_ar : cat.name_en;
+    var used = isUsed(q.id);
+    var diff = q.difficulty || 1;
+    var dots = '';
+    for (var i = 1; i <= 3; i++) dots += '<div class="bq-diff-dot' + (i <= diff ? ' on' : '') + '"></div>';
+
+    slot.innerHTML =
+      '<div class="bq-card" style="--cat-color:' + (cat.color || '#2a4a1f') + '">' +
+        '<div class="bq-card-top">' +
+          '<div class="bq-cat-badge">' + cat.icon + ' ' + catName + '</div>' +
+          '<div class="bq-difficulty" title="مستوى الصعوبة">' + dots + '</div>' +
+        '</div>' +
+        '<div class="bq-q-text" ' + (isAr ? 'dir="rtl"' : 'dir="ltr"') + ' lang="' + (isAr ? 'ar' : 'en') + '">' + qText + '</div>' +
+        '<button class="bq-answer-toggle" onclick="toggleAnswer()">' + (QUIZ_STATE.showAnswer ? '🙈 إخفاء الإجابة' : '👁️ إظهار الإجابة') + '</button>' +
+        '<div class="bq-answer' + (QUIZ_STATE.showAnswer ? ' on' : '') + '" ' + (isAr ? 'dir="rtl"' : 'dir="ltr"') + '>' + aText + '</div>' +
+        '<div class="bq-used-row">' +
+          '<div class="bq-used-check' + (used ? ' on' : '') + '" onclick="toggleUsed()">' + (used ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="16" height="16"><path d="M3 7.5 L6 10.5 L11 4" stroke="#fdfaf3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '') + '</div>' +
+          '<label onclick="toggleUsed()">' + (used ? '✓ تم استخدام هذا السؤال' : 'وضع علامة: مُستخدم') + '</label>' +
+        '</div>' +
+      '</div>';
+  }
+  function toggleAnswer() {
+    QUIZ_STATE.showAnswer = !QUIZ_STATE.showAnswer;
+    paintCurrentQuestion();
+  }
+  function toggleUsed() {
+    if (!QUIZ_STATE.currentQuestion) return;
+    var qid = QUIZ_STATE.currentQuestion.q.id;
+    setUsed(qid, !isUsed(qid));
+    paintCurrentQuestion();
+    renderQuizTopbar();
+    renderQuizCatStrip();
+  }
+
+  function bqResetCategory() {
+    if (!QUIZ_DATA) return;
+    if (!QUIZ_STATE.filter) { alert('اختر فئة أولاً من القائمة العلوية أو من شريط الفئات في الأسفل.'); return; }
+    var cat = QUIZ_DATA.categories.find(function(c){ return c.id === QUIZ_STATE.filter; });
+    if (!confirm('إعادة ضبط فئة «' + (cat ? cat.name_ar : '') + '»؟ سيُلغى وضع «مستخدم» عن جميع أسئلتها.')) return;
+    allQuestions(QUIZ_STATE.filter).forEach(function(x) { setUsed(x.q.id, false); });
+    renderQuizTopbar();
+    renderQuizCatStrip();
+  }
+  function bqResetAll() {
+    if (!confirm('إعادة ضبط كل الأسئلة؟ سيُعاد استخدام جميع الأسئلة من الصفر.')) return;
+    allQuestions('').forEach(function(x) { setUsed(x.q.id, false); });
+    renderQuizTopbar();
+    renderQuizCatStrip();
+  }
+
+  /* ==================== POETRY CHEAT SHEET ==================== */
+  var POETRY_LETTERS = ['ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
+
+  var POETRY_VERSES = {
+    'ا': [
+      { line: 'إذا الشعبُ يوماً أرادَ الحياةَ / فلا بُدَّ أن يستجيبَ القَدَر', author: 'أبو القاسم الشابي' },
+      { line: 'أَعَزُّ مكانٍ في الدُّنى سَرْجُ سابِحٍ / وخَيْرُ جَليسٍ في الزمانِ كتابُ', author: 'المتنبي' },
+      { line: 'إذا كانت النفوسُ كِباراً / تَعِبَتْ في مرادِها الأجسامُ', author: 'المتنبي' }
+    ],
+    'ب': [
+      { line: 'بِكُلِّ بِلادٍ قد نَزَلْتُ بِها حَيٌّ / وَلَكِنَّ أَرْضَ اللهِ واسِعَةُ الرَّحْبِ', author: 'ابن زيدون' },
+      { line: 'بِحُسْنِ الصَّبْرِ تُسْتَجلى المعالي / وَبِالصَّدْرِ الرَّحيبِ تُنالُ خَيْرُ', author: '' },
+      { line: 'بِلادي وَإِن جارَت عَلَيَّ عَزيزَةٌ / وَأَهلي وَإِن ضَنّوا عَلَيَّ كِرامُ', author: 'الرصافي' }
+    ],
+    'ت': [
+      { line: 'تَعِبَتْ في مُرادِها الأجسامُ / وَتَلَذَّذْ بالصَّبْرِ في الأمرِ العامِ', author: '' },
+      { line: 'تَقولُ ابنَتي حينَ جَدَّ الرَّحيلُ / أفِقْ بالكرى يا أبي تَرْتَحِلْ', author: 'أحمد شوقي' },
+      { line: 'تَمَنَّيتُ أَن تَحْبَبْنَني فَرَأَيتُني / وَقَد هِمْتُ حتى كِدْتُ أَعنو وَأَخْضَعُ', author: 'جميل بثينة' }
+    ],
+    'ث': [
+      { line: 'ثَقافةُ الإنسانِ عُنوانُ عِزِّهِ / وَخَيرُ حَياةٍ بِالثقافاتِ تُعْمَرُ', author: '' },
+      { line: 'ثَلاثٌ مَنَحَتْني الدهرَ طوعاً / شبابي ثم علمي ثم صبري', author: '' },
+      { line: 'ثوبُ الرِّياءِ يَشِفُّ عَمَّا تَحتَهُ / فإذا التَحَفتَ بِه فَإِنَّكَ عارٍ', author: 'ابن الوردي' }
+    ],
+    'ج': [
+      { line: 'جَرَت سُنَّةُ الأيامِ أَنَّ تَعاقُباً / يُؤتِي الدَهرُ منه ما يَشاءُ ويَذْهَبُ', author: '' },
+      { line: 'جَزى اللهُ الشدائدَ كلَّ خيرٍ / وإن كانت تُغَصِّصُني بريقي', author: 'ابن الرومي' },
+      { line: 'جوعُ المروءَةِ خَيرٌ مِن تُخَمَتِها / وَالعِزُّ في هِمَمٍ لا في المَناصِبِ', author: '' }
+    ],
+    'ح': [
+      { line: 'حَسْبُ النُّفوسِ إذا ارتَوَتْ بِمحَبَّةٍ / أَلَّا تَضيقَ بِدُنيا ضاقَ أَفقُها', author: '' },
+      { line: 'حَيَّ على الفَلاحِ فَإِنَّ عِزاً / بِأَعناقِ الرِّجالِ لَهُ ثَمارُ', author: '' },
+      { line: 'حَنَنْتُ إلى أَرْضٍ بِها نَشَأَت يَدي / وَأَوَّلُ أَرضٍ مَسَّ جِلدي تُرابُها', author: '' }
+    ],
+    'خ': [
+      { line: 'خُلِقَ الإنسانُ ضَعيفاً فَإِذا / قاوَمَ الصَّعْبَ عَلا في الهِمَمِ', author: '' },
+      { line: 'خَليليَّ لا وَاللهِ ما لي بِما جَرى / يَدٌ وَلا هَوىً مِن فَوقِهِ مُتَرَقِّبُ', author: '' },
+      { line: 'خِلِّي الكَريمُ شَريكي في مُطَعَّمَتي / وَفي السَّرَّاءِ وَالضَرَّاءِ إِنصافاً', author: '' }
+    ],
+    'د': [
+      { line: 'دَعِ الأَيَامَ تَفْعَلُ ما تَشاءُ / وَطِبْ نَفْساً إِذا حَكَمَ القَضاءُ', author: 'الإمام الشافعي' },
+      { line: 'دُموعُ الأَعاجِمِ ما فَضَحَتْ / حُرَقاً مِثلَ دَمْعِ الفَتى العَرَبي', author: '' },
+      { line: 'دُنيا تَبَدَّلُ في يومٍ ثَلاثَ مَرَّاتٍ / فَسُبحانَ الَّذي خَلَقَ الزَّمَنَ', author: '' }
+    ],
+    'ذ': [
+      { line: 'ذَرِ الكَسَلَ فَإِنَّ المَجدَ يَنْفُرُهُ / فَالعِزُّ للحُرِّ في الأعمالِ لا العُقَدِ', author: '' },
+      { line: 'ذَهَبتُ بِها مَذاهِبَ في الهَوى / فَإِن عادَ يوماً رَدَّني الشَّوقُ', author: '' },
+      { line: 'ذَكَرْتُكِ وَالخَطَوطُ بَيْنَنا / وَأَذْكَرَتْني سُحُباً بَعيدَةً', author: '' }
+    ],
+    'ر': [
+      { line: 'رَضيتُ بِما قَسَمَ اللهُ لي / وَفَوَّضْتُ أَمري إِلى خالِقي', author: 'الشافعي' },
+      { line: 'رُبَّ صَمْتٍ أَبلغُ مِن كَلامٍ / وَجُمودُ العَينِ شَهيدُ الوُجدانِ', author: '' },
+      { line: 'رَأَيتُ العَقْلَ عَقْلَينِ / فَمَطبوعٌ وَمَسموعُ', author: '' }
+    ],
+    'ز': [
+      { line: 'زَمانُكَ هذا فَاغتَنِمهُ فَإِنَّما / يَدورُ كَما دارَت عَلى القَومِ قَبلَكا', author: '' },
+      { line: 'زَرْعُ الشَّبابِ إذا فَنِي / أَوْرَقَ بِالحِكمَةِ في زَمَنِ المَشيبِ', author: '' },
+      { line: 'زادَ الهَوى جُرْأَةً في القَلْبِ بَلْ / جُنُوناً لَوْ يَدري الفُؤادُ بِما يَلقى', author: '' }
+    ],
+    'س': [
+      { line: 'سَأَلْتُ اللَيلَ هَل في اللَيلِ أُنسٌ / فَقالَ اللَيلُ لي قُل لِلنُّجومِ', author: '' },
+      { line: 'سَلا قَلْبي غَدَاةَ سَلا وَثابا / لَيَحْسِبُني وَجَدْتُ السَّلُوَّ عابا', author: '' },
+      { line: 'سَفينَةُ العُمرِ تَمضي وَالرِّياحُ لَها / أَمرانِ إمّا قُوًى أو مَوْجٌ يَغَلَبُ', author: '' }
+    ],
+    'ش': [
+      { line: 'شَكا إِلَيَّ جَمَلي طولَ السُّرى / صَبراً جَميلاً فَكِلانا مُبتَلى', author: '' },
+      { line: 'شَبابُكَ فَرْصَةٌ لَو كُنتَ تَعرِفُ / فَإِن لَم تَعرِف الفَرصَةَ ضاعَ ما تَهوى', author: '' },
+      { line: 'شُقَّ عَلَى نَفسِكَ في طَلَبِ الهُدى / ودعِ الكَسولَ يَسيرُ في دَرْبِ الهَوى', author: '' }
+    ],
+    'ص': [
+      { line: 'صَبَرْتُ عَلى بَعضِ الأَذى خَوْفَ كُلِّهِ / فَدافَعَ بَعضي يَوماً كُلَّ الأذى', author: '' },
+      { line: 'صَديقُكَ مَن صَدَقَكَ لا مَن صَدَّقَكَ / وَأَخوكَ مَن واساكَ لا مَن عاداكَ', author: '' },
+      { line: 'صَفْوُ الزَّمانِ قَليلٌ في حَوائِجِهِ / فَخُذْ مِنَ الوقتِ ما صَفا وَلا تَصِفِ', author: '' }
+    ],
+    'ض': [
+      { line: 'ضَعِ الرَّجاءَ بِمَن لا يُدرَكُ الهَمُّ إِلا / بِعَظيمِ العَطاءِ يَفيضُ وَيَتَّسِعُ', author: '' },
+      { line: 'ضِياءُ العِلمِ في قَلبِ الفَتى وَمَضَ / فَنَجا بِهِ مِن ظُلمَةِ الدَّهرِ المُقَرَّبِ', author: '' },
+      { line: 'ضَحِكَ الزَّهرُ فَأَغرى بُلبُلاً / وَبَكى الطَّلُّ عَلى الغُصنِ اسْتُها', author: '' }
+    ],
+    'ط': [
+      { line: 'طالِبُ العِلمِ لا يُضاهيهِ في الدُّنيا مَكانٌ / فَلَهُ في كُلِّ أَرضٍ يَهتَدي بِهِ حُضورُ', author: '' },
+      { line: 'طَوى البُعدُ عَنّي أَهلَ وُدّي وَلَم يَطْوِ / حَنيني إلى إخوانِ صِدقٍ وَلا شَغْفي', author: '' },
+      { line: 'طَريقُ العِزِّ مَفروشٌ بِالأشواكِ دائِماً / فَمَن هابَ السَّفَرَ لَن يَصِلَ الثِّمارَ', author: '' }
+    ],
+    'ظ': [
+      { line: 'ظَلَّ الحُنُوُّ عَلى قَلْبي كَسَاعاتِ الطُّهرِ / يُنَقّي الرُّوحَ مِن وَعثاءِ الدَهرِ', author: '' },
+      { line: 'ظُلمُ ذَوي القُربى أَشَدُّ مَضاضَةً / عَلى المَرءِ مِن وَقْعِ الحُسامِ المُهَنَّدِ', author: 'طرفة بن العبد' },
+      { line: 'ظَفَرَ القَوِيُّ بِدَعوَةِ المَظلومِ لَو / أَنَّ القَوِيَّ يَظنُّ أنَّ الفَقرَ يَدوم', author: '' }
+    ],
+    'ع': [
+      { line: 'عَلى قَدْرِ أَهْلِ العَزْمِ تَأْتي العَزائِمُ / وَتَأْتي عَلى قَدْرِ الكِرامِ المَكارِمُ', author: 'المتنبي' },
+      { line: 'عِدَةُ الحُرِّ مِثلُ دَينٍ عَلَيْهِ / لا يُؤَخِّرُها وَلا هُوَ يُخلِفُها', author: '' },
+      { line: 'عِلْمُ المَنْطِقِ وَالكَلامِ كِلاهُما / دونَ العَمَلِ الصَّالِحِ مُزْجَرا', author: '' }
+    ],
+    'غ': [
+      { line: 'غَيرُ مُجْدٍ في مِلَّتي واعتِقادي / نَوْحُ باكٍ وَلا تَرَنُّمُ شادِ', author: 'المعري' },
+      { line: 'غَريبٌ في زَمانٍ غَيرِ زَمانٍ / وَدارُ العِزِّ لا تُبقي لِمَجيدِ', author: '' },
+      { line: 'غَيْثٌ إذا جادَ الزَّمانُ بِخَيرِهِ / جَرَّ العَطاءَ بِزَوبَعِ الإحسانِ', author: '' }
+    ],
+    'ف': [
+      { line: 'فَإِن تَفُق الأَنامَ وَأَنتَ منهم / فَإِنَّ المِسْكَ بَعضُ دَمِ الغَزالِ', author: 'المتنبي' },
+      { line: 'فَإِذا رَأَيتَ الليلَ يُغلِقُ بابَهُ / فَاطْرُقْ بِفَجرِكَ بابَ قَلبِكَ مُؤْمِنا', author: '' },
+      { line: 'فَلا نُؤَذِّنُ إلا حَيثُ نَتَّقي / وَلا نُصَلِّي إلا بَعدَ تَطهيرِ', author: '' }
+    ],
+    'ق': [
+      { line: 'قِفْ دونَ رَأيِكَ في الحَياةِ مُجاهِداً / إنَّ الحَياةَ عَقيدَةٌ وَجِهادُ', author: 'أحمد شوقي' },
+      { line: 'قَدْ يَبلُغُ الجَزْلَ الحَكيمَ نَصيبُهُ / وَيُحْرَمُ المَسْعى الذَّكيُّ العَزيمَ', author: '' },
+      { line: 'قَدْ تَخْرُجُ الحاجاتُ يا أُمَّ مالِكٍ / نَجيِّاتِ قَلبٍ ما يَكادُ يَذُلُّ', author: '' }
+    ],
+    'ك': [
+      { line: 'كُنْ كَالنَخِيلِ عَنِ الأَحقادِ مُرتَفِعاً / بِالحِجارَةِ تُرْمَى فَتُلْقِي أَطْيَبَ الثَّمَرِ', author: 'إيليا أبو ماضي' },
+      { line: 'كَمْ مِن أَخٍ لَكَ لَم تَلِدْهُ أُمُّكَ / وَلَكِنَّهُ في يَوْمِ الشِّدَّةِ إخوَةُ', author: '' },
+      { line: 'كَفى بِكَ داءً أَنْ تَرى المَوْتَ شافِياً / وَحَسْبُ المَنايا أَنْ يَكُنَّ أَماني', author: 'المتنبي' }
+    ],
+    'ل': [
+      { line: 'لِكُلِّ شَيءٍ إذا ما تَمَّ نُقصانُ / فَلا يُغَرَّ بِطيبِ العَيشِ إِنْسانُ', author: 'أبو البقاء الرندي' },
+      { line: 'لَولا المَشَقَّةُ سادَ النَّاسُ كُلُّهُم / الجُودُ يُفقِرُ وَالإِقدامُ قَتَّالُ', author: 'المتنبي' },
+      { line: 'لا تَقُلْ أَصلي وَفَصلي أَبَداً / إِنَّما أَصلُ الفَتى ما قَد حَصَلْ', author: '' }
+    ],
+    'م': [
+      { line: 'ما كُلُّ ما يَتَمَنَّى المَرْءُ يُدْرِكُهُ / تَجري الرِّياحُ بِما لا تَشتَهي السُّفُنُ', author: 'المتنبي' },
+      { line: 'ما أَطْيَبَ العَيْشَ لَوْلا أَنَّ بُغْيَتَهُ / بِغَفْلَةٍ عَنْ مَحَلِّ الرَّبِّ تَحْتَجِبُ', author: '' },
+      { line: 'مَنْ راقَبَ النّاسَ ماتَ غَمّاً / وفازَ باللَّذَّةِ الجَسورُ', author: 'الإمام الشافعي' }
+    ],
+    'ن': [
+      { line: 'نَحْنُ أَخْرَجْنا الفَضيلَةَ مِن رِمالِ الصَّحراءِ / وَجَرَّ اللَّيلُ فِكْرَتَنا إلى صُبْحٍ جَديدِ', author: '' },
+      { line: 'نَفْعُ المُعَلِّمِ يَبْقى بَعدَهُ أَبَداً / وَمَن عَلَّمَ العِلْمَ ما ماتَ إلى الأَبَدِ', author: '' },
+      { line: 'نَزَلَ الشَّبابُ بِي مِن أَعْلى الرُّتَبِ / لا تُرْجِعَنَّ مَحَلاً قَدْ رَضِيتَ بِهِ', author: '' }
+    ],
+    'ه': [
+      { line: 'هَوِّنْ عَلَيكَ فَكُلُّ الأَمْرِ يَنْقَطِعُ / وَخَلِّ ما كَدَّرَ الأيَّامَ تَتَّضِعُ', author: '' },
+      { line: 'هَلْ رَمِمَ الدَّهْرُ ما أَبْلى يَدُ الهَرَمِ / أَمْ رَدَّ ما ذَهَبَتْ بِهِ يَدُ القَدَمِ', author: 'أبو تمّام' },
+      { line: 'هَذا الَّذي تَعرِفُ البَطْحاءُ وَطْأَتَهُ / وَالبَيتُ يَعرِفُهُ وَالحِلُّ وَالحَرَمُ', author: 'الفرزدق' }
+    ],
+    'و': [
+      { line: 'وَإِذا كانَتِ النُّفوسُ كِباراً / تَعِبَتْ في مُرادِها الأجسامُ', author: 'المتنبي' },
+      { line: 'وَما نَيْلُ المَطالِبِ بِالتَّمَنّي / وَلَكِنْ تُؤْخَذُ الدُّنْيا غِلابا', author: 'أحمد شوقي' },
+      { line: 'وَما الحُبُّ إِلَّا لِلحَبيبِ الأَوَّلِ', author: 'أبو تمّام' }
+    ],
+    'ي': [
+      { line: 'يا دارَ عَبْلَةَ بِالجَواءِ تَكَلَّمي / وَعِمي صَباحاً دارَ عَبلةَ واسْلَمي', author: 'عنترة' },
+      { line: 'يا أَيُّها الرَجُلُ المُعَلِّمُ غَيْرَهُ / هَلَّا لِنَفسِكَ كانَ ذا التَعليمُ', author: 'أبو الأسود الدؤلي' },
+      { line: 'يَسرٌ إذا ما العُسْرُ يَوْماً زارَنا / وَمُنىً إذا ما الهَمُّ ثار بنا', author: '' }
+    ]
+  };
+
+  function initPoetry() {
+    var letterGrid = document.getElementById('poetry-letters');
+    if (!letterGrid) return;
+    POETRY_LETTERS.forEach(function(L) {
+      var btn = document.createElement('button');
+      btn.className = 'letter-chip';
+      btn.textContent = L;
+      btn.dataset.letter = L;
+      btn.onclick = function() { selectPoetryLetter(L, btn); };
+      letterGrid.appendChild(btn);
+    });
+    var allBtn = letterGrid.querySelector('.letter-chip.all');
+    if (allBtn) allBtn.onclick = function() { selectPoetryLetter('', allBtn); };
+    renderPoetryVerses('');
+  }
+  function selectPoetryLetter(L, btn) {
+    document.querySelectorAll('.letter-chip').forEach(function(c) { c.classList.remove('on'); });
+    if (btn) btn.classList.add('on');
+    renderPoetryVerses(L);
+  }
+  function renderPoetryVerses(L) {
+    var container = document.getElementById('poetry-verses');
+    if (!container) return;
+    container.innerHTML = '';
+    var letters = L ? [L] : POETRY_LETTERS;
+    letters.forEach(function(letter) {
+      var verses = POETRY_VERSES[letter] || [];
+      verses.forEach(function(v) {
+        var el = document.createElement('div');
+        el.className = 'verse';
+        var line = v.line.replace(' / ', '<span class="hemi">/</span>');
+        el.innerHTML = '<div>' + line + '</div>' +
+          (v.author ? '<div class="verse-meta">— ' + v.author + '</div>' : '');
+        container.appendChild(el);
+      });
+    });
+    if (container.children.length === 0) {
+      container.innerHTML = '<div class="note-box">لا توجد أبيات محفوظة لهذا الحرف بعد.</div>';
+    }
+  }
+
+  /* ==================== INIT ==================== */
   document.addEventListener('DOMContentLoaded', function() {
-    ['sc','ac','pk','ru'].forEach(function(t) {
+    ['sc','ac','pk','bq','ru','admin'].forEach(function(t) {
       var el = document.getElementById('s-' + t);
       if (el) el.style.display = 'none';
     });
-    // Restore checked boxes
     document.querySelectorAll('.box').forEach(function(box) {
       var key = storageKey(box);
       if (key && localStorage.getItem(key) === '1') applyChecked(box);
     });
+
+    initPoetry();
+
+    if (sessionStorage.getItem('host:unlocked') === '1') {
+      revealAdminTab();
+    }
+
+    if (location.hash === '#admin') {
+      if (sessionStorage.getItem('host:unlocked') === '1') {
+        var btn = document.getElementById('admin-tab-btn');
+        if (btn) show('admin', btn);
+      } else {
+        openGate();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeGate();
+    });
+    var overlay = document.getElementById('gate-overlay');
+    if (overlay) overlay.addEventListener('click', function(e) {
+      if (e.target.id === 'gate-overlay') closeGate();
+    });
+
+    loadQuiz();
   });
 </script>
 
